@@ -22,7 +22,8 @@ BlaBlaChat est un projet open-source et toute contribution est la bienvenue. Si 
 
 ## Contact
 
-Pour toute question, commentaire ou suggestion concernant BlaBlaChat, veuillez nous contacter à l'adresse e-mail suivante : [contact-devs@blablachat.fr](mailto:contact-devs@blablachat.fr)
+Pour toute question, commentaire ou suggestion concernant BlaBlaChat, veuillez nous contacter à l'adresse e-mail suivante : 
+- [contact-devs@blablachat.fr](mailto:contact-devs@blablachat.fr)
 
 Merci d'avoir choisi BlaBlaChat pour vos communications en ligne !
 
