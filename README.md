@@ -1,4 +1,4 @@
-![preview]()
+![preview](https://media.discordapp.net/attachments/733366929561092157/1086372484904923206/facebook_cover_photo_2.png)
 # BlaBlaChat
 
 BlaBlaChat est une application de messagerie instantanée gratuite et sécurisée qui vous permet de communiquer avec vos amis et vos collègues, où que vous soyez. Que vous soyez en déplacement, au travail ou à la maison, BlaBlaChat vous permet de rester connecté en temps réel.
