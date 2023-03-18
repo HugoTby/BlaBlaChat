@@ -27,7 +27,10 @@ Pour toute question, commentaire ou suggestion concernant BlaBlaChat, veuillez n
 
 Merci d'avoir choisi BlaBlaChat pour vos communications en ligne !
 
+# Videos
 
+[![Watch the video](https://media.discordapp.net/attachments/733366929561092157/1086790980486832228/image.png)](https://youtu.be/iuKe9mZo5eg)
+[![Watch the video](https://media.discordapp.net/attachments/733366929561092157/1086791390668787813/image.png)](https://youtu.be/MQ-aPFWpJ6g)
 
 # Galerie
 - vue actuelle
