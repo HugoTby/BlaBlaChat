@@ -32,7 +32,7 @@ Merci d'avoir choisi BlaBlaChat pour vos communications en ligne !
 # Galerie
 - vue actuelle
 
-![preview](https://media.discordapp.net/attachments/733366929561092157/1086754490012680232/image.png?width=1618&height=910)
+![preview](https://media.discordapp.net/attachments/733366929561092157/1086763366812495883/image.png?width=1618&height=910)
 - concept art
 
 ![preview](https://media.discordapp.net/attachments/733366929561092157/1086408396611272774/image.png?width=1381&height=910)
