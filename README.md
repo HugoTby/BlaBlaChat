@@ -30,6 +30,6 @@ Merci d'avoir choisi BlaBlaChat pour vos communications en ligne !
 
 
 # Galerie
-![preview]()
+![preview](https://media.discordapp.net/attachments/1016057405542514698/1086752302012051558/image.png?width=1618&height=910)
 ![preview]()
 ![preview]()
