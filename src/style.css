@@ -45,6 +45,12 @@ html, body {
   flex-direction: column;
   flex: 0 0 240px;
 }
+.accounts {
+  background: #2E3136;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 240px;
+}
 .channels .channels-header {
   cursor: pointer;
   display: flex;
@@ -402,3 +408,74 @@ svg[id] {
 
 
 
+
+
+
+
+
+.member {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  user-select: none;
+  padding-left: 15px;
+}
+.layout {
+display: flex;
+align-items: center;
+}
+
+.member:hover {
+  background-color: #3a3f44;
+}
+
+.content-1U25dZ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nameAndDecorators-3ERwy2 {
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+}
+
+.name-3Vmqxm {
+  font-weight: 500;
+  color: #dcddde;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ownerIcon-255uKo {
+  margin-left: 4px;
+  fill: #f04747;
+}
+
+.subText-OGOWMj {
+  color: #8e9297;
+  font-size: 12px;
+  line-height: 14px;
+  padding-left: 6px;
+}
+.avatar-31d8He{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+
+/* Style de la sélection pour tous les éléments de la page */
+::selection {
+  background-color: rgba(247, 243, 7, 0.527);
+  color: #fff;
+}
+
+/* Style de la sélection pour les éléments dans Firefox */
+::-moz-selection {
+  background-color: rgba(247, 243, 7, 0.527);
+  color: #fff;
+}
