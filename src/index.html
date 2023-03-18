@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
     <script type="text/javascript" src="main.js"></script>
     <title>BlaBlaChat - BTSSN1</title>
 </head>
@@ -39,8 +40,11 @@
                     </div>
                 </div>
             </div>
-            <div class="servers-collection">
+            <div class="servers-collection" style="padding-top: 10px;">
                 <button class="guild-add">+</button>
+            </div>
+            <div class="warning-collection" style="padding-top: 10px;">
+                <button style="cursor: help;" class="warning-add" onclick="toggleDiv()">!</button>
             </div>
         </aside>
 
@@ -82,7 +86,14 @@
                 <!-- <header class="channels-list-header focusable">
                     <h5>Voice Channels</h5>
                 </header> -->
-            </section>
+            </section><div class="warning-inactive" id="warning-content">
+                <div class="rectangle">
+                    <div class="notification-text">
+                        <i class="gg-info"></i>
+                        <span style="text-align: right;" >&nbsp;&nbsp;This is a test notification.</span>
+                    </div>
+                </div>
+            </div>
 
             <footer class="channels-footer">
                 <img class="avatar" alt="404"
@@ -92,10 +103,10 @@
                     <span class="tag">#0001</span>
                 </div>
                 <div class="channels-footer-controls button-group">
-                    <button role="button" aria-label="Mute" class="button button-mute"><svg>
+                    <button role="button" aria-label="Mute" class="button button-mute" style="cursor: not-allowed;" ><svg>
                             <use xlink:href="#icon-mute" />
                         </svg></button>
-                    <button role="button" aria-label="Deafen" class="button button-deafen"><svg>
+                    <button role="button" aria-label="Deafen" class="button button-deafen" style="cursor: not-allowed;"><svg>
                             <use xlink:href="#icon-deafen" />
                         </svg></button>
                     <button role="button" aria-label="Settings" class="button button-settings"><svg>
@@ -116,6 +127,7 @@
                     style="display: flex;justify-content: center;align-items: center; height: 90vh;font-weight: 300;">Le
                     chat n'est pas disponible pour le moment car cette fonctionnalité est en développement ...</span>
             </section>
+            
         </div>
 
         <aside class="accounts">
@@ -131,7 +143,8 @@
                                             alt=" " class="avatar-31d8He" aria-hidden="true">
                                     </div>
                                 </foreignObject>
-                                <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)" class="pointerEvents"></circle>
+                                <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)"
+                                    class="pointerEvents"></circle>
                             </svg>
                         </div>
                     </div>
@@ -161,7 +174,8 @@
                                             alt=" " class="avatar-31d8He" aria-hidden="true">
                                     </div>
                                 </foreignObject>
-                                <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)" class="pointerEvents"></circle>
+                                <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)"
+                                    class="pointerEvents"></circle>
                             </svg>
                         </div>
                     </div>
