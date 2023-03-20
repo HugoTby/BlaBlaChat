@@ -694,7 +694,8 @@ input#chat-input {
   padding: 10px;
   border-radius: 5px;
   margin-right: 10px;
-
+  height: 50px;
+  font-size: 16px;
 }
 
 /* Style pour le bouton Envoyer */
@@ -706,6 +707,9 @@ button#send-button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  height: 50px;
+  width: 100px;
+  font-size: 16px;
 }
 
 /* Style pour le survol du bouton Envoyer */
@@ -726,13 +730,16 @@ button#send-button:hover {
   padding-left: 15px;
 }
 
+.message:hover {
+  background-color: #1e2124;
+}
+
 .message-avatar {
   width: 36px;
   height: 36px;
-  margin-right: 1px;
-  margin-bottom: 40px;
+  margin-right: 10px;
+  /*margin-bottom: 40px; */
   border-radius: 50%;
-  
 }
 
 .message-content {
@@ -743,9 +750,8 @@ button#send-button:hover {
   border-radius: 8px;
   padding: 12px;
   width: 100%;
+  background-color: #282b30;
 }
-
-
 
 .username {
   font-weight: bold;
