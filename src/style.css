@@ -309,6 +309,7 @@ body {
 .chat {
   background: #36393E;
   flex: 1;
+  overflow: auto;
 }
 
 .server {
