@@ -60,6 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 0 0 240px;
+  overflow-y: auto;
 }
 
 .channels .channels-header {
