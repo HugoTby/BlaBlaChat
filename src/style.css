@@ -312,6 +312,8 @@ body {
   overflow: auto;
 }
 
+
+
 .server {
   width: 50px;
   height: 50px;
@@ -769,4 +771,45 @@ button#send-button:hover {
   font-size: 16px;
   line-height: 20px;
   font-size: 14px;
+}
+
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+  color: #1e2124;
+}
+
+*::-webkit-scrollbar-thumb {        
+  box-shadow: inset 0 0 0 10px;
+  color: #282b30;
+}
+
+/* Personnalisation de la largeur de la barre de défilement */
+body {
+  scrollbar-width: thin; /* ou auto ou none */
+}
+
+/* Personnalisation de la couleur de la barre de défilement */
+body::-webkit-scrollbar {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+  color: #1e2124;
+  color: #282b30;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #282b30;;
+  box-shadow: inset 0 0 0 10px;
+}
+
+body {
+  scrollbar-color: #1e2124 #282b30; /* la couleur de la poignée et la couleur de fond de la barre de défilement */
 }
