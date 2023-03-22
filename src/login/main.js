@@ -131,11 +131,3 @@ window.addEventListener('resize', function(){
   canvas.height = window.innerHeight;
 })
 
-var qr;
-(function() {
-qr = new QRious({
-element: document.getElementById('qr-code'),
-size: 170,
-value: 'Paste a link or text over here to create a QR Code for it'
-});
-})();
