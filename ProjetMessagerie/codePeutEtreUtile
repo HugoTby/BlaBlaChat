@@ -1,0 +1,65 @@
+<form action="" method="post">
+    <select name="idUser">
+        <?php
+        foreach ($tabUser as $User) {
+        ?>
+            <option value="<?= $User["id"] ?>"><?= $User["id"] . " " . $User["login"] . " " . $User["password"] . " " . $User["pseudo"] ?></option>
+        <?php
+        }
+        ?>
+    </select>
+    <select name="idMessage">
+        <?php
+        foreach ($tabMessage as $Message) {
+        ?>
+            <option value="<?= $Message["id"] ?>"><?= $Message["message"] ?></option>
+        <?php
+        }
+        ?>
+    </select>
+    <input type="datetime-local" name="laDate">
+    <input type="submit" value="Saisir une consultation" name="Valider">
+</form>
+
+
+
+$requete = "select * from User";
+        $resultat = $GLOBALS["pdo"]->query($requete);
+        //resultat est du coup un objet de type PDOStatement
+        $EtatLogin = NULL;
+        $EtatMdp = NULL;
+        $tabUser = $resultat->fetchALL();
+        if(isset($_POST['envoyer'])){
+            foreach ($tabUser as $User) {
+                if ($User == $_POST['login']) {
+                    $EtatLogin = true;
+                    $IdLogin = $User['id'];
+                    $requete = "SELECT User.password FROM User WHERE User.id == $IdLogin";
+                    $mdpCorrect = $GLOBALS["pdo"]->query($requete);
+                    if($mdpCorrect == $_POST['password'])
+                    {
+                        $EtatMdp = true;
+                    }
+                    else{
+                        $EtatMdp = false;
+                    }
+                }
+                else{
+                    $EtatLogin = false;
+                    $EtatMdp = false;
+                }
+                
+            }
+        }
+        else{
+            $EtatLogin = false;
+            $EtatMdp = false;
+        }
+
+            if (isset($_POST['envoyer']) && $EtatMdp == true && $EtatLogin == true) {
+                echo 'coucou';
+                //afficher messagerie
+            } else if ($EtatLogin != true) {
+                afficheFormulaire($mdpCorrect, $IdLogin);
+            }
+
