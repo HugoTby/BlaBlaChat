@@ -34,16 +34,17 @@ $(".channels-header")[0].addEventListener("click", e => {
 });
 
 
-function toggleDiv() {
-	var div = document.getElementById('warning-content');
-	if (div.classList.contains('warning-active')) {
-		div.classList.remove('warning-active');
-		div.classList.add('warning-inactive');
-	} else {
-		div.classList.remove('warning-inactive');
-		div.classList.add('warning-active');
-	}
-}
+// Voir code index
+// function toggleDiv() {
+// 	var div = document.getElementById('warning-content');
+// 	if (div.classList.contains('warning-active')) {
+// 		div.classList.remove('warning-active');
+// 		div.classList.add('warning-inactive');
+// 	} else {
+// 		div.classList.remove('warning-inactive');
+// 		div.classList.add('warning-active');
+// 	}
+// }
 
 /*let input = document.querySelector('input'); // get the input element
 input.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event

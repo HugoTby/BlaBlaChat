@@ -44,10 +44,21 @@
                 <button class="guild-add">+</button>
             </div>
             <div class="warning-collection" style="padding-top: 10px;">
-                <button style="cursor: help;" class="warning-add" onclick="toggleDiv()">!</button>
+                <button style="cursor: help;" class="warning-add" onclick="toggleDiv();">!</button>
             </div>
+            <script>
+                function toggleDiv() {
+                    var div = document.getElementById('warning-content');
+                    if (div.classList.contains('warning-active')) {
+                        div.classList.remove('warning-active');
+                        div.classList.add('warning-inactive');
+                    } else {
+                        div.classList.remove('warning-inactive');
+                        div.classList.add('warning-active');
+                    }
+                }
+            </script>
         </aside>
-
         <aside class="channels">
             <header class="channels-header focusable">
                 <h3 role="header" class="channels-header-name">BTS SN1</h3>
@@ -148,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="message">
                     <img src="https://cyber-privacy.net/wp-content/uploads/thispersondoesnotexist.com-image02-1024x1024.jpg"
@@ -162,11 +173,11 @@
                         </div>
                         <div class="message-text">
                             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                            accusantium doloremque laudantium,
+                            veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem
                             quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-                            sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
+                            ratione voluptatem sequi nesciunt. Neque porro quisquam est, consectetur, adipisci velit,
+                            sed quia non numquam eius modi tempora incidunt ut
                             labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
                             exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
                             consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
@@ -177,7 +188,7 @@
             </section>
             <div id="chat-container">
                 <div id="input-container">
-                    <input type="text" id="chat-input" placeholder="Saisissez votre message">
+                    <input type="text" id="chat-input" placeholder="Saisissez votre message" maxlength="1000">
                     <button id="send-button">Envoyer</button>
                 </div>
             </div>
