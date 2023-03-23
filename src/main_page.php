@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("class/User.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en" oncontextmenu="return false;">
 
@@ -12,6 +17,15 @@
 </head>
 
 <body>
+
+    <?php
+    $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
+    $User1 = new user(null, null, null, null, null, null, null, null,);
+    
+    $id = $_SESSION['id'];
+    $User1->getUserById($id);
+    
+    ?>
     <main class="container">
         <aside class="servers">
             <div class="servers-collection">
@@ -144,7 +158,7 @@
                         alt="User Avatar" class="message-avatar">
                     <div class="message-content">
                         <div class="message-header">
-                            <span class="username">Hugo Tabary</span>
+                            <span class="username"><?php $User1->getNomPrenom();?></span>
                             <img style="height:15px;margin-right: 8px;"
                                 src="https://upload.wikimedia.org/wikipedia/commons/1/1f/031tick.png">
                             <span class="timestamp">Aujourd'hui à 12:34</span>

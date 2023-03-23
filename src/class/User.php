@@ -49,10 +49,10 @@ class user{
         }
     }
 
-    public function CreateNewUser($login, $pass, $mail, $prenom, $nom, $classe, $avatar){
-        $requete = "SELECT * FROM 'user' 
+    public function CreateNewUser($login1, $pass1, $mail1, $prenom1, $nom1, $classe1, $avatar1){
+        $requete = "SELECT * FROM user 
         WHERE
-        `login` = '".$login."';";
+        `login` = '".$login1."';";
         $result = $GLOBALS["pdo"]->query($requete);
         if($result->rowCount() > 0){
             $tab = $result->fetch();
@@ -67,16 +67,18 @@ class user{
             $pass = $tab['pass'];
         }
         else{
+            if($avatar1 == NULL){
+                $avatar1='https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png';
+            }
             $requete = "INSERT INTO `user`(`prenom`, `nom`, `mail`, `classe`, `login`, `password`, `avatar`) 
-            VALUES('".$prenom."', '".$nom."','".$mail."', '".$classe."', '".$login."', '".$pass."', '".$avatar."');";
+            VALUES('$prenom1', '$nom1','$mail1', '$classe1', '$login1', '$pass1', '$avatar1');";
             $result = $GLOBALS["pdo"]->query($requete);
             $this->id_ = $GLOBALS["pdo"]->lastInsertId();
-            $this->prenom_ = $prenom;
-            $this->nom_ = $nom;
-            $this->classe_ = $classe;
-            $this->login_ = $login;
-            $this->avatar_ = $avatar;
-            $this->classe_ = $classe;
+            $this->prenom_ = $prenom1;
+            $this->nom_ = $nom1;
+            $this->classe_ = $classe1;
+            $this->login_ = $login1;
+            $this->avatar_ = $avatar1;
 
 
         }
@@ -87,10 +89,17 @@ class user{
     public function getUserById($id){
         $sql = "SELECT * FROM `user` 
         WHERE `id` = '".$id."'";
-        $resultat = $this->$GLOBALS["pdo"]->query($sql);
+        $resultat = $GLOBALS["pdo"]->query($sql);
         if ($tab = $resultat->fetch()){
             $this->login_ = $tab['login'];
             $this->id_ = $tab['id'];
+            $this->prenom_ = $tab['prenom'];
+            $this->nom_ = $tab['nom'];
+            $this->mail_ = $tab['mail'];
+            $this->role_ = $tab['role'];
+            $this->classe_ = $tab['classe'];
+            $this->avatar_ = $tab['avatar'];
+            
         }
     }
     public function isConnect(){
@@ -106,6 +115,10 @@ class user{
         }else{
             return false;
         }
+    }
+
+    public function getNomPrenom(){
+        echo $this->nom_." ".$this->prenom_;
     }
 }
 
