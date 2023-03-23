@@ -111,7 +111,7 @@ form .page .field button {
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     transition: 0.5s ease;
 }
 

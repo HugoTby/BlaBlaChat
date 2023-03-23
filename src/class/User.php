@@ -83,6 +83,30 @@ class user{
 
         
     }
+
+    public function getUserById($id){
+        $sql = "SELECT * FROM `User` 
+        WHERE `id` = '".$id."'";
+        $resultat = $this->$GLOBALS["pdo"]->query($sql);
+        if ($tab = $resultat->fetch()){
+            $this->login_ = $tab['login'];
+            $this->id_ = $tab['id'];
+        }
+    }
+    public function isConnect(){
+        if( isset( $_SESSION['idUser'])){
+            $sql = "SELECT * FROM `User` 
+            WHERE `id` = '".$_SESSION['idUser']."'";
+            $resultat = $this->$GLOBALS["pdo"]->query($sql);
+            if ($tab = $resultat->fetch()){
+                $this->login_ = $tab['login'];
+                $this->id_ = $tab['id'];
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>

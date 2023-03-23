@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" oncontextmenu="return false;">
+<html lang="en" dir="ltr" oncontextmenu="return true;">
 
 <head>
     <meta charset="utf-8">
@@ -80,7 +80,7 @@
                         <div class="title">Information étudiant:</div>
                         <div class="field">
                             <div class="label">Classe<span style="color: red;">*</span></div>
-                            <select>
+                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" >
                                 <option>BTS SN 1 - Systèmes Numérique</option>
                                 <option>BTS SN 2 - Systèmes Numérique</option>
                                 <option>BTS CIEL 1 - CyberSécurité Électronique</option>
