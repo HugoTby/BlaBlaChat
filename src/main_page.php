@@ -4,7 +4,7 @@ include("class/User.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return false;">
+<html lang="en" oncontextmenu="return true;">
 
 <head>
     <meta charset="UTF-8">

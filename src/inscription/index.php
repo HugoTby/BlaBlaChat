@@ -95,17 +95,17 @@ include("../class/User.php");
                         <div class="field">
                             <div class="label">Classe<span style="color: red;">*</span></div>
                             <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" name="classe" >
-                                <option>BTS SN 1 - Systèmes Numérique</option>
-                                <option>BTS SN 2 - Systèmes Numérique</option>
-                                <option>BTS CIEL 1 - CyberSécurité Électronique</option>
-                                <option>BTS CIEL 2 - CyberSécurité Électronique</option>
-                                <option>BTS E 1 - Électrotechnique</option>
-                                <option>BTS E 2 - Électrotechnique</option>
-                                <option>BTS MS 1 - Systèmes Energétiques & Fluidiques</option>
-                                <option>BTS MS 2 - Systèmes Energétiques & Fluidiques</option>
-                                <option>BTS FED 1 - Génie Climatique & Fluidique</option>
-                                <option>BTS FED 2 - Génie Climatique & Fluidique</option>
-                                <option>L3 EDD - Energies et Développement Durable</option>
+                                <option value="1"  >BTS SN 1 - Systèmes Numérique</option>
+                                <option value="2"  >BTS SN 2 - Systèmes Numérique</option>
+                                <option value="3"  >BTS CIEL 1 - CyberSécurité Électronique</option>
+                                <option value="4"  >BTS CIEL 2 - CyberSécurité Électronique</option>
+                                <option value="5"  >BTS E 1 - Électrotechnique</option>
+                                <option value="6"  >BTS E 2 - Électrotechnique</option>
+                                <option value="7"  >BTS MS 1 - Systèmes Energétiques & Fluidiques</option>
+                                <option value="8"  >BTS MS 2 - Systèmes Energétiques & Fluidiques</option>
+                                <option value="9"  >BTS FED 1 - Génie Climatique & Fluidique</option>
+                                <option value="10" >BTS FED 2 - Génie Climatique & Fluidique</option>
+                                <option value="11" >L3 EDD - Energies et Développement Durable</option>
                             </select>
                         </div>
                         <div class="field btns">
