@@ -145,7 +145,7 @@
                                                 <span style=" color: #ffffff;text-align: left;"><b id="usernameChange"></b></span>
                                             </strong>
                                             <span style="color: #ffffff;">
-                                                <span style="color: #b6b8bb;text-align: left;">#<script>generateRandomNumber();</script><span id="randomNumber"></span></span>
+                                                <span style="color: #b6b8bb;text-align: left;">#1564</span>
                                             </span>
                                         </p>
                                         <div class=" headerTag">

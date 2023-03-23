@@ -131,7 +131,10 @@ function onPdpChange() {
 }
 
 
-
-function generateRandomNumber() {
-  return Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111;
+function insertRandomNumber() {
+  var randomNumber = Math.floor(Math.random() * (9999 - 1111 + 1) + 1111);
+  var randomNumberSpan = document.createElement("span");
+  randomNumberSpan.textContent = randomNumber;
+  console.log(randomNumber);
+  document.getElementById("randomNumber").appendChild(randomNumberSpan);
 }
