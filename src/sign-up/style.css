@@ -24,7 +24,7 @@ body {
 
 .container {
     width: 330px;
-    background: #fff;
+    background: #363940;
     text-align: center;
     border-radius: 5px;
     padding: 50px 35px 10px 35px;
@@ -33,6 +33,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: #fff;
 }
 
 .container header {
@@ -79,10 +80,12 @@ form .page .field .label {
 form .page .field input {
     height: 100%;
     width: 100%;
-    border: 1px solid lightgrey;
     border-radius: 5px;
     padding-left: 15px;
     font-size: 18px;
+    background-color: #323338;
+    border: 1px solid #282a2e;
+    color: #fff;
 }
 
 form .page .field select {
@@ -142,7 +145,7 @@ form .page .btns button.next {
 .container .progress-bar .step p {
     font-weight: 500;
     font-size: 18px;
-    color: #000;
+    color: #a2a3a7;
     margin-bottom: 8px;
 }
 
@@ -369,6 +372,7 @@ form .page .btns button.next {
     display: flex;
     flex-direction: column;
 }
+
 .banner {
     background: url("https://i.redd.it/1urtbjxssmt81.gif");
     width: inherit;
@@ -376,10 +380,11 @@ form .page .btns button.next {
     position: absolute;
     cursor: pointer;
     background-repeat: no-repeat;
-   /*background-position: center center;
+    /*background-position: center center;
    */
     background-size: cover;
 }
+
 .banner .change-banner {
     pointer-events: none;
     visibility: hidden;
@@ -392,17 +397,20 @@ form .page .btns button.next {
     vertical-align: middle;
     position: absolute;
     inset: 0;
-   /*text-transform: uppercase;
+    /*text-transform: uppercase;
     font-size: 12px;
     line-height: 12px;
    */
 }
+
 .banner:hover {
     box-shadow: inset 0 0 120px #000;
 }
+
 .banner:hover .change-banner {
     visibility: visible;
 }
+
 .avatar {
     pointer-events: all;
     z-index: 101;
@@ -414,6 +422,7 @@ form .page .btns button.next {
     border: 6px solid #18191c;
     cursor: pointer;
 }
+
 .avatar__wrapper {
     z-index: 102;
     position: absolute;
@@ -423,6 +432,7 @@ form .page .btns button.next {
     overflow: hidden;
     pointer-events: none;
 }
+
 .avatar .change-avatar {
     visibility: hidden;
     max-width: 90px;
@@ -442,12 +452,15 @@ form .page .btns button.next {
     pointer-events: none;
     color: white;
 }
+
 .avatar:hover {
     box-shadow: inset 0 0 120px #000;
 }
+
 .avatar:hover .change-avatar {
     visibility: visible;
 }
+
 .status-icon {
     position: relative;
     width: 16px;
@@ -460,6 +473,7 @@ form .page .btns button.next {
     cursor: pointer;
     pointer-events: none;
 }
+
 .headerTop {
     padding-bottom: 12px;
     flex-shrink: 0;
@@ -468,6 +482,7 @@ form .page .btns button.next {
     position: relative;
     pointer-events: none;
 }
+
 .headerTop .badges {
     position: absolute;
     top: 16px;
@@ -483,14 +498,17 @@ form .page .btns button.next {
     margin-top: 25px;
     pointer-events: all;
 }
+
 .headerTop .badges .badge {
     cursor: pointer;
     margin: 0 2px 2px 0;
     pointer-events: all;
 }
+
 .headerTop .headerText {
     pointer-events: all;
 }
+
 .headerTop .headerText .nickname {
     background: none;
     border: none;
@@ -503,6 +521,7 @@ form .page .btns button.next {
     font-size: 20px;
     line-height: 24px;
 }
+
 .headerTop .headerText .headerTag {
     margin-top: 0.3em;
     line-height: 18px;
@@ -513,6 +532,7 @@ form .page .btns button.next {
     align-items: center;
     overflow: hidden;
 }
+
 .headerTop .headerText .headerTag .username {
     background: none;
     border: none;
@@ -530,23 +550,29 @@ form .page .btns button.next {
     -webkit-box-flex: 0;
     flex: 0 1 auto;
 }
+
 .headerTop .headerText .headerTag .discrim {
     color: #b9bbbe;
     vertical-align: top;
 }
+
 .test {
     background: red;
     width: 200px;
     height: 150px;
 }
+
 [contenteditable] {
     outline: 0px solid transparent;
 }
+
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 /* Firefox */
 /* input[type=number] {
     -moz-appearance: textfield;
@@ -559,16 +585,72 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     padding: 0;
     font-family: inherit;
 }
+
 p::text2 {
     color: white;
     text-shadow: 1px 1px #fff;
 }
 
-.badge img{
+.badge img {
     height: 15px;
     width: 15px;
 }
-a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+
+a,
+abbr,
+acronym,
+address,
+applet,
+big,
+blockquote,
+body,
+caption,
+cite,
+code,
+dd,
+del,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+small,
+span,
+strike,
+strong,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr,
+tt,
+ul,
+var {
     margin: 0;
     padding: 0;
     border: 0;
