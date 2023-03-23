@@ -104,7 +104,7 @@
                         <div class="title">Informations compte:</div>
                         <div class="field">
                             <div class="label">Nom d'utilisateur<span style="color: red;">*</span></div>
-                            <input type="text">
+                            <input type="text" id="nom" onchange="onNomChange();">
                         </div>
                         <div class="field">
                             <div class="label">Mot de passe<span style="color: red;">*</span></div>
@@ -112,8 +112,8 @@
                         </div>
                         <div class="field">
                             <div class="label">Avatar (non-obligatoire)</div>
-                            <label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;" >Par fichier<input type="file" style="display: none;" placeholder="Par Lien"></label>
-                            <input type="text"style="width: 50%;" placeholder="Par Lien">
+                            <label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;">Par fichier<input type="file" style="display: none;" placeholder="Par Lien"></label>
+                            <input type="text" id="background" style="width: 50%;" placeholder="Par Lien" onchange="onPdpChange();" />
                         </div>
                         <div class="field btns">
                             <button class="prev-2 prev">Précédent</button>
@@ -132,6 +132,7 @@
                                 <div class="avatar__wrapper">
                                     <div class="avatar">
                                         <div class="change-avatar">
+                                            <div id="photoChange"> </div>
                                         </div>
                                         <div class="status-icon">
                                         </div>
@@ -139,28 +140,26 @@
                                 </div>
                                 <div class="headerTop">
                                     <div class="headerText">
-                                        <p style="text-align: left;"" >
-                                                <strong>
-                                                    <span style=" color: #ffffff;text-align: left;"><b>User0242ac120002</b></span>
+                                        <p style="text-align: left;">
+                                            <strong>
+                                                <span style=" color: #ffffff;text-align: left;"><b id="usernameChange"></b></span>
                                             </strong>
                                             <span style="color: #ffffff;">
-                                                <span style="color: #b6b8bb;text-align: left;"">#3648</span>
-                                                </span>
-                                            </p>
-                                            <div class=" headerTag">
-
-                                                    <p style="color:#b6b8bb;text-align: left;"" >Utilisateur de BlaBlaChat</p>
-                            
-                                            </div>
+                                                <span style="color: #b6b8bb;text-align: left;">#<script>generateRandomNumber();</script><span id="randomNumber"></span></span>
+                                            </span>
+                                        </p>
+                                        <div class=" headerTag">
+                                            <p style="color:#b6b8bb;text-align: left;">Utilisateur de BlaBlaChat</p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div class=" field btns">
-                                                        <button class="prev-3 prev">Précédent</button>
-                                                        <button class="submit">Terminer</button>
-                                    </div>
-                                </div>
+                            <button class="prev-3 prev">Précédent</button>
+                            <button class="submit">Terminer</button>
+                        </div>
+                    </div>
 
                 </form>
             </div>

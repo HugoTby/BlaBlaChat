@@ -355,7 +355,17 @@ form .page .btns button.next {
 
 
 
-
+.divback {
+    pointer-events: all;
+    z-index: 101;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: url('https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png');
+    background-size: cover;
+    border: 6px solid #18191c;
+    cursor: pointer;
+  }
 
 .profileHead {
     padding-top: 10px;
@@ -414,17 +424,21 @@ form .page .btns button.next {
     visibility: visible;
 }
 
+
+
 .avatar {
     pointer-events: all;
     z-index: 101;
     border-radius: 50%;
     width: 80px;
     height: 80px;
-    background: url("https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png");
+    background: url('https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png');
     background-size: cover;
     border: 6px solid #18191c;
     cursor: pointer;
-}
+  }
+
+
 
 .avatar__wrapper {
     z-index: 102;
@@ -437,7 +451,7 @@ form .page .btns button.next {
 }
 
 .avatar .change-avatar {
-    visibility: hidden;
+    /* visibility: hidden; */
     max-width: 90px;
     font-family: inherit;
     font-size: 10px;

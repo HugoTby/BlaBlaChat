@@ -105,3 +105,33 @@ window.addEventListener('resize', function(){
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 })
+
+
+
+
+
+
+var nom = "";
+
+function onNomChange() {
+  nom = document.getElementById("nom").value;
+  document.getElementById("usernameChange").innerHTML = nom;
+}
+
+
+
+
+function onPdpChange() {
+  var background = document.getElementById("background").value;
+  console.log(background);
+  var photoChange = document.getElementById("photoChange");
+  // photoChange.style.background = "url('" + background + "') !important";
+  // photoChange.style.backgroundSize = "cover";
+  document.getElementById("photoChange").innerHTML = '<img class="avatar" src="'+background+'" alt="failed" >';
+}
+
+
+
+function generateRandomNumber() {
+  return Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111;
+}
