@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
-<body>
+<body onload="insertRandomNumber()">
     <div class="area">
         <ul class="circles">
             <li></li>
@@ -145,8 +145,9 @@
                                                 <span style=" color: #ffffff;text-align: left;"><b id="usernameChange"></b></span>
                                             </strong>
                                             <span style="color: #ffffff;">
-                                                <span style="color: #b6b8bb;text-align: left;">#1564</span>
+                                                <span style="color: #b6b8bb;text-align: left;">#<span id="randomNumber" ></span ></span>
                                             </span>
+
                                         </p>
                                         <div class=" headerTag">
                                             <p style="color:#b6b8bb;text-align: left;">Utilisateur de BlaBlaChat</p>
