@@ -49,7 +49,7 @@ class user{
         }
     }
 
-    public function CreateNewUser($login, $pass, $prenom, $nom, $classe, $avatar){
+    public function CreateNewUser($login, $pass, $mail, $prenom, $nom, $classe, $avatar){
         $requete = "SELECT * FROM 'user' 
         WHERE
         `login` = '".$login."';";
@@ -67,8 +67,8 @@ class user{
             $pass = $tab['pass'];
         }
         else{
-            $requete = "INSERT INTO 'user' (`prenom`, `nom`, `classe`, `login`, `avatar`)
-            VALUES ('".$prenom."', '".$nom."', '".$classe."', '".$login."', '".$avatar."');";
+            $requete = "INSERT INTO `user`(`prenom`, `nom`, `mail`, `classe`, `login`, `password`, `avatar`) 
+            VALUES('".$prenom."', '".$nom."','".$mail."', '".$classe."', '".$login."', '".$pass."', '".$avatar."');";
             $result = $GLOBALS["pdo"]->query($requete);
             $this->id_ = $GLOBALS["pdo"]->lastInsertId();
             $this->prenom_ = $prenom;

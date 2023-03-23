@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../class/User.php");
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" oncontextmenu="return true;">
 
@@ -9,6 +13,16 @@
 </head>
 
 <body onload="insertRandomNumber()">
+    <?php
+    $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
+    $User1 = new user(null, null, null, null, null, null, null, null,);
+
+    if(isset($_POST['envoyer'])){
+        $User1->CreateNewUser($_POST['login'], $_POST['password'],  $_POST['mail'],$_POST['prenom'],$_POST['nom'],$_POST['classe'],$_POST['avatar']);
+        header('Location: ../main_page.php');
+    }   
+    ?>
+
     <div class="area">
         <ul class="circles">
             <li></li>
@@ -60,15 +74,15 @@
                         <div class="title">Informations générales:</div>
                         <div class="field">
                             <div class="label">Adresse e-mail<span style="color: red;">*</span></div>
-                            <input type="text">
+                            <input type="text" name="mail">
                         </div>
                         <div class="field">
                             <div class="label">Prénom<span style="color: red;">*</span></div>
-                            <input type="text">
+                            <input type="text" name="prenom">
                         </div>
                         <div class="field">
                             <div class="label">Nom<span style="color: red;">*</span></div>
-                            <input type="text">
+                            <input type="text" name="nom">
                         </div>
                         <div class="field">
                             <button class="firstNext next">Suivant</button>
@@ -80,7 +94,7 @@
                         <div class="title">Information étudiant:</div>
                         <div class="field">
                             <div class="label">Classe<span style="color: red;">*</span></div>
-                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" >
+                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" name="classe" >
                                 <option>BTS SN 1 - Systèmes Numérique</option>
                                 <option>BTS SN 2 - Systèmes Numérique</option>
                                 <option>BTS CIEL 1 - CyberSécurité Électronique</option>
@@ -104,16 +118,16 @@
                         <div class="title">Informations compte:</div>
                         <div class="field">
                             <div class="label">Nom d'utilisateur<span style="color: red;">*</span></div>
-                            <input type="text" id="nom" onchange="onNomChange();">
+                            <input type="text" id="nom" name="login" onchange="onNomChange();">
                         </div>
                         <div class="field">
                             <div class="label">Mot de passe<span style="color: red;">*</span></div>
-                            <input type="password">
+                            <input type="password" name="password">
                         </div>
                         <div class="field">
                             <div class="label">Avatar (non-obligatoire)</div>
-                            <label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;">Par fichier<input type="file" style="display: none;" placeholder="Par Lien" onchange="onPdpChange2(event);"></label>
-                            <input type="text" id="background" style="width: 50%;" placeholder="Par Lien" onchange="onPdpChange();" />
+                            <label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;">Par fichier<input type="file" style="display: none;" name="avatar" placeholder="Par Lien" onchange="onPdpChange2(event);"></label>
+                            <input type="text" id="background" name="avatar" style="width: 50%;" placeholder="Par Lien" onchange="onPdpChange();" />
                         </div>
                         <div class="field btns">
                             <button class="prev-2 prev">Précédent</button>
@@ -168,7 +182,7 @@
                         </div>
                         <div class=" field btns">
                             <button class="prev-3 prev">Précédent</button>
-                            <button class="submit">Terminer</button>
+                            <button class="submit" name="envoyer">Terminer</button>
                         </div>
                     </div>
 
