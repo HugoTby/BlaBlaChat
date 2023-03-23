@@ -111,7 +111,7 @@
                             <input type="password">
                         </div>
                         <div class="field">
-                            <div class="label">Avatar</div>
+                            <div class="label">Avatar (non-obligatoire)</div>
                             <input type="file">
                         </div>
                         <div class="field btns">
