@@ -19,6 +19,7 @@ body {
   font-size: 16px;
   font-family: "Roboto";
   cursor: url('cursor/c1.png'), auto;
+  user-select: none;
 }
 
 .container {

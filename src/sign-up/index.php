@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" oncontextmenu="return true;">
 
 <head>
     <meta charset="utf-8">
@@ -112,7 +112,8 @@
                         </div>
                         <div class="field">
                             <div class="label">Avatar (non-obligatoire)</div>
-                            <input type="file">
+                            <label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;" >Par fichier<input type="file" style="display: none;" placeholder="Par Lien"></label>
+                            <input type="text"style="width: 50%;" placeholder="Par Lien">
                         </div>
                         <div class="field btns">
                             <button class="prev-2 prev">Précédent</button>
@@ -123,43 +124,43 @@
                     <div class="page">
                         <div class="title">Aperçu:</div>
                         <div class="profileHead">
-                                <div class="profile">
-                                    <div class="banner">
-                                        <div class="change-banner">
+                            <div class="profile">
+                                <div class="banner">
+                                    <div class="change-banner">
+                                    </div>
+                                </div>
+                                <div class="avatar__wrapper">
+                                    <div class="avatar">
+                                        <div class="change-avatar">
+                                        </div>
+                                        <div class="status-icon">
                                         </div>
                                     </div>
-                                    <div class="avatar__wrapper">
-                                        <div class="avatar">
-                                            <div class="change-avatar">
-                                            </div>
-                                            <div class="status-icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="headerTop">
-                                        <div class="headerText">
-                                            <p style="text-align: left;"" >
+                                </div>
+                                <div class="headerTop">
+                                    <div class="headerText">
+                                        <p style="text-align: left;"" >
                                                 <strong>
-                                                    <span style="color: #ffffff;text-align: left;"><b>User0242ac120002</b></span>
-                                                </strong>
-                                                <span style="color: #ffffff;">
-                                                    <span style="color: #b6b8bb;text-align: left;"">#3648</span>
+                                                    <span style=" color: #ffffff;text-align: left;"><b>User0242ac120002</b></span>
+                                            </strong>
+                                            <span style="color: #ffffff;">
+                                                <span style="color: #b6b8bb;text-align: left;"">#3648</span>
                                                 </span>
                                             </p>
-                                            <div class="headerTag">
-                            
-                                                <p style="color:#b6b8bb;text-align: left;"" >Utilisateur de BlaBlaChat</p>
+                                            <div class=" headerTag">
+
+                                                    <p style="color:#b6b8bb;text-align: left;"" >Utilisateur de BlaBlaChat</p>
                             
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <div class="field btns">
-                            <button class="prev-3 prev">Précédent</button>
-                            <button class="submit">Terminer</button>
-                        </div>
-                    </div>
+                        <div class=" field btns">
+                                                        <button class="prev-3 prev">Précédent</button>
+                                                        <button class="submit">Terminer</button>
+                                    </div>
+                                </div>
 
                 </form>
             </div>
@@ -168,5 +169,27 @@
     <script src="script.js"></script>
 
 </body>
+<script>
+    // N'oubliez pas d'inclure le code présent à la ligne 14, dans votre balise html <body>
+
+    document.onkeydown = function(e) {
+        if (event.keyCode == 123) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+
+    }
+</script>
 
 </html>
