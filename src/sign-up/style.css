@@ -387,15 +387,27 @@ form .page .btns button.next {
 }
 
 .banner {
-    background: url("https://i.redd.it/1urtbjxssmt81.gif");
     width: inherit;
     height: 120px;
     position: absolute;
     cursor: pointer;
     background-repeat: no-repeat;
     /*background-position: center center;
-   */
+    */
     background-size: cover;
+}
+
+/* Définition des images de fond possibles */
+.banner.background-1 {
+    background-image: url("https://i.redd.it/1urtbjxssmt81.gif");
+}
+
+.banner.background-2 {
+    background-image: url("https://exploringbits.com/wp-content/uploads/2022/01/discord-banner-8.gif");
+}
+
+.banner.background-3 {
+    background-image: url("https://cutewallpaper.org/21/gif-background/Pin-on-Background.gif");
 }
 
 .banner .change-banner {
@@ -448,6 +460,7 @@ form .page .btns button.next {
     left: 16px;
     overflow: hidden;
     pointer-events: none;
+    padding-top:5px;
 }
 
 .avatar .change-avatar {

@@ -132,7 +132,7 @@
                                 <div class="avatar__wrapper">
                                     <div class="avatar">
                                         <div class="change-avatar">
-                                            <div id="photoChange"> </div>
+                                            <div id="photoChange"></div>
                                         </div>
                                         <div class="status-icon">
                                         </div>

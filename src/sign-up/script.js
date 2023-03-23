@@ -119,8 +119,6 @@ function onNomChange() {
 }
 
 
-
-
 function onPdpChange() {
   var background = document.getElementById("background").value;
   console.log(background);
@@ -138,3 +136,12 @@ function insertRandomNumber() {
   console.log(randomNumber);
   document.getElementById("randomNumber").appendChild(randomNumberSpan);
 }
+
+// Liste des classes CSS correspondant aux différentes images de fond possibles
+var backgrounds = ['background-1', 'background-2', 'background-3'];
+
+// Choix aléatoire d'une classe CSS parmi les images de fond possibles
+var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+// Ajout de la classe CSS choisie à l'élément HTML correspondant à la bannière
+document.getElementsByClassName('banner')[0].classList.add(randomBackground);
