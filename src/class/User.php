@@ -4,18 +4,16 @@ class user{
     private $prenom_;
     private $nom_;
     private $mail_;
-    private $telephone_;
     private $role_;
     private $classe_;
     private $login_;
     private $avatar_;
 
-    public function __construct($id, $prenom, $nom, $mail, $telephone, $role, $classe, $login, $password, $avatar) {
+    public function __construct($id, $prenom, $nom, $mail, $role, $classe, $login, $avatar) {
         $this->id_ = $id;
         $this->prenom_ = $prenom;
         $this->nom_ = $nom;
         $this->mail_ = $mail;
-        $this->telephone_ = $telephone;
         $this->role_ = $role;
         $this->classe_ = $classe;
         $this->login_ = $login;
@@ -39,7 +37,6 @@ class user{
             $this->prenom_ = $tab['prenom'];
             $this->nom_ = $tab['nom'];
             $this->mail_ = $tab['mail'];
-            $this->telephone_ = $tab['telephone'];
             $this->role_ = $tab['role'];
             $this->classe_ = $tab['classe'];
             $this->login_ = $tab['login'];
@@ -52,7 +49,7 @@ class user{
         }
     }
 
-    public function CreateNewUser($login, $pass, $prenom, $nom, $classe){
+    public function CreateNewUser($login, $pass, $prenom, $nom, $classe, $avatar){
         $requete = "SELECT * FROM 'user' 
         WHERE
         `login` = '".$login."';";
@@ -63,7 +60,6 @@ class user{
             $this->prenom_ = $tab['prenom'];
             $this->nom_ = $tab['nom'];
             $this->mail_ = $tab['mail'];
-            $this->telephone_ = $tab['telephone'];
             $this->role_ = $tab['role'];
             $this->classe_ = $tab['classe'];
             $this->login_ = $tab['login'];
@@ -72,11 +68,16 @@ class user{
         }
         else{
             $requete = "INSERT INTO 'user' (`prenom`, `nom`, `classe`, `login`, `avatar`)
-            VALUES ('".$prenom."', '".$nom."', '".$classe."', '".$login."');";
+            VALUES ('".$prenom."', '".$nom."', '".$classe."', '".$login."', '".$avatar."');";
             $result = $GLOBALS["pdo"]->query($requete);
             $this->id_ = $GLOBALS["pdo"]->lastInsertId();
             $this->prenom_ = $prenom;
             $this->nom_ = $nom;
+            $this->classe_ = $classe;
+            $this->login_ = $login;
+            $this->avatar_ = $avatar;
+            $this->classe_ = $classe;
+
 
         }
 
