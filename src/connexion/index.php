@@ -1,9 +1,9 @@
 <?php
 session_start();
-include ("../class/User.php");
+include("../class/User.php");
 ?>
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return false;">
+<html lang="en" oncontextmenu="return true;">
 
 <head>
     <meta charset="UTF-8">
@@ -18,32 +18,34 @@ include ("../class/User.php");
 
     <?php
 
-try {
-    // ---------------Connexion à la BDD et récupération et traitement du formulaire
-    $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
-    $User1 = new User(null,null,null,null,null,null,null,null,);
-if(isset($_POST["envoyer"])){
-    $User1->seConnecter($_POST["login"],$_POST["logpass"]);
-}
-if(!$User1->isConnect()){
+    try {
+        // ---------------Connexion à la BDD et récupération et traitement du formulaire
+        $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
+        $User1 = new user(null, null, null, null, null, null, null, null,);
+
+        if (isset($_POST["connecter"])) {
+            $User1->seConnecter($_POST["login"], $_POST["logpass"]);
+        }
+
+        if (!$User1->isConnect()) {
     ?>
 
-        <div class="area">
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            <div class="area">
+                <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
 
 
-            <canvas id="svgBlob"></canvas>
+                <canvas id="svgBlob"></canvas>
 
                 <div class="position">
                     <form class="container" method="post">
@@ -65,8 +67,8 @@ if(!$User1->isConnect()){
                                 </div>
                                 <div class="password-container"><a href="#" class="link">Mot de passe oublié?</a></div>
                                 <div class="btn-position">
-                                    <a href="#" class="btn">Se connecter</a>
-                                    <input type="submit" name="envoyer"></input>
+                                    <!-- <a href="#" class="btn">Se connecter</a> -->
+                                    <input class="btn" id="connecter" type="submit" value="Se connecter" name="connecter"></input>
                                 </div>
                             </div>
                             <div class="horizontalSeparator"></div>
@@ -81,24 +83,24 @@ if(!$User1->isConnect()){
                     </form>
                 </div>
 
-        </div>
-<?php
-}
-else{
-    echo "coucou";
-}
-} catch (Exception  $error) {
-    $error->getMessage();
-}
-    
+            </div>
+    <?php
+        } else {
+            // echo "TEST OK !";
+            // header("Location : ../main_page.php");
+            header('Location: ../main_page.php');
+        }
+    } catch (Exception  $error) {
+        $error->getMessage();
+    }
 
-?>
+
+    ?>
 </body>
 <script>
-
     // N'oubliez pas d'inclure le code présent à la ligne 14, dans votre balise html <body>
 
-    document.onkeydown = function (e) {
+    document.onkeydown = function(e) {
         if (event.keyCode == 123) {
             return false;
         }
@@ -117,4 +119,5 @@ else{
 
     }
 </script>
+
 </html>
