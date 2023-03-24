@@ -1,49 +1,83 @@
 <?php
-class user{
+
+class message{
     private $id_;
     private $contenu_;
     private $idServer_;
+    private $idUser_;
+    private $nom_;
+    private $prenom_;
 
-    public function __construct($id, $prenom, $nom, $mail, $role, $classe, $login, $avatar) {
+    public function __construct($id, $contenu, $idServer, $idUser) {
         $this->id_ = $id;
-        $this->contenu_ = $prenom;
-        $this->idServer_ = $nom;
-        $this->mail_ = $mail;
-        $this->role_ = $role;
-        $this->classe_ = $classe;
-        $this->login_ = $login;
-        $this->avatar_ = $avatar;
+        $this->contenu_ = $contenu;
+        $this->idServer_ = $idServer;
+        $this->idUser_ = $idUser;
+        $idSession = $_SESSION['id'];
+        $requetes = "SELECT * FROM `user` 
+        WHERE
+        `id` = '".$idSession."' ;";
+        $resulte = $GLOBALS["pdo"]->query($requetes);
+        if($resulte->rowCount() > 0){
+            $tab1 = $resulte->fetch();
+            $this->nom_ = $tab1['nom'];
+            $this->prenom_ = $tab1['prenom'];
+        }
+
+    }
+
+    public function getNomPrenom(){
+        echo $this->nom_." ".$this->prenom_;
     }
     
-    public function seConnecter($login, $pass){
-        $requete = "SELECT * FROM `user` 
+    public function afficheMessage($id){
+        echo "coucou";
+        $requete2 = "SELECT * FROM `message` 
         WHERE
-        `login` = '".$login."'
-        AND
-        `password` = '".$pass."' ;";
+        `id` = '.$id.' ;";
 
-        $result = $GLOBALS["pdo"]->query($requete);
-        if($result->rowCount() > 0){
-            $tab = $result->fetch();
-            $_SESSION['Connexion'] = true;
-            $_SESSION['id'] = $tab['id'];
+        $result2 = $GLOBALS["pdo"]->query($requete2);
+        if($result2->rowCount() > 0){
+            echo "réussi";
+            $tab = $result2->fetch();
 
             $this->id_ = $tab['id'];
-            $this->prenom_ = $tab['prenom'];
-            $this->nom_ = $tab['nom'];
-            $this->mail_ = $tab['mail'];
-            $this->role_ = $tab['role'];
-            $this->classe_ = $tab['classe'];
-            $this->login_ = $tab['login'];
-            $this->avatar_ = $tab['avatar'];
+            $this->contenu_ = $tab['contenu'];
+            $this->idServer_ = $tab['idServer'];
+            $this->idUser_ = $tab['idUser'];
+            
+            ?>
+            <div class="message">
+                    <img src="https://www.bitss.org/wp-content/uploads/2022/04/avatar_hu8d30e29128cae2b0d49276543cea6665_24055_250x250_fill_q90_lanczos_center.jpg"
+                        alt="User Avatar" class="message-avatar">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="username"><?php $this->getNomPrenom();?></span>
+                            <img style="height:15px;margin-right: 8px;"
+                                src="https://upload.wikimedia.org/wikipedia/commons/1/1f/031tick.png">
+                            <span class="timestamp">Aujourd'hui à 12:34</span>
+                        </div>
+                        <div class="message-text">
+                            <?php echo $this->contenu_ ?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+
+
 
             return true;
         }
         else{
+            echo "coucou2";
             return false;
         }
     }
 
+    public function afficheMessage1($id){
+        echo "je suis un message";
+    }
+    /*
     public function CreateNewUser($login1, $pass1, $mail1, $prenom1, $nom1, $classe1, $avatar1){
         $requete = "SELECT * FROM user 
         WHERE
@@ -79,42 +113,10 @@ class user{
         }
 
         
-    }
+    }*/
 
-    public function getUserById($id){
-        $sql = "SELECT * FROM `user` 
-        WHERE `id` = '".$id."'";
-        $resultat = $GLOBALS["pdo"]->query($sql);
-        if ($tab = $resultat->fetch()){
-            $this->login_ = $tab['login'];
-            $this->id_ = $tab['id'];
-            $this->prenom_ = $tab['prenom'];
-            $this->nom_ = $tab['nom'];
-            $this->mail_ = $tab['mail'];
-            $this->role_ = $tab['role'];
-            $this->classe_ = $tab['classe'];
-            $this->avatar_ = $tab['avatar'];
-            
-        }
-    }
-    public function isConnect(){
-        if( isset( $_SESSION['id'])){
-            $sql = "SELECT * FROM `user` 
-            WHERE `id` = '".$_SESSION['id']."'";
-            $resultat =$GLOBALS["pdo"]->query($sql);
-            if ($tab = $resultat->fetch()){
-                $this->login_ = $tab['login'];
-                $this->id_ = $tab['id'];
-                return true;
-            }
-        }else{
-            return false;
-        }
-    }
 
-    public function getNomPrenom(){
-        echo $this->nom_." ".$this->prenom_;
-    }
+    
 }
 
 ?>

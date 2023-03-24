@@ -1,6 +1,25 @@
 <?php
+// Définit la durée de vie du cookie de session à 10 minutes
+session_set_cookie_params(600);
+
+// Démarre la session
 session_start();
+
+// Vérifie si la session est inactive depuis plus de 10 minutes
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
+    // Si oui, détruit la session
+    session_unset();
+    session_destroy();
+}
+
+// Met à jour le timestamp de la dernière activité
+$_SESSION['LAST_ACTIVITY'] = time();
+
+
+
 include("class/User.php");
+include("class/Message.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +39,9 @@ include("class/User.php");
 
     <?php
     $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
-    $User1 = new user(null, null, null, null, null, null, null, null,);
+    $User1 = new user(null, null, null, null, null, null, null, null);
+    $Mess = new message(null, null, null, null);
+
     
     $id = $_SESSION['id'];
     $User1->getUserById($id);
@@ -153,52 +174,22 @@ include("class/User.php");
             <section class="chat">
                 <!-- <span style="display: flex;justify-content: center;align-items: center;font-weight: 300;">Le
                     chat n'est pas disponible pour le moment car cette fonctionnalité est en développement ...</span> -->
-                <div class="message">
-                    <img src="https://www.bitss.org/wp-content/uploads/2022/04/avatar_hu8d30e29128cae2b0d49276543cea6665_24055_250x250_fill_q90_lanczos_center.jpg"
-                        alt="User Avatar" class="message-avatar">
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username"><?php $User1->getNomPrenom();?></span>
-                            <img style="height:15px;margin-right: 8px;"
-                                src="https://upload.wikimedia.org/wikipedia/commons/1/1f/031tick.png">
-                            <span class="timestamp">Aujourd'hui à 12:34</span>
-                        </div>
-                        <div class="message-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                            anim id est laborum.
-                        </div>
-                    </div>
-                </div>
+                <?php
+                $requetes="SELECT * FROM `message` ;";
+                $resultat2 = $GLOBALS["pdo"]->query($requetes);
+                $tabMessage = $resultat2->fetchALL();
+
+                foreach($tabMessage as $Message){
+                    $test=$Message['id'];
+                    $Mess->afficheMessage($test);
+
+                }
 
 
-                <div class="message">
-                    <img src="https://cyber-privacy.net/wp-content/uploads/thispersondoesnotexist.com-image02-1024x1024.jpg"
-                        alt="User Avatar" class="message-avatar">
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">Faustin Botel</span>
-                            <img style="height:15px;margin-right: 8px;"
-                                src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png">
-                            <span class="timestamp">Aujourd'hui à 13:31</span>
-                        </div>
-                        <div class="message-text">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium,
-                            veritatis et quasi architecto beatae vitae dicta explicabo. Nemo enim ipsam voluptatem
-                            quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt. Neque porro quisquam est, consectetur, adipisci velit,
-                            sed quia non numquam eius modi tempora incidunt ut
-                            labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-                            exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                            consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-                            molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                        </div>
-                    </div>
-                </div>
+                ?>
+
+
+                
             </section>
             <div id="chat-container">
                 <div id="input-container">
