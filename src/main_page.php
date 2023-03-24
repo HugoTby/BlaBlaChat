@@ -201,7 +201,7 @@ include("class/Message.php");
             <menu type="toolbar" class="menu">
                 <h2 class="menu-name">général</h2>
             </menu>
-            <section class="chat">
+            <section class="chat" id="messages-container">
                 <!-- <span style="display: flex;justify-content: center;align-items: center;font-weight: 300;">Le
                     chat n'est pas disponible pour le moment car cette fonctionnalité est en développement ...</span> -->
                 <?php
@@ -218,7 +218,9 @@ include("class/Message.php");
                 ?>
 
 
-
+                <script>
+                    scrollToBottom();
+                </script>
             </section>
             <form method="post">
                 <div id="chat-container">

@@ -73,3 +73,19 @@ function resizeInput(input) {
 }
 //this.style.minwidth = (this.value.length + 1) + "ch";
 
+
+
+function scrollToBottom() {
+	var messagesContainer = document.getElementById("messages-container");
+	messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+  
+  // Faire défiler jusqu'en bas au chargement de la page
+  window.onload = function() {
+	scrollToBottom();
+  }
+  
+  // Faire défiler jusqu'en bas toutes les 5 secondes
+  setInterval(function() {
+	scrollToBottom();
+  }, 1000);
