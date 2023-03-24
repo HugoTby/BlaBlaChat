@@ -1,5 +1,5 @@
 <?php
-
+// Code et drapeaux des pays, servant a renvoyer une erreur si != FR
 $countryCodes = array(
     // A
     'AW' => 'Aruba 🇦🇼',

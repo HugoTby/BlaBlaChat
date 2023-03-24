@@ -5,8 +5,11 @@ class message{
     private $contenu_;
     private $idServer_;
     private $idUser_;
+    private $date_;
     private $nom_;
     private $prenom_;
+    private $avatar_;
+    private $icon_;
 
     public function __construct($id, $contenu, $idServer, $idUser) {
         $this->id_ = $id;
@@ -32,35 +35,34 @@ class message{
     }
     
     public function afficheMessage($id){
-        echo "coucou";
         $requete2 = "SELECT * FROM `message` 
         WHERE
         `id` = $id ;";
 
         $result2 = $GLOBALS["pdo"]->query($requete2);
         if($result2->rowCount() > 0){
-            echo "réussi";
             $tab = $result2->fetch();
 
             $this->id_ = $tab['id'];
             $this->contenu_ = $tab['contenu'];
             $this->idServer_ = $tab['idServer'];
             $this->idUser_ = $tab['idUser'];
-            
-            $requete3 = "select user.prenom from user, message where message.idUser = user.id and message.id=1";
+            $requete3 = "select * from user, message where message.idUser = user.id and message.id= $this->id_ ";
             $result3 = $GLOBALS["pdo"]->query($requete3);
             $tab3 = $result3->fetch();
             $this->nom_ = $tab3['nom'];
             $this->prenom_ = $tab3['prenom'];
+            $this->avatar_ = $tab3['avatar'];
+            $this->icon_ = $tab3['icon'];
             ?>
             <div class="message">
-                    <img src="https://www.bitss.org/wp-content/uploads/2022/04/avatar_hu8d30e29128cae2b0d49276543cea6665_24055_250x250_fill_q90_lanczos_center.jpg"
+                    <img src="<?php echo $this->avatar_  ?>"
                         alt="User Avatar" class="message-avatar">
                     <div class="message-content">
                         <div class="message-header">
-                            <span class="username"><?php echo $this->nom_?></span>
+                            <span class="username"><?php echo $this->nom_." ".$this->prenom_ ?></span>
                             <img style="height:15px;margin-right: 8px;"
-                                src="https://upload.wikimedia.org/wikipedia/commons/1/1f/031tick.png">
+                                src="<?php echo $this->icon_  ?>">
                             <span class="timestamp">Aujourd'hui à 12:34</span>
                         </div>
                         <div class="message-text">

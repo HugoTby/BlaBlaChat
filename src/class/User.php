@@ -21,11 +21,13 @@ class user{
     }
     
     public function seConnecter($login, $pass){
+
+        $newpass = hash('sha256', $pass);
         $requete = "SELECT * FROM `user` 
         WHERE
         `login` = '".$login."'
         AND
-        `password` = '".$pass."' ;";
+        `password` = '".$newpass."' ;";
 
         $result = $GLOBALS["pdo"]->query($requete);
         if($result->rowCount() > 0){
@@ -33,7 +35,7 @@ class user{
             $_SESSION['Connexion'] = true;
             $_SESSION['id'] = $tab['id'];
 
-            $this->id_ = $tab['id'];
+            $this->id_ = $tab['id']; 
             $this->prenom_ = $tab['prenom'];
             $this->nom_ = $tab['nom'];
             $this->mail_ = $tab['mail'];

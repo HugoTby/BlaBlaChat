@@ -1,4 +1,9 @@
 <?php
+////////////////////////////////////////////
+//           Page de connexion            //
+////////////////////////////////////////////
+
+// Début de session et déclaration des fichiers requis au fonctionnement de l'application web
 session_start();
 include("../class/User.php");
 include("../class/Message.php");
@@ -38,6 +43,7 @@ include("../blacklist/black_list.php");
 
     <?php
 
+    // Récupération de l'IP pour la comparé a une blacklist, on refuse l'accès en cas de correspondance
     $ip = $_SERVER['REMOTE_ADDR'];
     $info = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
 
@@ -53,14 +59,15 @@ include("../blacklist/black_list.php");
             </div>
         </div>";
     } elseif (property_exists($info, 'country') && $info->country === "FR" or ($ip == in_array($ip, $whitelist) || strpos($ip, '192.168.') === 0)) {
-
+            // On autorise l'accès au IP Françaises, a celle de la whitelist et a celle commençant par 192.168.XX.XX
         try {
-            // ---------------Connexion à la BDD et récupération et traitement du formulaire
+            // Connexion à la BDD et récupération et traitement du formulaire
             $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
             $User1 = new user(null, null, null, null, null, null, null, null,);
 
             if (isset($_POST["connecter"])) {
                 $User1->seConnecter($_POST["login"], $_POST["logpass"]);
+                // Si le bouton d'envoi est saisi par l'utilisateur
             }
 
             if (!$User1->isConnect()) {
@@ -68,6 +75,7 @@ include("../blacklist/black_list.php");
     ?>
 
                 <div class="area">
+                    <!-- <ul> servant a générer le fond bleu animer -->
                     <ul class="circles">
                         <li></li>
                         <li></li>
@@ -109,6 +117,7 @@ include("../blacklist/black_list.php");
                                         <?php
 
                                         if (isset($_POST['connecter']) && !$User1->isConnect()) {
+                                            // Message d'erreur si le mdp ou login incorrets
                                             echo "<div style='display:flex; align-items:center; justify-content:center;'>
                                             <i class='gg-info' style='margin-right:5px; color:#fff;background-color:red'></i>
                                             <span style='color:#fff;background-color:red;border-radius:4px;padding:5px;font-size:12px'>
@@ -136,8 +145,7 @@ include("../blacklist/black_list.php");
                 </div>
     <?php
             } else {
-                // echo "TEST OK !";
-                // header("Location : ../main_page.php");
+                // Renvoi vers la page principale si la connexion est réussie
                 header('Location: ../main_page.php');
             }
         } catch (Exception  $error) {
@@ -145,8 +153,7 @@ include("../blacklist/black_list.php");
         }
     } else {
 
-        // [FR] Sinon, on refuse l'accès en affichant l'adresse IP de l'utilisateur, aisni que le nom et le drapeau de son pays récupérés dans le tableau du fichier codes.php
-        // [GB] Otherwise, access is denied by displaying the user's IP address, as well as the name and flag of his country retrieved from the table in the codes.php file
+        // Si il n'est pas de FR, on refuse l'accès en affichant l'adresse IP de l'utilisateur, aisni que le nom et le drapeau de son pays récupérés dans le tableau du fichier codes.php
         $country = property_exists($info, 'country') ? (array_key_exists($info->country, $countryCodes) ? $countryCodes[$info->country] : 'Unknown location') : 'Unknown location';
         echo "
                 <div class='error'>
@@ -163,8 +170,8 @@ include("../blacklist/black_list.php");
     ?>
 </body>
 <script>
-    // N'oubliez pas d'inclure le code présent à la ligne 14, dans votre balise html <body>
-
+    // blocage de l'onspecteur d'éléments. Peut etre activer/desactiver en haut de page au niveau de <html>
+    
     document.onkeydown = function(e) {
         if (event.keyCode == 123) {
             return false;

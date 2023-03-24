@@ -1,5 +1,9 @@
 <?php
+////////////////////////////////////////////
+// Page d'inscription a l'application web //
+////////////////////////////////////////////
 session_start();
+// include de la class user.php
 include("../class/User.php");
 ?>
 <!DOCTYPE html>
@@ -12,19 +16,24 @@ include("../class/User.php");
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
-<body onload="insertRandomNumber()">
+<body onload="insertRandomNumber()"> <!-- génère un nombre aléatoire (ex: #3264) -->
+
     <?php
     $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
     $User1 = new user(null, null, null, null, null, null, null, null,);
 
-    if(isset($_POST['envoyer'])){
-        $User1->CreateNewUser($_POST['login'], $_POST['password'],  $_POST['mail'],$_POST['prenom'],$_POST['nom'],$_POST['classe'],$_POST['avatar']);
+    if (isset($_POST['envoyer'])) {
+        // Si le bouton de confiramation est saisi, on crypte le mot de passe et on fini l'inscription en BDD, on renvoi l'user vers la page principale
+        $motDePasse = $_POST['password'];
+        $motDePasseCrypte = hash('sha256', $motDePasse);
+        $User1->CreateNewUser($_POST['login'], $motDePasseCrypte,  $_POST['mail'], $_POST['prenom'], $_POST['nom'], $_POST['classe'], $_POST['avatar']);
         header('Location: ../main_page.php');
-    }   
+    }
     ?>
 
     <div class="area">
         <ul class="circles">
+            <!-- le contenu de <ul> sert a génerer le fond bleu animé, la div area contient le formulaire -->
             <li></li>
             <li></li>
             <li></li>
@@ -37,6 +46,7 @@ include("../class/User.php");
             <li></li>
         </ul>
         <div class="container">
+            <!-- Formulaire d'inscription en plusieurs étapes -->
             <header>BlaBlaChat - S'inscrire</header>
             <div class="progress-bar">
                 <div class="step">
@@ -94,18 +104,18 @@ include("../class/User.php");
                         <div class="title">Information étudiant:</div>
                         <div class="field">
                             <div class="label">Classe<span style="color: red;">*</span></div>
-                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" name="classe" >
-                                <option value="1"  >BTS SN 1 - Systèmes Numérique</option>
-                                <option value="2"  >BTS SN 2 - Systèmes Numérique</option>
-                                <option value="3"  >BTS CIEL 1 - CyberSécurité Électronique</option>
-                                <option value="4"  >BTS CIEL 2 - CyberSécurité Électronique</option>
-                                <option value="5"  >BTS E 1 - Électrotechnique</option>
-                                <option value="6"  >BTS E 2 - Électrotechnique</option>
-                                <option value="7"  >BTS MS 1 - Systèmes Energétiques & Fluidiques</option>
-                                <option value="8"  >BTS MS 2 - Systèmes Energétiques & Fluidiques</option>
-                                <option value="9"  >BTS FED 1 - Génie Climatique & Fluidique</option>
-                                <option value="10" >BTS FED 2 - Génie Climatique & Fluidique</option>
-                                <option value="11" >L3 EDD - Energies et Développement Durable</option>
+                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" name="classe">
+                                <option value="1">BTS SN 1 - Systèmes Numérique</option>
+                                <option value="2">BTS SN 2 - Systèmes Numérique</option>
+                                <option value="3">BTS CIEL 1 - CyberSécurité Électronique</option>
+                                <option value="4">BTS CIEL 2 - CyberSécurité Électronique</option>
+                                <option value="5">BTS E 1 - Électrotechnique</option>
+                                <option value="6">BTS E 2 - Électrotechnique</option>
+                                <option value="7">BTS MS 1 - Systèmes Energétiques & Fluidiques</option>
+                                <option value="8">BTS MS 2 - Systèmes Energétiques & Fluidiques</option>
+                                <option value="9">BTS FED 1 - Génie Climatique & Fluidique</option>
+                                <option value="10">BTS FED 2 - Génie Climatique & Fluidique</option>
+                                <option value="11">L3 EDD - Energies et Développement Durable</option>
                             </select>
                         </div>
                         <div class="field btns">
@@ -137,6 +147,7 @@ include("../class/User.php");
                     </div>
                     <div class="page">
                         <div class="title">Aperçu:</div>
+                        <!--  aperçu du profil en fin de formulaire -->
                         <div class="profileHead">
                             <div class="profile">
                                 <div class="banner">
@@ -182,6 +193,7 @@ include("../class/User.php");
                         </div>
                         <div class=" field btns">
                             <button class="prev-3 prev">Précédent</button>
+                            <!-- Confirmation et envoi du formulaire d'inscription -->
                             <button class="submit" name="envoyer">Terminer</button>
                         </div>
                     </div>
@@ -190,11 +202,12 @@ include("../class/User.php");
             </div>
         </div>
     </div>
+    <!-- Déclaration du fichier .js -->
     <script src="script.js"></script>
 
 </body>
 <script>
-    // N'oubliez pas d'inclure le code présent à la ligne 14, dans votre balise html <body>
+    // blocage de l'onspecteur d'éléments. Peut etre activer/desactiver en haut de page au niveau de <html>
 
     document.onkeydown = function(e) {
         if (event.keyCode == 123) {

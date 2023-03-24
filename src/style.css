@@ -740,8 +740,8 @@ button#send-button:hover {
 }
 
 .message-avatar {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
   margin-right: 10px;
   /*margin-bottom: 40px; */
   border-radius: 50%;

@@ -1,3 +1,4 @@
+// Formulaire d'inscription
 const slidePage = document.querySelector(".slide-page");
 const nextBtnFirst = document.querySelector(".firstNext");
 const prevBtnSec = document.querySelector(".prev-1");
@@ -73,6 +74,7 @@ prevBtnFourth.addEventListener("click", function(event){
 
 
 
+// Fond bleu animé
 function setup(){
   for (let i = 0; i < numParticles; i++){
       particles.push(new Particle());
@@ -110,7 +112,7 @@ canvas.height = window.innerHeight;
 
 
 
-
+// Affichage aperçu inscription
 var nom = "";
 
 function onNomChange() {
@@ -135,6 +137,8 @@ function onPdpChange2(event) {
 }
 
 
+
+// Random number generation
 function insertRandomNumber() {
   var randomNumber = parseInt(Math.random() * (9999 - 1111 + 1) + 1111);
   var randomNumberSpan = document.createElement("span");
