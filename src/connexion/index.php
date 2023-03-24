@@ -11,13 +11,13 @@ include("../class/User.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="main.js"></script>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
     <title>BlaBlaChat</title>
 </head>
 
 <body>
 
     <?php
-
     try {
         // ---------------Connexion à la BDD et récupération et traitement du formulaire
         $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
@@ -28,6 +28,7 @@ include("../class/User.php");
         }
 
         if (!$User1->isConnect()) {
+
     ?>
 
             <div class="area">
@@ -69,6 +70,14 @@ include("../class/User.php");
                                 <div class="btn-position">
                                     <!-- <a href="#" class="btn">Se connecter</a> -->
                                     <input class="btn" id="connecter" type="submit" value="Se connecter" name="connecter"></input>
+                                    <?php 
+                                    
+                                    if (isset($_POST['connecter']) && !$User1->isConnect()) {
+                                        echo "<span style='color:#fff;background-color:red;width:100%;border-radius:4px;padding:5px;font-size:12px' ><i class='gg-info' style='text-align:center;'  ></i>Le nom d'utilisateur ou le mot de passe est incorrect</span>";
+                                    }  
+                                    ?>
+                                    
+                                    
                                 </div>
                             </div>
                             <div class="horizontalSeparator"></div>
