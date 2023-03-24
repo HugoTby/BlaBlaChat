@@ -26,15 +26,16 @@ class message{
 
     }
 
-    public function getNomPrenom(){
-        echo $this->nom_." ".$this->prenom_;
+    public function getNomPrenom($id){
+
+        echo $this->nom_=$id." ".$this->prenom_;
     }
     
     public function afficheMessage($id){
         echo "coucou";
         $requete2 = "SELECT * FROM `message` 
         WHERE
-        `id` = '.$id.' ;";
+        `id` = $id ;";
 
         $result2 = $GLOBALS["pdo"]->query($requete2);
         if($result2->rowCount() > 0){
@@ -46,13 +47,18 @@ class message{
             $this->idServer_ = $tab['idServer'];
             $this->idUser_ = $tab['idUser'];
             
+            $requete3 = "select user.prenom from user, message where message.idUser = user.id and message.id=1";
+            $result3 = $GLOBALS["pdo"]->query($requete3);
+            $tab3 = $result3->fetch();
+            $this->nom_ = $tab3['nom'];
+            $this->prenom_ = $tab3['prenom'];
             ?>
             <div class="message">
                     <img src="https://www.bitss.org/wp-content/uploads/2022/04/avatar_hu8d30e29128cae2b0d49276543cea6665_24055_250x250_fill_q90_lanczos_center.jpg"
                         alt="User Avatar" class="message-avatar">
                     <div class="message-content">
                         <div class="message-header">
-                            <span class="username"><?php $this->getNomPrenom();?></span>
+                            <span class="username"><?php echo $this->nom_?></span>
                             <img style="height:15px;margin-right: 8px;"
                                 src="https://upload.wikimedia.org/wikipedia/commons/1/1f/031tick.png">
                             <span class="timestamp">Aujourd'hui à 12:34</span>

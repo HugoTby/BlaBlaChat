@@ -18,9 +18,22 @@ include("../blacklist/black_list.php");
     <title>BlaBlaChat</title>
 </head>
 <style>
-    .center {text-align:center;display: flex;justify-content: center;align-items: center;height: 100vh;}
-    .error {background: rgba(255, 0, 0, 0.4);padding: 10px;border-radius: 5px;color:white}
+    .center {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .error {
+        background: rgba(255, 0, 0, 0.4);
+        padding: 10px;
+        border-radius: 5px;
+        color: white
+    }
 </style>
+
 <body>
 
     <?php
@@ -45,15 +58,15 @@ include("../blacklist/black_list.php");
             // ---------------Connexion à la BDD et récupération et traitement du formulaire
             $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
             $User1 = new user(null, null, null, null, null, null, null, null,);
-    
+
             if (isset($_POST["connecter"])) {
                 $User1->seConnecter($_POST["login"], $_POST["logpass"]);
             }
-    
+
             if (!$User1->isConnect()) {
-    
-        ?>
-    
+
+    ?>
+
                 <div class="area">
                     <ul class="circles">
                         <li></li>
@@ -67,10 +80,10 @@ include("../blacklist/black_list.php");
                         <li></li>
                         <li></li>
                     </ul>
-    
-    
+
+
                     <canvas id="svgBlob"></canvas>
-    
+
                     <div class="position">
                         <form class="container" method="post">
                             <div class="centering-wrapper">
@@ -94,7 +107,7 @@ include("../blacklist/black_list.php");
                                         <!-- <a href="#" class="btn">Se connecter</a> -->
                                         <input class="btn" id="connecter" type="submit" value="Se connecter" name="connecter"></input>
                                         <?php
-    
+
                                         if (isset($_POST['connecter']) && !$User1->isConnect()) {
                                             echo "<div style='display:flex; align-items:center; justify-content:center;'>
                                             <i class='gg-info' style='margin-right:5px; color:#fff;background-color:red'></i>
@@ -104,8 +117,8 @@ include("../blacklist/black_list.php");
                                          </div>";
                                         }
                                         ?>
-    
-    
+
+
                                     </div>
                                 </div>
                                 <div class="horizontalSeparator"></div>
@@ -119,9 +132,9 @@ include("../blacklist/black_list.php");
                             </div>
                         </form>
                     </div>
-    
+
                 </div>
-        <?php
+    <?php
             } else {
                 // echo "TEST OK !";
                 // header("Location : ../main_page.php");
@@ -129,13 +142,22 @@ include("../blacklist/black_list.php");
             }
         } catch (Exception  $error) {
             $error->getMessage();
-        }    
-    
-    } 
+        }
+    } else {
+
+        // [FR] Sinon, on refuse l'accès en affichant l'adresse IP de l'utilisateur, aisni que le nom et le drapeau de son pays récupérés dans le tableau du fichier codes.php
+        // [GB] Otherwise, access is denied by displaying the user's IP address, as well as the name and flag of his country retrieved from the table in the codes.php file
+        $country = property_exists($info, 'country') ? (array_key_exists($info->country, $countryCodes) ? $countryCodes[$info->country] : 'Unknown location') : 'Unknown location';
+        echo "
+                <div class='error'>
+                    Sorry, this website is only accessible to users with an IP address located in<strong> France 🇫🇷</strong><br><br>
+                    Your IP address is : <strong>" . $ip . "</strong>, and it comes from <strong>" . $country . "</strong>
+                </div>";
+    }
 
 
 
-    
+
 
 
     ?>
