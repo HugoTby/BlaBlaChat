@@ -201,7 +201,7 @@ include("class/Message.php");
             <menu type="toolbar" class="menu">
                 <h2 class="menu-name">général</h2>
             </menu>
-            <section class="chat" id="messages-container">
+            <section class="chat">
                 <!-- <span style="display: flex;justify-content: center;align-items: center;font-weight: 300;">Le
                     chat n'est pas disponible pour le moment car cette fonctionnalité est en développement ...</span> -->
                 <?php
@@ -377,7 +377,6 @@ include("class/Message.php");
 </body>
 <script>
     // N'oubliez pas d'inclure le code présent à la ligne 14, dans votre balise html <body>
-
     document.onkeydown = function(e) {
         if (event.keyCode == 123) {
             return false;

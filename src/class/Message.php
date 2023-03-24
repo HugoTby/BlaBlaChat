@@ -81,12 +81,13 @@ class message
             $mois = $mois_fr[date('n', $timestamp) - 1];
             $heure = date('H:i', $timestamp);
             
+            
             if (date('Y-m-d') === date('Y-m-d', $timestamp)) {
                 $date_formattee = "Aujourd'hui à $heure";
             } elseif (date('Y-m-d', strtotime('-1 day')) === date('Y-m-d', $timestamp)) {
                 $date_formattee = "Hier à $heure";
             } else {
-                $date_formattee = ucfirst($jour_semaine) . ' ' . $jour_mois . ' ' . ucfirst($mois) . ' ' . $annee . ' à ' . $heure;
+                $date_formattee = ucfirst($jour_semaine) . ' ' . $jour_mois . ' ' . ucfirst($mois) . '  à ' . $heure;
             }?>
             <div class="message">
                 <img src="<?php echo $this->avatar_  ?>" alt="User Avatar" class="message-avatar">
