@@ -110,7 +110,8 @@ include("../blacklist/black_list.php");
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                     </div>
-                                    <div class="password-container"><a href="#" class="link">Mot de passe oublié?</a></div>
+                                    <div class="password-container"><a href="#" class="link">Mot de passe oublié?</a><a href="../inscription/index.php" class="link">S'inscrire</a></div>
+                                    
                                     <div class="btn-position">
                                         <!-- <a href="#" class="btn">Se connecter</a> -->
                                         <input class="btn" id="connecter" type="submit" value="Se connecter" name="connecter"></input>

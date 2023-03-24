@@ -1,3 +1,5 @@
+
+
 const $ = document.querySelectorAll.bind(document);
 
 $(".focusable, .button").forEach(el => {
@@ -12,7 +14,7 @@ $(".server").forEach(el => {
 		const activeServer = $(".server.active")[0];
 		activeServer.classList.remove("active");
 		activeServer.removeAttribute("aria-selected");
-		
+
 		el.classList.add("active");
 		el.setAttribute("aria-selected", true);
 	});
@@ -28,7 +30,7 @@ $(".channel-text").forEach(el => {
 // focus/blur on channel header click
 $(".channels-header")[0].addEventListener("click", e => {
 	e.preventDefault();
-	
+
 	const focused = document.activeElement === e.target;
 	focused ? e.target.blur() : e.target.focus();
 });
@@ -52,21 +54,22 @@ resizeInput.call(input); // immediately call the function*/
 document.querySelectorAll('input').forEach(input => {
 	input.addEventListener('input', resizeInput);
 	resizeInput.call(input);
-  })
-  
-  function resizeInput(input) {
+})
+
+function resizeInput(input) {
 	//console.log(this.value)
 	//if (this.id == "username") {
-	  //this.style.minWidth = "63px"
-	  //this.style.maxWidth = "100px"
+	//this.style.minWidth = "63px"
+	//this.style.maxWidth = "100px"
 	//} else {
-	  //this.style.minWidth = "100px"
+	//this.style.minWidth = "100px"
 	//}
 	//this.style.width = (this.value.length + 0.4) + "ch";
 	if (this.value.length <= 3) {
-	  this.style.width = "3.5ch"; // test
+		this.style.width = "3.5ch"; // test
 	} else {
-	  this.style.width = (this.value.length + 0.4) + "ch";
+		this.style.width = (this.value.length + 0.4) + "ch";
 	}
-  }
-	//this.style.minwidth = (this.value.length + 1) + "ch";
+}
+//this.style.minwidth = (this.value.length + 1) + "ch";
+

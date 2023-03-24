@@ -722,6 +722,24 @@ button#send-button:hover {
   background-color: #677bc4;
 }
 
+/* Style pour le bouton Envoyer
+button#logout-button {
+  background-color: #cc0d0d;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+}
+
+ Style pour le survol du bouton Envoyer 
+button#logout-button:hover {
+  background-color: #6d1f1f;
+} */
 
 
 
@@ -776,7 +794,7 @@ button#send-button:hover {
 }
 
 
-*::-webkit-scrollbar,
+/* *::-webkit-scrollbar,
 *::-webkit-scrollbar-thumb {
   width: 26px;
   border-radius: 13px;
@@ -788,7 +806,46 @@ button#send-button:hover {
 *::-webkit-scrollbar-thumb {        
   box-shadow: inset 0 0 0 10px;
   color: #282b30;
+  height: 100px;
+  position: relative;
+  bottom: 0;
+} */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
+
+/* Styler la thumb de la scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+/* Déplacer la scrollbar sur le côté droit */
+
+
+/* Définir la hauteur de la thumb */
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  
+}
+
+/* Faire défiler jusqu'en bas */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#messages-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
 
 /* Personnalisation de la largeur de la barre de défilement */
 body {
@@ -805,6 +862,7 @@ body::-webkit-scrollbar {
   color: #282b30;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  
 }
 
 body::-webkit-scrollbar-thumb {

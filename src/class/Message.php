@@ -1,6 +1,7 @@
 <?php
 
-class message{
+class message
+{
     private $id_;
     private $contenu_;
     private $idServer_;
@@ -10,8 +11,11 @@ class message{
     private $prenom_;
     private $avatar_;
     private $icon_;
+    private $icon2_;
+    private $icon3_;
 
-    public function __construct($id, $contenu, $idServer, $idUser) {
+    public function __construct($id, $contenu, $idServer, $idUser)
+    {
         $this->id_ = $id;
         $this->contenu_ = $contenu;
         $this->idServer_ = $idServer;
@@ -19,28 +23,29 @@ class message{
         $idSession = $_SESSION['id'];
         $requetes = "SELECT * FROM `user` 
         WHERE
-        `id` = '".$idSession."' ;";
+        `id` = '" . $idSession . "' ;";
         $resulte = $GLOBALS["pdo"]->query($requetes);
-        if($resulte->rowCount() > 0){
+        if ($resulte->rowCount() > 0) {
             $tab1 = $resulte->fetch();
             $this->nom_ = $tab1['nom'];
             $this->prenom_ = $tab1['prenom'];
         }
-
     }
 
-    public function getNomPrenom($id){
+    public function getNomPrenom($id)
+    {
 
-        echo $this->nom_=$id." ".$this->prenom_;
+        echo $this->nom_ = $id . " " . $this->prenom_;
     }
-    
-    public function afficheMessage($id){
+
+    public function afficheMessage($id)
+    {
         $requete2 = "SELECT * FROM `message` 
         WHERE
         `id` = $id ;";
 
         $result2 = $GLOBALS["pdo"]->query($requete2);
-        if($result2->rowCount() > 0){
+        if ($result2->rowCount() > 0) {
             $tab = $result2->fetch();
 
             $this->id_ = $tab['id'];
@@ -52,37 +57,65 @@ class message{
             $tab3 = $result3->fetch();
             $this->nom_ = $tab3['nom'];
             $this->prenom_ = $tab3['prenom'];
+            $this->date_ = $tab3['date'];
             $this->avatar_ = $tab3['avatar'];
             $this->icon_ = $tab3['icon'];
-            ?>
+            $this->icon2_ = $tab3['icon2'];
+            $this->icon3_ = $tab3['icon3'];
+
+            $datee = $this->date_;
+            $timestamp = strtotime($datee);
+
+            $mois_fr = array(
+                'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 
+                'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+            );
+            
+            // Tableau des noms de jour en français
+            $jour_fr = array(
+                'dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'
+            );
+            
+            $jour_semaine = $jour_fr[date('w', $timestamp)];
+            $jour_mois = date('j', $timestamp);
+            $mois = $mois_fr[date('n', $timestamp) - 1];
+            $heure = date('H:i', $timestamp);
+            
+            if (date('Y-m-d') === date('Y-m-d', $timestamp)) {
+                $date_formattee = "Aujourd'hui à $heure";
+            } elseif (date('Y-m-d', strtotime('-1 day')) === date('Y-m-d', $timestamp)) {
+                $date_formattee = "Hier à $heure";
+            } else {
+                $date_formattee = ucfirst($jour_semaine) . ' ' . $jour_mois . ' ' . ucfirst($mois) . ' ' . $annee . ' à ' . $heure;
+            }?>
             <div class="message">
-                    <img src="<?php echo $this->avatar_  ?>"
-                        alt="User Avatar" class="message-avatar">
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username"><?php echo $this->nom_." ".$this->prenom_ ?></span>
-                            <img style="height:15px;margin-right: 8px;"
-                                src="<?php echo $this->icon_  ?>">
-                            <span class="timestamp">Aujourd'hui à 12:34</span>
-                        </div>
-                        <div class="message-text">
-                            <?php echo $this->contenu_ ?>
-                        </div>
+                <img src="<?php echo $this->avatar_  ?>" alt="User Avatar" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="username"><?php echo $this->nom_ . " " . $this->prenom_ ?></span>
+                        <img style="height:15px;" src="<?php echo $this->icon_  ?>">
+                        <img style="height:15px;" src="<?php echo $this->icon2_  ?>">
+                        <img style="height:15px;" src="<?php echo $this->icon3_  ?>">
+                        <span class="timestamp"><?php echo $date_formattee ; ?></span>
+                    </div>
+                    <div class="message-text">
+                        <?php echo $this->contenu_ ?>
                     </div>
                 </div>
-                <?php
+            </div>
+<?php
 
 
 
             return true;
-        }
-        else{
+        } else {
             echo "coucou2";
             return false;
         }
     }
 
-    public function afficheMessage1($id){
+    public function afficheMessage1($id)
+    {
         echo "je suis un message";
     }
     /*
@@ -122,9 +155,6 @@ class message{
 
         
     }*/
-
-
-    
 }
 
 ?>
