@@ -9,6 +9,7 @@ include("../class/User.php");
 include("../class/Message.php");
 include("../blacklist/codes.php");
 include("../blacklist/black_list.php");
+include("../blacklist/white_list.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" oncontextmenu="return true;">

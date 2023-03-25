@@ -1,5 +1,4 @@
 <?php
-
 // Récupération de l'IP pour la comparé a une blacklist, on refuse l'accès en cas de correspondance
 $ip = $_SERVER['REMOTE_ADDR'];
 $info = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
