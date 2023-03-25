@@ -45,7 +45,6 @@ class message
         $result6 = $GLOBALS["pdo"]->query($requete2);
         $tab = $result6->fetch();
         $this->idServer_ = $tab['idServer'];
-        $_SESSION["idServer"] = $this->idServer_;
     }
 
     public function afficheMessage($id)
@@ -100,7 +99,7 @@ class message
                 $date_formattee = ucfirst($jour_semaine) . ' ' . $jour_mois . ' ' . ucfirst($mois) . '  à ' . $heure;
             } ?>
             <div class="message">
-                <img src="<?php echo $this->avatar_  ?>" alt="User Avatar" class="message-avatar">
+                <img src="<?php echo $this->avatar_  ?>" alt="ERROR" class="message-avatar">
                 <div class="message-content">
                     <div class="message-header">
                         <span class="username"><?php echo $this->nom_ . " " . $this->prenom_ ?></span>

@@ -76,6 +76,13 @@ if (array_key_exists($ip, $blacklist)) {
             header("Location: connexion/index.php");
         }
 
+
+        if (isset($_POST['SN2'])) {
+            $_SESSION['idServer'] = 2;
+        }
+        if (isset($_POST['SN1'])) {
+            $_SESSION['idServer'] = 1;
+        }
         $idSession = $_SESSION['id'];
         if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
             $requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $_POST['contenuMess'] . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
@@ -220,12 +227,7 @@ if (array_key_exists($ip, $blacklist)) {
                     <?php
 
 
-                    if (isset($_POST['SN2'])) {
-                        $_SESSION['idServer'] = 2;
-                    }
-                    if (isset($_POST['SN1'])) {
-                        $_SESSION['idServer'] = 1;
-                    }
+                    
                     if ($_SESSION['idServer'] == 2) {
 
                         $Mess->getServer($_SESSION['idServer']);
@@ -251,6 +253,15 @@ if (array_key_exists($ip, $blacklist)) {
 
                     <script>
                         // scrollToBottom();
+                        function scrollToBottom() {
+                            var messagesContainer = document.getElementById("messages-container");
+                            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                            }
+
+                            // Faire défiler jusqu'en bas au chargement de la page
+                            window.onload = function() {
+                            scrollToBottom();
+                            }
                     </script>
                 </section>
                 <form method="post">
