@@ -2,7 +2,7 @@
 
 $blacklist = array(
     // IP addresses refused by default
-    "127.0.0.1" => "Localhost",
+    "127.0.0.0" => "Localhost",
     "192.168.0.1" => "Default Gateway",
     "10.0.0.1" => "Private Network",
     "8.8.8.8" => "Google Public DNS server",
