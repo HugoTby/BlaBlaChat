@@ -37,6 +37,16 @@ class message
 
         echo $this->nom_ = $id . " " . $this->prenom_;
     }
+    public function getIdServer($id)
+    {
+        $requete2 = "SELECT * FROM `message` 
+        WHERE
+        `id` = $id ;";
+        $result6 = $GLOBALS["pdo"]->query($requete2);
+        $tab = $result6->fetch();
+        $this->idServer_ = $tab['idServer'];
+        $_SESSION["idServer"] = $this->idServer_;
+    }
 
     public function afficheMessage($id)
     {
@@ -67,28 +77,28 @@ class message
             $timestamp = strtotime($datee);
 
             $mois_fr = array(
-                'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 
+                'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
                 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
             );
-            
+
             // Tableau des noms de jour en français
             $jour_fr = array(
                 'dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'
             );
-            
+
             $jour_semaine = $jour_fr[date('w', $timestamp)];
             $jour_mois = date('j', $timestamp);
             $mois = $mois_fr[date('n', $timestamp) - 1];
             $heure = date('H:i', $timestamp);
-            
-            
+
+
             if (date('Y-m-d') === date('Y-m-d', $timestamp)) {
                 $date_formattee = "Aujourd'hui à $heure";
             } elseif (date('Y-m-d', strtotime('-1 day')) === date('Y-m-d', $timestamp)) {
                 $date_formattee = "Hier à $heure";
             } else {
                 $date_formattee = ucfirst($jour_semaine) . ' ' . $jour_mois . ' ' . ucfirst($mois) . '  à ' . $heure;
-            }?>
+            } ?>
             <div class="message">
                 <img src="<?php echo $this->avatar_  ?>" alt="User Avatar" class="message-avatar">
                 <div class="message-content">
@@ -97,7 +107,7 @@ class message
                         <img style="height:15px;" src="<?php echo $this->icon_  ?>">
                         <img style="height:15px;" src="<?php echo $this->icon2_  ?>">
                         <img style="height:15px;" src="<?php echo $this->icon3_  ?>">
-                        <span class="timestamp"><?php echo $date_formattee ; ?></span>
+                        <span class="timestamp"><?php echo $date_formattee; ?></span>
                     </div>
                     <div class="message-text">
                         <?php echo $this->contenu_ ?>
@@ -118,6 +128,20 @@ class message
     public function afficheMessage1($id)
     {
         echo "je suis un message";
+    }
+
+    public function getServer($idServer)
+    {
+        $requetes2 = "SELECT * FROM `message` WHERE idServer='" . $idServer . "';";
+        $resultat2 = $GLOBALS["pdo"]->query($requetes2);
+        $tabMessage = $resultat2->fetchALL();
+
+
+        foreach ($tabMessage as $Message) {
+
+            $test = $Message['id'];
+            $this->afficheMessage($test);
+        }
     }
     /*
     public function CreateNewUser($login1, $pass1, $mail1, $prenom1, $nom1, $classe1, $avatar1){
@@ -157,5 +181,7 @@ class message
         
     }*/
 }
+
+
 
 ?>

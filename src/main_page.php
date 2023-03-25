@@ -66,7 +66,8 @@ if (array_key_exists($ip, $blacklist)) {
         }
         $id = $_SESSION['id'];
         $User1->getUserById($id);
-
+        //$_SESSION['idServer'];
+        $Mess->getIdServer($_SESSION['id']);
 
 
         if (isset($_POST["deco"])) {
@@ -75,6 +76,11 @@ if (array_key_exists($ip, $blacklist)) {
             header("Location: connexion/index.php");
         }
 
+        $idSession = $_SESSION['id'];
+        if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
+            $requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $_POST['contenuMess'] . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
+            $resultMess = $GLOBALS["pdo"]->query($requeteMess);
+        }
         ?>
         <main class="container">
             <aside class="servers">
@@ -83,11 +89,11 @@ if (array_key_exists($ip, $blacklist)) {
                         <div class="server-icon"><!--<svg>
                             <use xlink:href="#icon-friends" />
                         </svg> -->
-                            <img src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/89-512.png" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Messages_logo.svg" />
                         </div>
                     </div>
                 </div>
-                
+
 
                 <form method="post">
                     <div class="servers-collection">
@@ -213,8 +219,20 @@ if (array_key_exists($ip, $blacklist)) {
                     chat n'est pas disponible pour le moment car cette fonctionnalité est en développement ...</span> -->
                     <?php
 
-                    if (isset($_POST['SN1']) or $_SESSION['idServer'] == 1) {
+
+                    if (isset($_POST['SN2'])) {
+                        $_SESSION['idServer'] = 2;
+                    }
+                    if (isset($_POST['SN1'])) {
                         $_SESSION['idServer'] = 1;
+                    }
+                    if ($_SESSION['idServer'] == 2) {
+
+                        $Mess->getServer($_SESSION['idServer']);
+                    }
+                    if ($_SESSION['idServer'] == 1) {
+                        $Mess->getServer($_SESSION['idServer']);
+                        /*$_SESSION['idServer'] = 1;
                         $requetes = "SELECT * FROM `message` WHERE idServer=1 ;";
                         $resultat2 = $GLOBALS["pdo"]->query($requetes);
                         $tabMessage = $resultat2->fetchALL();
@@ -222,19 +240,9 @@ if (array_key_exists($ip, $blacklist)) {
                         foreach ($tabMessage as $Message) {
                             $test = $Message['id'];
                             $Mess->afficheMessage($test);
-                        }
+                        }*/
                     }
-                    if (isset($_POST['SN2']) or $_SESSION['idServer'] == 2) {
-                        $_SESSION['idServer'] = 2;
-                        $requetes = "SELECT * FROM `message` WHERE idServer=2;";
-                        $resultat2 = $GLOBALS["pdo"]->query($requetes);
-                        $tabMessage = $resultat2->fetchALL();
 
-                        foreach ($tabMessage as $Message) {
-                            $test = $Message['id'];
-                            $Mess->afficheMessage($test);
-                        }
-                    }
 
 
 
@@ -254,12 +262,36 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </form>
 
+                <script>
+                    const form = document.getElementById('myForm');
+                    const result = document.getElementById('result');
+
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const input = document.getElementById('inputField').value;
+                        fetch('/url-du-serveur', {
+                                method: 'POST',
+                                body: new URLSearchParams({
+                                    input
+                                })
+                            })
+                            .then(response => response.text())
+                            .then(data => {
+                                result.innerHTML = 'Le serveur a répondu : ' + data;
+                            })
+                            .catch(error => {
+                                result.innerHTML = 'Une erreur s\'est produite : ' + error.message;
+                            });
+                    });
+                </script>
+
                 <?php
+                /*
                 $idSession = $_SESSION['id'];
                 if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
                     $requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $_POST['contenuMess'] . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
                     $resultMess = $GLOBALS["pdo"]->query($requeteMess);
-                }
+                }*/
                 ?>
 
             </div>

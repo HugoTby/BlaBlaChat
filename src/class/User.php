@@ -123,5 +123,3 @@ class user{
         echo $this->nom_." ".$this->prenom_;
     }
 }
-
-?>
