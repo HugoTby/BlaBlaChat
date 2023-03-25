@@ -104,7 +104,8 @@ if (array_key_exists($ip, $blacklist)) {
 
                 <form method="post">
                     <div class="servers-collection">
-                        <div class="server focusable active" role="button" aria-label="My Server" aria-selected="true">
+                        <!--server focusable active -->
+                        <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                             <div class="server-icon" style="position: relative;">
                                 <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
                                 <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
@@ -194,12 +195,11 @@ if (array_key_exists($ip, $blacklist)) {
                         </div>
                     </div>
                 </div>
-
                 <footer class="channels-footer">
-                    <img class="avatar" alt="404" src="https://www.bitss.org/wp-content/uploads/2022/04/avatar_hu8d30e29128cae2b0d49276543cea6665_24055_250x250_fill_q90_lanczos_center.jpg" />
+                    <img class="avatar" alt="404" src="<?php $User1->getAvatar(); ?>" />
                     <div class="channels-footer-details">
-                        <span class="username">developper</span>
-                        <span class="tag">#0001</span>
+                        <span class="username"><?php $User1->getPseudo(); ?></span>
+                        <span class="tag">#<?php $User1->getId(); ?></span>
                     </div>
                     <div class="channels-footer-controls button-group">
                         <button role="button" aria-label="Mute" class="button button-mute" style="cursor: not-allowed;"><svg>

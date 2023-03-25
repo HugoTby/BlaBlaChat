@@ -1,6 +1,7 @@
 <?php
 class user{
     private $id_;
+    private $idbdd_;
     private $prenom_;
     private $nom_;
     private $mail_;
@@ -95,6 +96,7 @@ class user{
         if ($tab = $resultat->fetch()){
             $this->login_ = $tab['login'];
             $this->id_ = $tab['id'];
+            $this->idbdd_ = $tab['idbdd'];
             $this->prenom_ = $tab['prenom'];
             $this->nom_ = $tab['nom'];
             $this->mail_ = $tab['mail'];
@@ -122,4 +124,14 @@ class user{
     public function getNomPrenom(){
         echo $this->nom_." ".$this->prenom_;
     }
+    public function getPseudo(){
+        echo $this->login_;
+    }
+    public function getId(){
+        echo $this->idbdd_;
+    }
+    public function getAvatar(){
+        echo $this->avatar_;
+    }
+    
 }

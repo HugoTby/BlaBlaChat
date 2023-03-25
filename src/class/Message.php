@@ -8,6 +8,7 @@ class message
     private $idUser_;
     private $date_;
     private $nom_;
+    private $role_;
     private $prenom_;
     private $avatar_;
     private $icon_;
@@ -71,6 +72,7 @@ class message
             $this->icon_ = $tab3['icon'];
             $this->icon2_ = $tab3['icon2'];
             $this->icon3_ = $tab3['icon3'];
+            $this->role_ = $tab3['role'];
 
             $datee = $this->date_;
             $timestamp = strtotime($datee);
@@ -99,7 +101,7 @@ class message
                 $date_formattee = ucfirst($jour_semaine) . ' ' . $jour_mois . ' ' . ucfirst($mois) . '  à ' . $heure;
             } ?>
             <div class="message">
-                <img src="<?php echo $this->avatar_  ?>" alt="ERROR" class="message-avatar">
+                <img src="<?php echo $this->avatar_  ?>" alt="EMPTY" class="message-avatar">
                 <div class="message-content">
                     <div class="message-header">
                         <span class="username"><?php echo $this->nom_ . " " . $this->prenom_ ?></span>
@@ -142,6 +144,18 @@ class message
             $this->afficheMessage($test);
         }
     }
+
+
+    // public function getIdInMessage()
+    // {
+    //     $role = $this->role_;
+    //     if ($role === "developpeur") {
+    //         echo "test";
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
     /*
     public function CreateNewUser($login1, $pass1, $mail1, $prenom1, $nom1, $classe1, $avatar1){
         $requete = "SELECT * FROM user 
