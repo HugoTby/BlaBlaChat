@@ -208,7 +208,7 @@ include("../class/User.php");
 
 </body>
 <script>
-    // blocage de l'onspecteur d'éléments. Peut etre activer/desactiver en haut de page au niveau de <html>
+    // blocage de l'inspecteur d'éléments. Peut etre activer/desactiver en haut de page au niveau de <html>
 
     document.onkeydown = function(e) {
         if (event.keyCode == 123) {
@@ -228,6 +228,12 @@ include("../class/User.php");
         }
 
     }
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+        event.preventDefault();
+        }
+    });
+
 </script>
 
 </html>
