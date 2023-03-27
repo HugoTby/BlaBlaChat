@@ -265,29 +265,26 @@ if (array_key_exists($ip, $blacklist)) {
                             }
                     </script>
                 </section>
-                <form method="post">
+                <form method="post" onsubmit="return verifierContenuMess();">
                     <div id="chat-container">
                         <div id="input-container">
                             <input type="text" autocomplete="off" name="contenuMess" id="chat-input" placeholder="Saisissez votre message" maxlength="1000">
-                            <button name="envoiMess" id="send-button" onclick="validateInput()">Envoyer</button>
+                            <button name="envoiMess" id="send-button" onclick="">Envoyer</button>
                         </div>
                     </div>
                 </form>
                 <script>
-                    function validateInput() {
-  var input = document.getElementById("chat-input").value;
-  var regex = /^[a-zA-Z0-9\s\.\?,!:\-'"/]*$/; // Autorise les lettres, chiffres, espaces et certains caractères de ponctuation
-  if (!regex.test(input)) {
-    alert("Le message contient des caractères invalides.");
+
+function verifierContenuMess() {
+  var input = document.getElementById('chat-input').value;
+  var pattern = /([<>])+|(--+)|(%[0-9a-fA-F]{2})/;
+  if (pattern.test(input)) {
+    alert("Votre saisie contient des caractères interdits. Veuillez saisir un texte valide.");
     return false;
-  } else {
-    return true;
   }
+  return true;
 }
-
-                    </script>
-
-
+                </script>
                 <script>
                     const form = document.getElementById('myForm');
                     const result = document.getElementById('result');
