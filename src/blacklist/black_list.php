@@ -12,7 +12,7 @@ $blacklist = array(
     // " IP " => " user",
 
     "192.168.65.3" => "hugo.tabary#6548",
-    "192.168.64.170" => "tom.lefevre",
+    "192.168.65.19" => "prof",
 );
 
 

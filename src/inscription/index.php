@@ -7,7 +7,7 @@ session_start();
 include("../class/User.php");
 ?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr" oncontextmenu="return true;">
+<html lang="en" dir="ltr" oncontextmenu="return false;">
 
 <head>
     <meta charset="utf-8">

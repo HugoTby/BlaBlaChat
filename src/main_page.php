@@ -41,7 +41,7 @@ if (array_key_exists($ip, $blacklist)) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="fr" oncontextmenu="return true;">
+    <html lang="fr" oncontextmenu="return false;">
 
     <head>
         <meta charset="UTF-8">
@@ -269,10 +269,24 @@ if (array_key_exists($ip, $blacklist)) {
                     <div id="chat-container">
                         <div id="input-container">
                             <input type="text" autocomplete="off" name="contenuMess" id="chat-input" placeholder="Saisissez votre message" maxlength="1000">
-                            <button name="envoiMess" id="send-button">Envoyer</button>
+                            <button name="envoiMess" id="send-button" onclick="validateInput()">Envoyer</button>
                         </div>
                     </div>
                 </form>
+                <script>
+                    function validateInput() {
+  var input = document.getElementById("chat-input").value;
+  var regex = /^[a-zA-Z0-9\s\.\?,!:\-'"/]*$/; // Autorise les lettres, chiffres, espaces et certains caractères de ponctuation
+  if (!regex.test(input)) {
+    alert("Le message contient des caractères invalides.");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+                    </script>
+
 
                 <script>
                     const form = document.getElementById('myForm');

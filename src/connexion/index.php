@@ -12,7 +12,7 @@ include("../blacklist/black_list.php");
 include("../blacklist/white_list.php");
 ?>
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return true;">
+<html lang="en" oncontextmenu="return false;">
 
 <head>
     <meta charset="UTF-8">
@@ -60,7 +60,7 @@ include("../blacklist/white_list.php");
                 Pour corriger cette erreur, veuillez contacter un administrateur du site ou votre administrateur réseau.
             </div>
         </div>";
-    } elseif (property_exists($info, 'country') && $info->country === "FR" or ($ip == in_array($ip, $whitelist) || strpos($ip, '192.168.') === 0)) {
+    } elseif (property_exists($info, 'country') && $info->country === "FR" or ($ip == in_array($ip, $whitelist) || strpos($ip, '192.168.65.31') === 0)) {
             // On autorise l'accès au IP Françaises, a celle de la whitelist et a celle commençant par 192.168.XX.XX
         try {
             // Connexion à la BDD et récupération et traitement du formulaire
