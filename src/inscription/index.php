@@ -97,6 +97,7 @@ include("../class/User.php");
                         <div class="field">
                             <button class="firstNext next">Suivant</button>
                         </div>
+                        <a href="../connexion/index.php" class="link">Vous avez déjà un compte ? Se connecter</a>
                         <h1 style="font-size: 15px;color:red">* Champs obligatoires</h1>
                     </div>
 

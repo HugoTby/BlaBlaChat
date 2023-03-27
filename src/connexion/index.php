@@ -111,7 +111,7 @@ include("../blacklist/white_list.php");
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                     </div>
-                                    <div class="password-container"><a href="#" class="link">Mot de passe oublié?</a>&nbsp;<a href="../inscription/index.php" class="link">S'inscrire</a></div>
+                                    <div class="password-container"><a href="../inscription/index.php" class="link">Vous n'avez pas de compte ? S'inscrire</a></div>
                                     
                                     <div class="btn-position">
                                         <!-- <a href="#" class="btn">Se connecter</a> -->

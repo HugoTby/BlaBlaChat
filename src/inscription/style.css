@@ -19,6 +19,22 @@ body {
     cursor: url('cursor/c1.png'), auto;
 }
 
+.link{
+    color: #7289da;;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .link:hover{
+    text-decoration: underline;
+  }
+
 ::selection {
     color: #fff;
     background: #7289d9;
