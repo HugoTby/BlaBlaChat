@@ -51,6 +51,7 @@ if (array_key_exists($ip, $blacklist)) {
         <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
         <link href='https://unpkg.com/css.gg@2.0.0/icons/css/log-out.css' rel='stylesheet'>
         <script type="text/javascript" src="main.js"></script>
+        <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Messages_logo.svg" type="image/x-icon">
         <title>BlaBlaChat</title>
     </head>
 

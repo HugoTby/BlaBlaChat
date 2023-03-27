@@ -21,6 +21,7 @@ include("../blacklist/white_list.php");
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="main.js"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Messages_logo.svg" type="image/x-icon">
     <title>BlaBlaChat</title>
 </head>
 <style>

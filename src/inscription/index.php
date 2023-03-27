@@ -13,6 +13,7 @@ include("../class/User.php");
     <meta charset="utf-8">
     <title>BlaBlaChat</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Messages_logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
