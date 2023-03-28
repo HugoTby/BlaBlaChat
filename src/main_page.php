@@ -41,7 +41,7 @@ if (array_key_exists($ip, $blacklist)) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="fr" oncontextmenu="return false;">
+    <html lang="fr" oncontextmenu="return true;">
 
     <head>
         <meta charset="UTF-8">
@@ -77,12 +77,24 @@ if (array_key_exists($ip, $blacklist)) {
             header("Location: connexion/index.php");
         }
 
+        $requeteServ = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['id'] . "'";
+        $resultServ = $GLOBALS["pdo"]->query($requeteServ);
+        $servNum = $resultServ->fetch();
+        $_SESSION['idServer'] = $servNum['id'];
+
+
 
         if (isset($_POST['SN2'])) {
             $_SESSION['idServer'] = 2;
         }
         if (isset($_POST['SN1'])) {
             $_SESSION['idServer'] = 1;
+        }
+        if (isset($_POST['E1'])) {
+            $_SESSION['idServer'] = 5;
+        }
+        if (isset($_POST['E2'])) {
+            $_SESSION['idServer'] = 6;
         }
         $idSession = $_SESSION['id'];
         if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
@@ -102,28 +114,85 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </div>
 
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['idServer'] . "' and user.classe=1 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <!--server focusable active -->
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
 
-                <form method="post">
-                    <div class="servers-collection">
-                        <!--server focusable active -->
-                        <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
-                            <div class="server-icon" style="position: relative;">
-                                <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
-                                <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.classe=2 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN2"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-                <form method="post">
-                    <div class="servers-collection">
-                        <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
-                            <div class="server-icon" style="position: relative;">
-                                <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN2"></button>
-                                <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                    </form>
+                <?php
+                }
+                ?>
+
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.classe=5 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E1"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <?php
+                }
+                ?>
+
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.classe=6 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E2"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
+
+
+
                 <div class="servers-collection" style="padding-top: 10px;">
                     <button class="guild-add">+</button>
                 </div>
@@ -228,7 +297,7 @@ if (array_key_exists($ip, $blacklist)) {
                     <?php
 
 
-                    
+
                     if ($_SESSION['idServer'] == 2) {
 
                         $Mess->getServer($_SESSION['idServer']);
@@ -245,6 +314,14 @@ if (array_key_exists($ip, $blacklist)) {
                             $Mess->afficheMessage($test);
                         }*/
                     }
+                    if ($_SESSION['idServer'] == 5) {
+
+                        $Mess->getServer($_SESSION['idServer']);
+                    }
+                    if ($_SESSION['idServer'] == 6) {
+
+                        $Mess->getServer($_SESSION['idServer']);
+                    }
 
 
 
@@ -257,12 +334,12 @@ if (array_key_exists($ip, $blacklist)) {
                         function scrollToBottom() {
                             var messagesContainer = document.getElementById("messages-container");
                             messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                            }
+                        }
 
-                            // Faire défiler jusqu'en bas au chargement de la page
-                            window.onload = function() {
+                        // Faire défiler jusqu'en bas au chargement de la page
+                        window.onload = function() {
                             scrollToBottom();
-                            }
+                        }
                     </script>
                 </section>
                 <form method="post" onsubmit="return verifierContenuMess();">
@@ -274,16 +351,15 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </form>
                 <script>
-
-function verifierContenuMess() {
-  var input = document.getElementById('chat-input').value;
-  var pattern = /([<>])+|(--+)|(%[0-9a-fA-F]{2})/;
-  if (pattern.test(input)) {
-    alert("Votre saisie contient des caractères interdits. Veuillez saisir un texte valide.");
-    return false;
-  }
-  return true;
-}
+                    function verifierContenuMess() {
+                        var input = document.getElementById('chat-input').value;
+                        var pattern = /([<>])+|(--+)|(%[0-9a-fA-F]{2})/;
+                        if (pattern.test(input)) {
+                            alert("Votre saisie contient des caractères interdits. Veuillez saisir un texte valide.");
+                            return false;
+                        }
+                        return true;
+                    }
                 </script>
                 <script>
                     const form = document.getElementById('myForm');
@@ -373,6 +449,86 @@ function verifierContenuMess() {
                         </div>
                     </div>
                 </div>
+
+                <style>
+                    .modal-container {
+                        /* display none */
+
+                        /* display none */
+
+
+                        background-color: rgba(0, 0, 0, 0.7);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        pointer-events: none;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        height: 100vh;
+                        width: 100vw;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    .modal-container.show {
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+
+                    .modal {
+                        background-color: #1e2124;
+                        width: 600px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                        border-radius: 5px;
+                        padding: 30px 50px;
+                        max-width: 100%;
+                    }
+
+                    .modal h1 {
+                        margin: 0;
+                        color: #fff;
+                        padding-bottom: 20px;
+                    }
+
+                    .modal p {
+                        font-size: 14;
+                        opacity: 0.7;
+                        color: #fff;
+                    }
+                </style>
+
+                <button id="open">
+                    Click me pls
+                </button>
+                <div class="modal-container" id="modal_container">
+                    <button id="close" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="modal">
+                        <h1>Modals are :D</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </div>
+
+
+                <script>
+                    const open = document.getElementById('open');
+                    const modal_container = document.getElementById('modal_container');
+                    const close = document.getElementById('close');
+
+                    open.addEventListener('click', () => {
+                        modal_container.classList.add('show');
+                    });
+                    close.addEventListener('click', () => {
+                        modal_container.classList.remove('show');
+                    });
+                </script>
 
 
 
