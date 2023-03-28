@@ -55,6 +55,7 @@ if (array_key_exists($ip, $blacklist)) {
         <title>BlaBlaChat</title>
     </head>
 
+
     <body>
 
         <?php
@@ -197,9 +198,10 @@ if (array_key_exists($ip, $blacklist)) {
                     <button class="guild-add">+</button>
                 </div>
                 <div class="warning-collection" style="padding-top: 10px;">
-                    <button style="cursor: help;" class="warning-add" onclick="toggleDiv();">!</button>
+                    <button style="cursor: help;" id="open" class="warning-add">!</button>
                 </div>
                 <script>
+                    // onclick="toggleDiv();"
                     function toggleDiv() {
                         var div = document.getElementById('warning-content');
                         if (div.classList.contains('warning-active')) {
@@ -210,6 +212,136 @@ if (array_key_exists($ip, $blacklist)) {
                             div.classList.add('warning-active');
                         }
                     }
+                </script>
+                <style>
+                    .modal-container {
+                        background-color: rgba(0, 0, 0, 0.7);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        pointer-events: none;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        height: 100vh;
+                        width: 100vw;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    .modal-container.show {
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+
+                    .modal {
+                        background-color: #1e2124;
+                        width: 600px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                        border-radius: 5px;
+                        padding: 30px 50px;
+                        max-width: 100%;
+                    }
+
+                    .modal .header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                    }
+
+                    .modal h1 {
+                        margin: 0;
+                        color: #fff;
+                        font-size: 24px;
+                    }
+
+                    .modal .date {
+                        margin: 0;
+                        color: #B9BBBE;
+                        font-size: 16px;
+                    }
+
+                    .modal img {
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                    }
+
+                    .modal .description h2 {
+                        margin: 0;
+                        color: #fff;
+                        font-size: 20px;
+                    }
+
+                    .modal .bar {
+                        height: 5px;
+                        width: 100%;
+                        background-color: #43B581;
+                        margin-bottom: 10px;
+                    }
+                    .modal .bar2 {
+                        height: 5px;
+                        width: 100%;
+                        background-color: red;
+                        margin-bottom: 10px;
+                    }
+
+                    .modal ul {
+                        
+                        margin: 0;
+                        padding: 0;
+                        color: #B9BBBE;
+                    }
+
+                    .modal li {
+                        font-size: 14px;
+                        margin-bottom: 5px;
+                    }
+                </style>
+                <div class="modal-container" id="modal_container">
+                    <button id="close" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="modal">
+                        <div class="header">
+                            <h1>Quoi de neuf ?</h1>
+                            <p class="date">28th March 2023</p>
+                        </div>
+                        <img src="https://raw.githubusercontent.com/HugoTby/BlaBlaChat/main/logo/linkedin_banner_image_1.png" alt="New features" style=" max-width: 100%;">
+                        <div class="description">
+                            <h2 style="color:#43B581" >Nouvelles fonctionnalités !</h2>
+                            <div class="bar"></div>
+                            <ul>
+                                <li><strong>Ajout de nouveaux salons !</strong> Et oui, vous avez désormais la possibilité de communiquer entre amis sur BlaBlaChat ! :D</li>
+                                <li><strong>Affichage du profil :</strong> Les utilisateurs peuvent désormais voir leur profil dans le coin inférieur gauche de leur écran.</li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <h2 style="color:red" >Corrections et mises à jour :</h2>
+                            <div class="bar2"></div>
+                            <ul>
+                                <li><strong>Blocage des lignes de commandes</strong> Les risques d'attaques sur le serveur de BlaBlaChatont été réduit par l'impossibilité d'envoyer des lignes de commandes dans l'application.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <script>
+                    const open = document.getElementById('open');
+                    const modal_container = document.getElementById('modal_container');
+                    const close = document.getElementById('close');
+
+                    open.addEventListener('click', () => {
+                        modal_container.classList.add('show');
+                    });
+                    close.addEventListener('click', () => {
+                        modal_container.classList.remove('show');
+                    });
                 </script>
 
                 <footer class="channels-footer" style="position: absolute;bottom: 0;padding-bottom:25px">
@@ -450,85 +582,9 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </div>
 
-                <style>
-                    .modal-container {
-                        /* display none */
-
-                        /* display none */
 
 
-                        background-color: rgba(0, 0, 0, 0.7);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        opacity: 0;
-                        pointer-events: none;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        height: 100vh;
-                        width: 100vw;
-                        transition: opacity 0.3s ease;
-                    }
 
-                    .modal-container.show {
-                        opacity: 1;
-                        pointer-events: auto;
-                    }
-
-                    .modal {
-                        background-color: #1e2124;
-                        width: 600px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                        border-radius: 5px;
-                        padding: 30px 50px;
-                        max-width: 100%;
-                    }
-
-                    .modal h1 {
-                        margin: 0;
-                        color: #fff;
-                        padding-bottom: 20px;
-                    }
-
-                    .modal p {
-                        font-size: 14;
-                        opacity: 0.7;
-                        color: #fff;
-                    }
-                </style>
-
-                <button id="open">
-                    Click me pls
-                </button>
-                <div class="modal-container" id="modal_container">
-                    <button id="close" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                    </button>
-                    <div class="modal">
-                        <h1>Modals are :D</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                </div>
-
-
-                <script>
-                    const open = document.getElementById('open');
-                    const modal_container = document.getElementById('modal_container');
-                    const close = document.getElementById('close');
-
-                    open.addEventListener('click', () => {
-                        modal_container.classList.add('show');
-                    });
-                    close.addEventListener('click', () => {
-                        modal_container.classList.remove('show');
-                    });
-                </script>
 
 
 
