@@ -198,6 +198,13 @@ include("../class/User.php");
                             <!-- Confirmation et envoi du formulaire d'inscription -->
                             <button class="submit" name="envoyer">Terminer</button>
                         </div>
+                        <div class="link">
+                            <input type="checkbox">&nbsp;&nbsp;
+                            <span>Je confirme avoir eu connaissance des<br> 
+                                <a href="cgu.pdf" class="link"><strong>conditions générales d'utilisation</strong></a> 
+                                <span style="color: red;">*</span>
+                            </span>
+                        </div>
                     </div>
 
                 </form>
