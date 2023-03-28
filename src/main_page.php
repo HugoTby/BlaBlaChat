@@ -192,14 +192,18 @@ if (array_key_exists($ip, $blacklist)) {
                 }
                 ?>
 
-
-
                 <div class="servers-collection" style="padding-top: 10px;">
-                    <button class="guild-add">+</button>
+                    <button class="guild-add" id="openguild">+</button>
                 </div>
                 <div class="warning-collection" style="padding-top: 10px;">
                     <button style="cursor: help;" id="open" class="warning-add">!</button>
                 </div>
+                <footer class="channels-footer" style="position: absolute;bottom: 0;padding-bottom:25px">
+                    <form method="post">
+                        <input type="submit" name="deco" id="deco" style="display:none;">
+                        <label for="deco"><i class="gg-log-out" style="color:red;cursor:pointer;"></i></label>
+                    </form>
+                </footer>
                 <script>
                     // onclick="toggleDiv();"
                     function toggleDiv() {
@@ -214,89 +218,7 @@ if (array_key_exists($ip, $blacklist)) {
                     }
                 </script>
                 <style>
-                    .modal-container {
-                        background-color: rgba(0, 0, 0, 0.7);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        opacity: 0;
-                        pointer-events: none;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        height: 100vh;
-                        width: 100vw;
-                        transition: opacity 0.3s ease;
-                    }
-
-                    .modal-container.show {
-                        opacity: 1;
-                        pointer-events: auto;
-                    }
-
-                    .modal {
-                        background-color: #1e2124;
-                        width: 600px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                        border-radius: 5px;
-                        padding: 30px 50px;
-                        max-width: 100%;
-                    }
-
-                    .modal .header {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        margin-bottom: 20px;
-                    }
-
-                    .modal h1 {
-                        margin: 0;
-                        color: #fff;
-                        font-size: 24px;
-                    }
-
-                    .modal .date {
-                        margin: 0;
-                        color: #B9BBBE;
-                        font-size: 16px;
-                    }
-
-                    .modal img {
-                        margin-top: 20px;
-                        margin-bottom: 20px;
-                    }
-
-                    .modal .description h2 {
-                        margin: 0;
-                        color: #fff;
-                        font-size: 20px;
-                    }
-
-                    .modal .bar {
-                        height: 5px;
-                        width: 100%;
-                        background-color: #43B581;
-                        margin-bottom: 10px;
-                    }
-                    .modal .bar2 {
-                        height: 5px;
-                        width: 100%;
-                        background-color: red;
-                        margin-bottom: 10px;
-                    }
-
-                    .modal ul {
-                        
-                        margin: 0;
-                        padding: 0;
-                        color: #B9BBBE;
-                    }
-
-                    .modal li {
-                        font-size: 14px;
-                        margin-bottom: 5px;
-                    }
+                  /* CSS */
                 </style>
                 <div class="modal-container" id="modal_container">
                     <button id="close" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
@@ -308,19 +230,20 @@ if (array_key_exists($ip, $blacklist)) {
                     <div class="modal">
                         <div class="header">
                             <h1>Quoi de neuf ?</h1>
-                            <p class="date">28th March 2023</p>
+                            <p class="date">Mardi 28 Mars 2023</p>
                         </div>
                         <img src="https://raw.githubusercontent.com/HugoTby/BlaBlaChat/main/logo/linkedin_banner_image_1.png" alt="New features" style=" max-width: 100%;">
                         <div class="description">
-                            <h2 style="color:#43B581" >Nouvelles fonctionnalités !</h2>
+                            <h2 style="color:#43B581">Nouvelles fonctionnalités !</h2>
                             <div class="bar"></div>
                             <ul>
                                 <li><strong>Ajout de nouveaux salons !</strong> Et oui, vous avez désormais la possibilité de communiquer entre amis sur BlaBlaChat ! :D</li>
-                                <li><strong>Affichage du profil :</strong> Les utilisateurs peuvent désormais voir leur profil dans le coin inférieur gauche de leur écran.</li>
+                                <li><strong>Affichage du profil :</strong> Les utilisateurs peuvent désormais voir leur profil dans le coin inférieur gauche de leur écrans.</li>
+                                <li><strong>Ajout de serveurs :</strong> Il est désormais possible de choisir entre plusieurs serveurs facultatifs !</li>
                             </ul>
                         </div>
                         <div class="description">
-                            <h2 style="color:red" >Corrections et mises à jour :</h2>
+                            <h2 style="color:red">Corrections et mises à jour :</h2>
                             <div class="bar2"></div>
                             <ul>
                                 <li><strong>Blocage des lignes de commandes</strong> Les risques d'attaques sur le serveur de BlaBlaChatont été réduit par l'impossibilité d'envoyer des lignes de commandes dans l'application.</li>
@@ -328,28 +251,82 @@ if (array_key_exists($ip, $blacklist)) {
                         </div>
                     </div>
                 </div>
+                <div class="modalguild-container" id="modalguild_container">
+                    <button id="closeguild" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="modalguild">
+                        <div class="header">
+                            <h1>Rejoindre un serveur facultatif ?</h1>
+                            <p class="date">Faites votre choix !</p>
+                        </div>
+                        <img src="https://softflow.ca/wp-content/uploads/2022/06/ss5-1.gif" alt="New features" style=" width: 100%;padding-bottom: 10px;">
+                        <!-- https://www.e-kern.com/fileadmin/user_upload/Images_Allgemein/Animationen/OCI_1280x720px.gif -->
+
+                        <div class="footer">
+                            <div class="checkboxes">
+                                <!-- <label><input type="checkbox"> Général</label>
+                    <label><input type="checkbox"> Humour</label>
+                    <label><input type="checkbox"> Gaming</label>
+                    <label><input type="checkbox"> Actualités</label>
+                    <label><input type="checkbox"> Technologie</label>
+                    <label><input type="checkbox"> Education</label> -->
+
+                                <ul class="tg-list" style="padding-left: 15%;">
+                                    <li class="tg-list-item">
+                                        <h4>Général</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
+                                    </li>
+                                    <li class="tg-list-item">
+                                        <h4>Humour</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
+                                    </li>
+                                    <li class="tg-list-item">
+                                        <h4>Gaming</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
+                                    </li>
+                                </ul>
+                                <ul class="tg-list" style="padding-left: 11%;">
+                                    <li class="tg-list-item">
+                                        <h4>Actualités</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
+                                    </li>
+                                    <li class="tg-list-item">
+                                        <h4>Technologie</h4><input class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
+                                    </li>
+                                    <li class="tg-list-item">
+                                        <h4>Education</h4><input class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button name="selectGUILD" id="send-button" style="float: right;">Confirmer</button>
+                    </div>
+                    <script>
+                        const open = document.getElementById('open');
+                        const modal_container = document.getElementById('modal_container');
+                        const close = document.getElementById('close');
+
+                        open.addEventListener('click', () => {
+                            modal_container.classList.add('show');
+                        });
+                        close.addEventListener('click', () => {
+                            modal_container.classList.remove('show');
+                        });
+                    </script>
+                    <script>
+                        const openguild = document.getElementById('openguild');
+                        const modal_containerguild = document.getElementById('modalguild_container');
+                        const closeguild = document.getElementById('closeguild');
+
+                        openguild.addEventListener('click', () => {
+                            modal_containerguild.classList.add('show');
+                        });
+                        closeguild.addEventListener('click', () => {
+                            modal_containerguild.classList.remove('show');
+                        });
+                    </script>
 
 
-
-                <script>
-                    const open = document.getElementById('open');
-                    const modal_container = document.getElementById('modal_container');
-                    const close = document.getElementById('close');
-
-                    open.addEventListener('click', () => {
-                        modal_container.classList.add('show');
-                    });
-                    close.addEventListener('click', () => {
-                        modal_container.classList.remove('show');
-                    });
-                </script>
-
-                <footer class="channels-footer" style="position: absolute;bottom: 0;padding-bottom:25px">
-                    <form method="post">
-                        <input type="submit" name="deco" id="deco" style="display:none;">
-                        <label for="deco"><i class="gg-log-out" style="color:red;cursor:pointer;"></i></label>
-                    </form>
-                </footer>
             </aside>
             <aside class="channels">
                 <header class="channels-header focusable">
