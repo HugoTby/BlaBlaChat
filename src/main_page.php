@@ -268,38 +268,32 @@ if (array_key_exists($ip, $blacklist)) {
                             <h1>Rejoindre un serveur facultatif ?</h1>
                             <p class="date">Faites votre choix !</p>
                         </div>
-                        <img src="https://softflow.ca/wp-content/uploads/2022/06/ss5-1.gif" alt="New features" style=" width: 100%;padding-bottom: 10px;">
+                        <img src="https://softflow.ca/wp-content/uploads/2022/06/ss5-1.gif" alt="New features" style="width: 80%;padding-bottom: 10px;padding-left:25%">
                         <!-- https://www.e-kern.com/fileadmin/user_upload/Images_Allgemein/Animationen/OCI_1280x720px.gif -->
 
                         <div class="footer">
                             <div class="checkboxes">
-                                <!-- <label><input type="checkbox"> Général</label>
-                    <label><input type="checkbox"> Humour</label>
-                    <label><input type="checkbox"> Gaming</label>
-                    <label><input type="checkbox"> Actualités</label>
-                    <label><input type="checkbox"> Technologie</label>
-                    <label><input type="checkbox"> Education</label> -->
                                 <form method="post">
                                     <ul class="tg-list" style="padding-left: 15%;">
                                         <li class="tg-list-item">
-                                            <h4>Général</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
+                                            <h4>&nbsp;&nbsp;&nbsp;Général&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
                                         </li>
                                         <li class="tg-list-item">
-                                            <h4>Humour</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
+                                            <h4>&nbsp;&nbsp;Humour&nbsp;&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
                                         </li>
                                         <li class="tg-list-item">
-                                            <h4>Gaming</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
+                                            <h4>&nbsp;&nbsp;Gaming&nbsp;&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
                                         </li>
                                     </ul>
                                     <ul class="tg-list" style="padding-left: 11%;">
                                         <li class="tg-list-item">
-                                            <h4>Actualités</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
+                                            <h4>Actualités&nbsp;</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
                                         </li>
                                         <li class="tg-list-item">
                                             <h4>Technologie</h4><input class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
                                         </li>
                                         <li class="tg-list-item">
-                                            <h4>Education</h4><input class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
+                                            <h4>&nbsp;Education&nbsp;</h4><input class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
                                         </li>
                                     </ul>
                             </div>
