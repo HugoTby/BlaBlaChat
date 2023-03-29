@@ -131,7 +131,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
-                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn1.JPG" />
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN2"></button>
-                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn2.JPG" />
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E1"></button>
-                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="e1.JPG" />
                                 </div>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E2"></button>
-                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.licdn.com/dms/image/C4D03AQFe17hcSre8jw/profile-displayphoto-shrink_800_800/0/1629472375644?e=2147483647&v=beta&t=GO_Of8CSmw30DXYWD7KtZNIXv6gGVhAl6kFsyjFnDKc" />
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="e2.JPG" />
                                 </div>
                             </div>
                         </div>
@@ -226,16 +226,16 @@ if (array_key_exists($ip, $blacklist)) {
                     /* CSS */
                 </style>
                 <div class="modal-container" id="modal_container">
-                    <button id="close" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
+                    <div class="modal">
+                    <button id="close" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
                         <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18" />
                             <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
                     </button>
-                    <div class="modal">
                         <div class="header">
                             <h1>Quoi de neuf ?</h1>
-                            <p class="date">Mardi 28 Mars 2023</p>
+                            <p class="date" style="padding-right:20px;">Mardi 28 Mars 2023</p>
                         </div>
                         <img src="https://raw.githubusercontent.com/HugoTby/BlaBlaChat/main/logo/linkedin_banner_image_1.png" alt="New features" style=" max-width: 100%;">
                         <div class="description">
@@ -257,16 +257,17 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </div>
                 <div class="modalguild-container" id="modalguild_container">
-                    <button id="closeguild" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
+                    
+                    <div class="modalguild">
+                    <button id="closeguild" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
                         <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18" />
                             <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
                     </button>
-                    <div class="modalguild">
                         <div class="header">
-                            <h1>Rejoindre un serveur facultatif ?</h1>
-                            <p class="date">Faites votre choix !</p>
+                            <h1 style="font-size: 18px;" >Rejoindre un serveur facultatif ?</h1>
+                            <p class="date" style="font-size: 16px;padding-right:20px;">Faites votre choix !</p>
                         </div>
                         <img src="https://softflow.ca/wp-content/uploads/2022/06/ss5-1.gif" alt="New features" style="width: 80%;padding-bottom: 10px;padding-left:25%">
                         <!-- https://www.e-kern.com/fileadmin/user_upload/Images_Allgemein/Animationen/OCI_1280x720px.gif -->
@@ -290,15 +291,15 @@ if (array_key_exists($ip, $blacklist)) {
                                             <h4>Actualités&nbsp;</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
                                         </li>
                                         <li class="tg-list-item">
-                                            <h4>Technologie</h4><input class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
+                                            <h4>Technologie</h4><input value="1" class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
                                         </li>
                                         <li class="tg-list-item">
-                                            <h4>&nbsp;Education&nbsp;</h4><input class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
+                                            <h4>&nbsp;Education&nbsp;</h4><input value="1" class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
                                         </li>
                                     </ul>
                             </div>
                         </div>
-                        <button name="selectGUILD" id="send-button" style="float: right;">Confirmer</button>
+                        <button type="submit" name="submitGUILD" id="send-button" style="float: right;">Confirmer</button>
                         </form>
                     </div>
                     <script>
@@ -330,7 +331,7 @@ if (array_key_exists($ip, $blacklist)) {
             </aside>
             <aside class="channels">
                 <header class="channels-header focusable">
-                    <h3 role="header" class="channels-header-name">BTS SN1</h3>
+                    <h3 role="header" class="channels-header-name"><?php $SERV->getServerByID($_SESSION['idServer']) ?></h3>
                     <svg role="button" aria-label="Dropdown" class="channels-header-dropdown">
                         <use xlink:href="#icon-dropdown" />
                     </svg>
@@ -398,7 +399,7 @@ if (array_key_exists($ip, $blacklist)) {
 
             <div class="vert-container">
                 <menu type="toolbar" class="menu">
-                    <h2 class="menu-name"><?php $SERV->getServerByID($id) ?></h2>
+                    <h2 class="menu-name"><?php $SERV->getServerByID($_SESSION['idServer']) ?></h2>
                 </menu>
                 <section class="chat" id="messages-container">
                     <!-- <span style="display: flex;justify-content: center;align-items: center;font-weight: 300;">Le

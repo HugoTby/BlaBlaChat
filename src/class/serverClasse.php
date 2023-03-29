@@ -14,14 +14,14 @@ class server1
     public function getServerByID($id)
     {
         
-        $requetes = "SELECT nom FROM `server` 
+        $requetes = "SELECT nom2 FROM `server` 
         WHERE
         `id` = '" . $id . "' ;";
         $resulte = $GLOBALS["pdo"]->query($requetes);
         if ($resulte->rowCount() > 0) {
             $tab1 = $resulte->fetch();
             $this->id_ = $tab1['id'];
-            $this->nom_ = $tab1['nom'];
+            $this->nom_ = $tab1['nom2'];
             echo $this->nom_;
         }
     }
