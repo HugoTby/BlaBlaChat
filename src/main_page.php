@@ -37,6 +37,7 @@ if (array_key_exists($ip, $blacklist)) {
 
     include("class/User.php");
     include("class/Message.php");
+    include("class/serverClasse.php");
 
 ?>
 
@@ -62,6 +63,7 @@ if (array_key_exists($ip, $blacklist)) {
         $pdo = new PDO('mysql:host=192.168.65.25;dbname=blablachat', 'root', 'root');
         $User1 = new user(null, null, null, null, null, null, null, null);
         $Mess = new message(null, null, null, null);
+        $SERV = new server1(null, null);
 
         if (!$User1->isConnect()) {
             header("Location: connexion/index.php");
@@ -78,25 +80,28 @@ if (array_key_exists($ip, $blacklist)) {
             header("Location: connexion/index.php");
         }
 
-        $requeteServ = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['id'] . "'";
-        $resultServ = $GLOBALS["pdo"]->query($requeteServ);
-        $servNum = $resultServ->fetch();
-        $_SESSION['idServer'] = $servNum['id'];
+        if ($_SESSION['idServer'] == NULL) {
+            $requeteServ = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['id'] . "'";
+            $resultServ = $GLOBALS["pdo"]->query($requeteServ);
+            $servNum = $resultServ->fetch();
+            $_SESSION['idServer'] = $servNum['id'];
+        }
 
 
-
+        if (isset($_POST['E2'])) {
+            $_SESSION['idServer'] = 6;
+        }
+        if (isset($_POST['E1'])) {
+            $_SESSION['idServer'] = 5;
+        }
         if (isset($_POST['SN2'])) {
             $_SESSION['idServer'] = 2;
         }
         if (isset($_POST['SN1'])) {
             $_SESSION['idServer'] = 1;
         }
-        if (isset($_POST['E1'])) {
-            $_SESSION['idServer'] = 5;
-        }
-        if (isset($_POST['E2'])) {
-            $_SESSION['idServer'] = 6;
-        }
+
+
         $idSession = $_SESSION['id'];
         if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
             $requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $_POST['contenuMess'] . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
@@ -218,7 +223,7 @@ if (array_key_exists($ip, $blacklist)) {
                     }
                 </script>
                 <style>
-                  /* CSS */
+                    /* CSS */
                 </style>
                 <div class="modal-container" id="modal_container">
                     <button id="close" style="position: absolute; top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;">
@@ -274,32 +279,33 @@ if (array_key_exists($ip, $blacklist)) {
                     <label><input type="checkbox"> Actualités</label>
                     <label><input type="checkbox"> Technologie</label>
                     <label><input type="checkbox"> Education</label> -->
-
-                                <ul class="tg-list" style="padding-left: 15%;">
-                                    <li class="tg-list-item">
-                                        <h4>Général</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
-                                    </li>
-                                    <li class="tg-list-item">
-                                        <h4>Humour</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
-                                    </li>
-                                    <li class="tg-list-item">
-                                        <h4>Gaming</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
-                                    </li>
-                                </ul>
-                                <ul class="tg-list" style="padding-left: 11%;">
-                                    <li class="tg-list-item">
-                                        <h4>Actualités</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
-                                    </li>
-                                    <li class="tg-list-item">
-                                        <h4>Technologie</h4><input class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
-                                    </li>
-                                    <li class="tg-list-item">
-                                        <h4>Education</h4><input class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
-                                    </li>
-                                </ul>
+                                <form method="post">
+                                    <ul class="tg-list" style="padding-left: 15%;">
+                                        <li class="tg-list-item">
+                                            <h4>Général</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
+                                        </li>
+                                        <li class="tg-list-item">
+                                            <h4>Humour</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
+                                        </li>
+                                        <li class="tg-list-item">
+                                            <h4>Gaming</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="tg-list" style="padding-left: 11%;">
+                                        <li class="tg-list-item">
+                                            <h4>Actualités</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
+                                        </li>
+                                        <li class="tg-list-item">
+                                            <h4>Technologie</h4><input class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
+                                        </li>
+                                        <li class="tg-list-item">
+                                            <h4>Education</h4><input class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
+                                        </li>
+                                    </ul>
                             </div>
                         </div>
                         <button name="selectGUILD" id="send-button" style="float: right;">Confirmer</button>
+                        </form>
                     </div>
                     <script>
                         const open = document.getElementById('open');
@@ -398,7 +404,7 @@ if (array_key_exists($ip, $blacklist)) {
 
             <div class="vert-container">
                 <menu type="toolbar" class="menu">
-                    <h2 class="menu-name">général</h2>
+                    <h2 class="menu-name"><?php $SERV->getServerByID($id) ?></h2>
                 </menu>
                 <section class="chat" id="messages-container">
                     <!-- <span style="display: flex;justify-content: center;align-items: center;font-weight: 300;">Le

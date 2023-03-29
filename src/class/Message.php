@@ -1,7 +1,8 @@
 <?php
-
+include("server.php");
 class message
 {
+    
     private $id_;
     private $contenu_;
     private $idServer_;
