@@ -87,7 +87,18 @@ if (array_key_exists($ip, $blacklist)) {
             $_SESSION['idServer'] = $servNum['id'];
         }
 
-
+        if (isset($_POST['FAQ'])) {
+            $_SESSION['idServer'] = 15;
+        }
+        if (isset($_POST['Humour'])) {
+            $_SESSION['idServer'] = 14;
+        }
+        if (isset($_POST['Gaming'])) {
+            $_SESSION['idServer'] = 13;
+        }
+        if (isset($_POST['General'])) {
+            $_SESSION['idServer'] = 12;
+        }
         if (isset($_POST['E2'])) {
             $_SESSION['idServer'] = 6;
         }
@@ -141,7 +152,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
 
                 <?php
-                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.classe=2 ";
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['id'] . "' and user.classe=2 ";
                 $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
                 if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
                 ?>
@@ -160,7 +171,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
 
                 <?php
-                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.classe=5 ";
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['id'] . "' and user.classe=5 ";
                 $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
                 if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
                 ?>
@@ -179,7 +190,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
 
                 <?php
-                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.classe=6 ";
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = '" . $_SESSION['id'] . "' and user.classe=6 ";
                 $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
                 if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
                 ?>
@@ -196,6 +207,83 @@ if (array_key_exists($ip, $blacklist)) {
                 <?php
                 }
                 ?>
+
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.general=12 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="General"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://t4.ftcdn.net/jpg/03/30/89/51/360_F_330895125_tOytSyiqT0PqaIJzx1syOjUhbLOOljjU.jpg" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
+
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.general=13 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Gaming"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://media.istockphoto.com/id/1211763957/fr/vectoriel/premi%C3%A8re-lettre-g-logo-design-avec-mod%C3%A8le-de-vecteur-moderne-cr%C3%A9atif-creative-abstract.jpg?s=170667a&w=0&k=20&c=itRKpqv2-ZERy5khWKpkQLcN4_RVNzR2O1UjEOtqQ74=" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.general=14 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Humour"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://t3.ftcdn.net/jpg/04/44/15/48/360_F_444154863_0Ls8m4rwA7FxCFF0MH55ICTPnOM8La6r.jpg" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
+                <?php
+                $requeteServ1 = "SELECT server.id FROM `server`, `user` WHERE server.id = user.general AND user.id = '" . $_SESSION['id'] . "' and user.general=15 ";
+                $resultServ1 = $GLOBALS["pdo"]->query($requeteServ1);
+                if ($resultServ1->rowcount() > 0 or $_SESSION['id'] == 1 or $_SESSION['id'] == 2) {
+                ?>
+                    <form method="post">
+                        <div class="servers-collection">
+                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                                <div class="server-icon" style="position: relative;">
+                                    <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="FAQ"></button>
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjCWhrUCcu09JANQiaOla8fvL3cHmyo_tjPQ&usqp=CAU" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
+
+
+
 
                 <div class="servers-collection" style="padding-top: 10px;">
                     <button class="guild-add" id="openguild">+</button>
@@ -227,12 +315,12 @@ if (array_key_exists($ip, $blacklist)) {
                 </style>
                 <div class="modal-container" id="modal_container">
                     <div class="modal">
-                    <button id="close" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                    </button>
+                        <button id="close" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                            <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
                         <div class="header">
                             <h1>Quoi de neuf ?</h1>
                             <p class="date" style="padding-right:20px;">Mardi 28 Mars 2023</p>
@@ -257,44 +345,46 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </div>
                 <div class="modalguild-container" id="modalguild_container">
-                    
+
                     <div class="modalguild">
-                    <button id="closeguild" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                    </button>
+                        <button id="closeguild" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                            <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
                         <div class="header">
-                            <h1 style="font-size: 18px;" >Rejoindre un serveur facultatif ?</h1>
+                            <h1 style="font-size: 18px;">Rejoindre un serveur facultatif ?</h1>
                             <p class="date" style="font-size: 16px;padding-right:20px;">Faites votre choix !</p>
                         </div>
                         <img src="https://softflow.ca/wp-content/uploads/2022/06/ss5-1.gif" alt="New features" style="width: 80%;padding-bottom: 10px;padding-left:25%">
                         <!-- https://www.e-kern.com/fileadmin/user_upload/Images_Allgemein/Animationen/OCI_1280x720px.gif -->
+                        <?php
+                        $requeteGeneral = "SELECT server.id FROM `server`, `user` WHERE server.id = user.classe AND user.id = 2 and user.general=12;";
+                        $resultGeneral = $GLOBALS["pdo"]->query($requeteGeneral);
+                        if ($resultServ1->rowcount() > 0) {
+                            $salonGeneral = true;
+                        }
+                        ?>
 
                         <div class="footer">
                             <div class="checkboxes">
                                 <form method="post">
-                                    <ul class="tg-list" style="padding-left: 15%;">
+                                    <ul class="tg-list" style="padding-left: 22%;">
                                         <li class="tg-list-item">
-                                            <h4>&nbsp;&nbsp;&nbsp;Général&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
+                                            <h4>&nbsp;&nbsp;&nbsp;Général&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb1" type="checkbox" name="General" value="12" <?php if($salonGeneral){ ?>checked <?php } ?>/><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb1"></label>
                                         </li>
-                                        <li class="tg-list-item">
-                                            <h4>&nbsp;&nbsp;Humour&nbsp;&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
+                                        <li class="tg-list-item" style="padding-left: 25px;">
+                                            <h4>&nbsp;&nbsp;Humour&nbsp;&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb2" type="checkbox" name="Humour" value="14" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb2"></label>
                                         </li>
-                                        <li class="tg-list-item">
-                                            <h4>&nbsp;&nbsp;Gaming&nbsp;&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
-                                        </li>
+
                                     </ul>
-                                    <ul class="tg-list" style="padding-left: 11%;">
+                                    <ul class="tg-list" style="padding-left: 22%;">
                                         <li class="tg-list-item">
-                                            <h4>Actualités&nbsp;</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
+                                            <h4>&nbsp;Gaming&nbsp;</h4><input class="tgl tgl-skewed" id="cb4" type="checkbox" value="13" name="Gaming" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb4"></label>
                                         </li>
-                                        <li class="tg-list-item">
-                                            <h4>Technologie</h4><input value="1" class="tgl tgl-skewed" id="cb5" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb5"></label>
-                                        </li>
-                                        <li class="tg-list-item">
-                                            <h4>&nbsp;Education&nbsp;</h4><input value="1" class="tgl tgl-skewed" id="cb6" type="checkbox" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb6"></label>
+                                        <li class="tg-list-item" style="padding-left: 25px;">
+                                            <h4>&nbsp;&nbsp;&nbsp;&nbsp;FAQ&nbsp;&nbsp;&nbsp;</h4><input class="tgl tgl-skewed" id="cb3" type="checkbox" value="15" name="FAQ" /><label class="tgl-btn" data-tg-off="NON" data-tg-on="OUI" for="cb3"></label>
                                         </li>
                                     </ul>
                             </div>
@@ -302,6 +392,26 @@ if (array_key_exists($ip, $blacklist)) {
                         <button type="submit" name="submitGUILD" id="send-button" style="float: right;">Confirmer</button>
                         </form>
                     </div>
+                    <?php
+                    if (isset($_POST['submitGUILD'])) {
+
+                        if ($_POST['General'] == NULL) {
+                            $_POST['General'] = 'NULL';
+                        }
+                        if ($_POST['Humour'] == NULL) {
+                            $_POST['Humour'] = 'NULL';
+                        }
+                        if ($_POST['Gaming'] == NULL) {
+                            $_POST['Gaming'] = 'NULL';
+                        }
+                        if ($_POST['FAQ'] == NULL) {
+                            $_POST['FAQ'] = 'NULL';
+                        }
+                        $requeteServ = "UPDATE `user` SET `general`=" . $_POST['General'] . ",`gaming`=" . $_POST['Gaming'] . ",`humour`=" . $_POST['Humour'] . ",`faq`=" . $_POST['FAQ'] . " WHERE id= '" . $_SESSION['id'] . "';";
+                        $resultServ = $GLOBALS["pdo"]->query($requeteServ);
+                    }
+
+                    ?>
                     <script>
                         const open = document.getElementById('open');
                         const modal_container = document.getElementById('modal_container');
@@ -408,13 +518,12 @@ if (array_key_exists($ip, $blacklist)) {
 
 
 
-                    if ($_SESSION['idServer'] == 2) {
 
-                        $Mess->getServer($_SESSION['idServer']);
-                    }
-                    if ($_SESSION['idServer'] == 1) {
-                        $Mess->getServer($_SESSION['idServer']);
-                        /*$_SESSION['idServer'] = 1;
+
+                    $Mess->getServer($_SESSION['idServer']);
+
+
+                    /*$_SESSION['idServer'] = 1;
                         $requetes = "SELECT * FROM `message` WHERE idServer=1 ;";
                         $resultat2 = $GLOBALS["pdo"]->query($requetes);
                         $tabMessage = $resultat2->fetchALL();
@@ -423,15 +532,9 @@ if (array_key_exists($ip, $blacklist)) {
                             $test = $Message['id'];
                             $Mess->afficheMessage($test);
                         }*/
-                    }
-                    if ($_SESSION['idServer'] == 5) {
 
-                        $Mess->getServer($_SESSION['idServer']);
-                    }
-                    if ($_SESSION['idServer'] == 6) {
 
-                        $Mess->getServer($_SESSION['idServer']);
-                    }
+
 
 
 

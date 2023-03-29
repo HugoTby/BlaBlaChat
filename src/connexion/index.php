@@ -108,7 +108,7 @@ include("../blacklist/white_list.php");
                                         </div>
                                         <div class="form-group">
                                             <h5 class="input-placeholder" id="pword-txt">Mot de passe<span class="error-message" id="password-error"></span></h5>
-                                            <input type="password" required="true" name="logpass" class="form-style" id="logpass" autocomplete="on">
+                                            <input type="password" required="true" name="logpass" class="form-style" id="logpass" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                     </div>
