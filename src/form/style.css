@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,500,700");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*:focus {
+    outline: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background: #121416;
+    color: #FFF;
+    font-size: 16px;
+    font-family: "Roboto";
+    cursor: url('cursor/c1.png'), auto;
+    user-select: none;
+}
+
+
+
+
+
+
+
+
+.modalsettings-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 0.3s ease;
+}
+
+.modalsettings-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalsettings {
+    background-color: #1e2124;
+    width: 2000px;
+    height: 800px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 30px 50px;
+    max-width: 100%;
+}
+
+
+#main {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    padding-top: 50px;
+}
+
+#options {
+    background-color: #1e2124;
+    float: left;
+    width: 30%;
+}
+
+#details-view-wrapper {
+    background-color: #1e2124;
+    margin-left: 30%;
+}
+
+#options-label {
+    font-size: 8px;
+    color: #424549;
+    padding-bottom: 15px;
+}
+
+.option {
+    border-radius: 4px;
+    margin: 4px 0px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.option:hover {
+    background-color: #03a9f4;
+}
+
+#my-account-info-wrapper {
+    background-color: #282828;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: auto;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+#my-account-info {
+    overflow: hidden;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+#profile-pic {
+    background-color: #1e1e1e;
+    border-radius: 100px;
+    display: inline-block;
+    font-size: 8px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 80px;
+}
+
+#account-fields {
+    display: inline-block;
+    font-size: 8px;
+    margin-left: 10px;
+    vertical-align: top;
+    width: calc(100% - 90px);
+}
+#account-fields h1{
+    padding-top: 10px;
+}
+
+#account-fields .account-field input {
+    background-color: #1e1e1e;
+    border: 1px solid black;
+    border-radius: 2px;
+    color: gainsboro;
+    margin-top: 5px;
+    padding: 10px;
+    outline: none;
+    width: calc(100% - 24px);
+}
+
+#save-options {
+    margin-top: 20px;
+    text-align: right;
+    white-space: nowrap;
+    font-size: 8px;
+}
+
+.save-option-button {
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    width: auto;
+}
+
+#save-button {
+    background-color: #4caf50;
+    margin-left: 10px;
+}
+#cancel-button:hover{
+    background-color: red;
+}

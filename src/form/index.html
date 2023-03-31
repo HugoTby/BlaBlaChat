@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="warning-collection" style="padding-top: 10px;">
+        <button style="cursor: help;" id="opensettings">Cliquez ici</button>
+    </div>
+
+    <div class="modalsettings-container" id="modalsettings_container">
+        <div class="modalsettings">
+            <button id="closesettings"
+                style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <div id="main">
+                <div id="settings-panel">
+                    <div class="button" id="close-button"><i class="fas fa-times"></i></div>
+                    <div id="options">
+                        <div id="options-label">
+                            <h1>PARAMÈTRES UTILISATEUR</h1>
+                        </div>
+                        <div class="option" id="option-1">
+                            <h1>Vue globale</h1>
+                        </div>
+                        <div class="option selected" id="option-2">
+                            <h1>Mon compte</h1>
+                        </div>
+                        <div class="option" id="option-3">
+                            <h1>Confidentialité</h1>
+                        </div>
+                        <div class="option" id="option-4">
+                            <h1>Langue</h1>
+                        </div>
+                        <div class="option" id="option-5">
+                            <h1>Logs</h1>
+                        </div>
+                    </div>
+                    <div id="details-view-wrapper">
+                        <div id="details-view">
+                            <div id="details-view-label">
+                                <h1>MON COMPTE</h1>
+                            </div>
+                            <div id="my-account-info-wrapper">
+                                <div id="my-account-info">
+                                    <div id="profile-pic">
+                                        <img id="profile-pic"
+                                            src="https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png">
+                                    </div>
+                                    <div id="account-fields">
+                                        <div class="account-field">
+                                            <h1 style="padding-top: 0px;" class="label">NOM D'UTILISATEUR</h1><input class="input" type="text"
+                                                value="Bloop" />
+                                        </div>
+                                        <div class="account-field">
+                                            <h1 class="label">ADRESSE E-MAIL</h1><input class="input" type="text"
+                                                value="bloop@blablachat.fr" />
+                                        </div>
+                                        <div class="account-field">
+                                            <h1 class="label">MOT DE PASSE ACTUEL</h1><input class="input"
+                                                type="password" value="bloopiedoopiedoo" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="save-options">
+                                <div class="save-option-button" id="cancel-button">
+                                    <h1>Supprimer le compte</h1>
+                                </div>
+                                <div class="save-option-button" id="save-button">
+                                    <h1>Confirmer</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
