@@ -276,7 +276,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Humour"></button>
-                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://t3.ftcdn.net/jpg/04/44/15/48/360_F_444154863_0Ls8m4rwA7FxCFF0MH55ICTPnOM8La6r.jpg" />
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="humour.JPG" />
                                 </div>
                             </div>
                         </div>
@@ -294,7 +294,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="FAQ"></button>
-                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjCWhrUCcu09JANQiaOla8fvL3cHmyo_tjPQ&usqp=CAU" />
+                                    <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="faq.JPG" />
                                 </div>
                             </div>
                         </div>
@@ -536,10 +536,9 @@ if (array_key_exists($ip, $blacklist)) {
                     <?php
 
 
-
                     $Mess->getServer($_SESSION['idServer']);
-
-
+                    
+                    
 
                     /*$_SESSION['idServer'] = 1;
                         $requetes = "SELECT * FROM `message` WHERE idServer=1 ;";
