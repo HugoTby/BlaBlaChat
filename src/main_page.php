@@ -53,6 +53,7 @@ if (array_key_exists($ip, $blacklist)) {
         <link href='https://unpkg.com/css.gg@2.0.0/icons/css/log-out.css' rel='stylesheet'>
         <script type="text/javascript" src="main.js"></script>
         <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Messages_logo.svg" type="image/x-icon">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <title>BlaBlaChat</title>
     </head>
 
@@ -64,6 +65,7 @@ if (array_key_exists($ip, $blacklist)) {
         $User1 = new user(null, null, null, null, null, null, null, null);
         $Mess = new message(null, null, null, null);
         $SERV = new server1(null, null);
+        $bdd = $pdo;
 
         if (!$User1->isConnect()) {
             header("Location: connexion/index.php");
@@ -160,7 +162,7 @@ if (array_key_exists($ip, $blacklist)) {
                     <form method="post">
                         <div class="servers-collection">
                             <!--server focusable active -->
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==1){echo "active"; } ?> role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn1.JPG" />
@@ -179,7 +181,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==2){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN2"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn2.JPG" />
@@ -198,7 +200,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==5){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E1"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="e1.JPG" />
@@ -217,7 +219,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==6){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E2"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="e2.JPG" />
@@ -236,7 +238,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==12){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="General"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="general.JPG" />
@@ -255,7 +257,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==13){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Gaming"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="gaming.JPG" />
@@ -273,7 +275,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==14){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Humour"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="humour.JPG" />
@@ -291,7 +293,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable" role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if($_SESSION['idServer']==15){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="FAQ"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="faq.JPG" />
@@ -510,12 +512,12 @@ if (array_key_exists($ip, $blacklist)) {
                         <span class="tag">#<?php $User1->getId(); ?></span>
                     </div>
                     <div class="channels-footer-controls button-group">
-                        <button role="button" aria-label="Mute" class="button button-mute" style="cursor: not-allowed;"><svg>
+                        <!-- <button role="button" aria-label="Mute" class="button button-mute" style="cursor: not-allowed;"><svg>
                                 <use xlink:href="#icon-mute" />
                             </svg></button>
                         <button role="button" aria-label="Deafen" class="button button-deafen" style="cursor: not-allowed;"><svg>
                                 <use xlink:href="#icon-deafen" />
-                            </svg></button>
+                            </svg></button> -->
                         <button role="button" aria-label="Settings" class="button button-settings"><svg>
                                 <use xlink:href="#icon-settings" />
                             </svg></button>
@@ -537,8 +539,8 @@ if (array_key_exists($ip, $blacklist)) {
 
 
                     $Mess->getServer($_SESSION['idServer']);
-                    
-                    
+
+
 
                     /*$_SESSION['idServer'] = 1;
                         $requetes = "SELECT * FROM `message` WHERE idServer=1 ;";
@@ -550,7 +552,13 @@ if (array_key_exists($ip, $blacklist)) {
                             $Mess->afficheMessage($test);
                         }*/
                     ?>
-
+                     
+                    <script>
+                        // setInterval('load_messages()',5000);
+                        // function load_messages(){
+                        //     $('#messages').load('get_latest_messages.php');
+                        // }
+                    </script>
 
                     <script>
                         // scrollToBottom();
@@ -618,6 +626,9 @@ if (array_key_exists($ip, $blacklist)) {
 
             </div>
             <aside class="accounts">
+                <?php $User1->affichePseudoServ2($_SESSION['idServer']); ?>
+                
+
                 <div class="member" aria-expanded="false">
                     <div class="layout">
                         <div class="avatar">
@@ -625,7 +636,7 @@ if (array_key_exists($ip, $blacklist)) {
                                 <svg width="40" height="40" viewBox="0 0 40 40" class="mask" aria-hidden="true">
                                     <foreignObject x="0" y="0" width="32" height="32" mask="url(#svg-mask-avatar-status-round-32)">
                                         <div class="avatarStack-3Bjmsl">
-                                            <img src="https://www.bitss.org/wp-content/uploads/2022/04/avatar_hu8d30e29128cae2b0d49276543cea6665_24055_250x250_fill_q90_lanczos_center.jpg" alt=" " class="avatar-31d8He" aria-hidden="true">
+                                            <img src="https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png" alt=" " class="avatar-31d8He" aria-hidden="true">
                                         </div>
                                     </foreignObject>
                                     <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)" class="pointerEvents"></circle>
@@ -636,48 +647,15 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="nameAndDecorators-3ERwy2">
                                 <div class="name-3Vmqxm">
                                     <span class="username-i5-wv-">
-                                        <span class="username-3_PJ5r desaturateUserColors-1O-G89">Hugo Tabary</span>
+                                        <span class="username-3_PJ5r desaturateUserColors-1O-G89">ADMINISTRATEUR</span>
                                     </span>
                                 </div>
                                 <img style="padding-left:8px;height:15px" src="https://freepngimg.com/save/107722-verified-badge-facebook-free-download-png-hd/940x930">
                             </div>
-                            <div class="subText-OGOWMj">Ici c'est la description !</div>
+                            <div class="subText-OGOWMj">functionality in progress...</div>
                         </div>
                     </div>
                 </div>
-                <div class="member" aria-expanded="false">
-                    <div class="layout">
-                        <div class="avatar">
-                            <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">
-                                <svg width="40" height="40" viewBox="0 0 40 40" class="mask" aria-hidden="true">
-                                    <foreignObject x="0" y="0" width="32" height="32" mask="url(#svg-mask-avatar-status-round-32)">
-                                        <div class="avatarStack-3Bjmsl">
-                                            <img src="https://cyber-privacy.net/wp-content/uploads/thispersondoesnotexist.com-image02-1024x1024.jpg" alt=" " class="avatar-31d8He" aria-hidden="true">
-                                        </div>
-                                    </foreignObject>
-                                    <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)" class="pointerEvents"></circle>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="content-1U25dZ">
-                            <div class="nameAndDecorators-3ERwy2">
-                                <div class="name-3Vmqxm">
-                                    <span class="username-i5-wv-">
-                                        <span class="username-3_PJ5r desaturateUserColors-1O-G89">Faustin Botel</span>
-                                    </span>
-                                </div>
-                                <img style="padding-left:8px;height:15px" src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png">
-                            </div>
-                            <div class="subText-OGOWMj">Ici c'est la description !</div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
 
                 <!-- <aside class="channels" style="flex: 1 1;padding-bottom: 5px;" >
                 <footer class="channels-footer">
@@ -686,6 +664,7 @@ if (array_key_exists($ip, $blacklist)) {
             </aside> -->
             </aside>
         </main>
+
 
 
         <!-- ICONS -->

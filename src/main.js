@@ -90,5 +90,3 @@ function scrollToBottom() {
 	scrollToBottom();
   }, 1000);
 
-
-  
