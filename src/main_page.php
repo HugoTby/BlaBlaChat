@@ -162,7 +162,9 @@ if (array_key_exists($ip, $blacklist)) {
                     <form method="post">
                         <div class="servers-collection">
                             <!--server focusable active -->
-                            <div class="server focusable <?php if($_SESSION['idServer']==1){echo "active"; } ?> role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 1) {
+                                                                echo "active";
+                                                            } ?> role=" button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn1.JPG" />
@@ -181,7 +183,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==2){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 2) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN2"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn2.JPG" />
@@ -200,7 +204,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==5){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 5) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E1"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="e1.JPG" />
@@ -219,7 +225,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==6){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 6) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="E2"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="e2.JPG" />
@@ -238,7 +246,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==12){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 12) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="General"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="general.JPG" />
@@ -257,7 +267,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==13){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 13) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Gaming"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="gaming.JPG" />
@@ -275,7 +287,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==14){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 14) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="Humour"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="humour.JPG" />
@@ -293,7 +307,9 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
                     <form method="post">
                         <div class="servers-collection">
-                            <div class="server focusable <?php if($_SESSION['idServer']==15){echo "active"; } ?> " role="button" aria-label="My Server" aria-selected="true">
+                            <div class="server focusable <?php if ($_SESSION['idServer'] == 15) {
+                                                                echo "active";
+                                                            } ?> " role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="FAQ"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="faq.JPG" />
@@ -518,7 +534,7 @@ if (array_key_exists($ip, $blacklist)) {
                         <button role="button" aria-label="Deafen" class="button button-deafen" style="cursor: not-allowed;"><svg>
                                 <use xlink:href="#icon-deafen" />
                             </svg></button> -->
-                        <button role="button" aria-label="Settings" class="button button-settings"><svg>
+                        <button role="button" id="opensettings" aria-label="Settings" class="button button-settings"><svg>
                                 <use xlink:href="#icon-settings" />
                             </svg></button>
                     </div>
@@ -552,7 +568,7 @@ if (array_key_exists($ip, $blacklist)) {
                             $Mess->afficheMessage($test);
                         }*/
                     ?>
-                     
+
                     <script>
                         // setInterval('load_messages()',5000);
                         // function load_messages(){
@@ -625,9 +641,27 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
 
             </div>
+                
+            <!-- A déplacer dans User.php [!] -->
+            <script>
+                const openprofile = document.getElementById('openprofile');
+                const modalprofile_container = document.getElementById('modalprofile_container');
+                const closeprofile = document.getElementById('closeprofile');
+
+                openprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.add('show');
+                });
+                closeprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.remove('show');
+                });
+            </script>
+            <!-- A déplacer dans User.php [!] -->
+
+
+
             <aside class="accounts">
                 <?php $User1->affichePseudoServ2($_SESSION['idServer']); ?>
-                
+
 
                 <div class="member" aria-expanded="false">
                     <div class="layout">
@@ -664,6 +698,88 @@ if (array_key_exists($ip, $blacklist)) {
             </aside> -->
             </aside>
         </main>
+
+        <div class="modalsettings-container" id="modalsettings_container">
+            <div class="modalsettings">
+                <button id="closesettings" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                    <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <div id="main">
+                    <div id="settings-panel">
+                        <div class="button" id="close-button"><i class="fas fa-times"></i></div>
+                        <div id="options">
+                            <div id="options-label">
+                                <h1>PARAMÈTRES UTILISATEUR</h1>
+                            </div>
+                            <div class="option" id="option-1">
+                                <h1>Vue globale</h1>
+                            </div>
+                            <div class="option selected" id="option-2">
+                                <h1>Mon compte</h1>
+                            </div>
+                            <div class="option" id="option-3">
+                                <h1>Confidentialité</h1>
+                            </div>
+                            <div class="option" id="option-4">
+                                <h1>Langue</h1>
+                            </div>
+                            <div class="option" id="option-5">
+                                <h1>Logs</h1>
+                            </div>
+                        </div>
+                        <div id="details-view-wrapper">
+                            <div id="details-view">
+                                <div id="details-view-label">
+                                    <h1>MON COMPTE</h1>
+                                </div>
+                                <div id="my-account-info-wrapper">
+                                    <div id="my-account-info">
+                                        <div id="profile-pic">
+                                            <img id="profile-pic" src="https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png">
+                                        </div>
+                                        <div id="account-fields">
+                                            <div class="account-field">
+                                                <h1 style="padding-top: 0px;" class="label">NOM D'UTILISATEUR</h1><input class="input" type="text" value="Bloop" />
+                                            </div>
+                                            <div class="account-field">
+                                                <h1 class="label">ADRESSE E-MAIL</h1><input class="input" type="text" value="bloop@blablachat.fr" />
+                                            </div>
+                                            <div class="account-field">
+                                                <h1 class="label">MOT DE PASSE ACTUEL</h1><input class="input" type="password" value="bloopiedoopiedoo" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="save-options">
+                                    <div class="save-option-button" id="cancel-button">
+                                        <h1>Supprimer le compte</h1>
+                                    </div>
+                                    <div class="save-option-button" id="save-button">
+                                        <h1>Confirmer</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const opensettings = document.getElementById('opensettings');
+            const modalsettings_container = document.getElementById('modalsettings_container');
+            const closesettings = document.getElementById('closesettings');
+
+            opensettings.addEventListener('click', () => {
+                modalsettings_container.classList.add('show');
+            });
+            closesettings.addEventListener('click', () => {
+                modalsettings_container.classList.remove('show');
+            });
+        </script>
 
 
 

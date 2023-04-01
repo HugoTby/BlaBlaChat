@@ -85,15 +85,15 @@ include("../class/User.php");
                         <div class="title">Informations générales:</div>
                         <div class="field">
                             <div class="label">Adresse e-mail<span style="color: red;">*</span></div>
-                            <input type="text" name="mail">
+                            <input type="text" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                         </div>
                         <div class="field">
                             <div class="label">Prénom<span style="color: red;">*</span></div>
-                            <input type="text" name="prenom">
+                            <input type="text" name="prenom"required>
                         </div>
                         <div class="field">
                             <div class="label">Nom<span style="color: red;">*</span></div>
-                            <input type="text" name="nom">
+                            <input type="text" name="nom"required>
                         </div>
                         <div class="field">
                             <button class="firstNext next">Suivant</button>
@@ -106,7 +106,7 @@ include("../class/User.php");
                         <div class="title">Information étudiant:</div>
                         <div class="field">
                             <div class="label">Classe<span style="color: red;">*</span></div>
-                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" name="classe">
+                            <select style="background-color: #323338;border: 1px solid #282a2e;color:#fff;" name="classe"required>
                                 <option value="1">BTS SN 1 - Systèmes Numérique</option>
                                 <option value="2">BTS SN 2 - Systèmes Numérique</option>
                                 <!--<option value="3">BTS CIEL 1 - CyberSécurité Électronique</option>
@@ -130,11 +130,11 @@ include("../class/User.php");
                         <div class="title">Informations compte:</div>
                         <div class="field">
                             <div class="label">Nom d'utilisateur<span style="color: red;">*</span></div>
-                            <input type="text" id="nom" name="login" onchange="onNomChange();">
+                            <input type="text" id="nom" name="login" onchange="onNomChange();"required>
                         </div>
                         <div class="field">
                             <div class="label">Mot de passe<span style="color: red;">*</span></div>
-                            <input type="password" name="password">
+                            <input type="password" name="password"required>
                         </div>
                         <div class="field">
                             <div class="label">Avatar (non-obligatoire)</div>
@@ -199,7 +199,7 @@ include("../class/User.php");
                             <button class="submit" name="envoyer">Terminer</button>
                         </div>
                         <div class="link">
-                            <input type="checkbox">&nbsp;&nbsp;
+                            <input name="cgu" type="checkbox"required>&nbsp;&nbsp;
                             <span>Je confirme avoir eu connaissance des<br> 
                                 <a href="cgu.pdf" class="link"><strong>conditions générales d'utilisation</strong></a> 
                                 <span style="color: red;">*</span>
