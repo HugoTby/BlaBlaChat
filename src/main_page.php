@@ -164,7 +164,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <!--server focusable active -->
                             <div class="server focusable <?php if ($_SESSION['idServer'] == 1) {
                                                                 echo "active";
-                                                            } ?> role=" button" aria-label="My Server" aria-selected="true">
+                                                            } ?> role="button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn1.JPG" />
@@ -499,7 +499,7 @@ if (array_key_exists($ip, $blacklist)) {
                         </li>
 
                         <li class="channel focusable channel-text">
-                            <span class="channel-name">aide</span>
+                            <span class="channel-name">prochainement ...</span>
                             <button class="button" role="button" aria-label="Invite"><svg>
                                     <use xlink:href="#icon-invite" />
                                 </svg></button>

@@ -1242,6 +1242,18 @@ h4 {
   padding: 10px;
   font-size: 10px;
 }
+.option h1{
+  font-weight: normal;
+}
+#details-view-label h1{
+  font-weight: normal;
+}
+.account-field h1{
+  font-weight: normal;
+}
+#save-options h1{
+  font-weight: normal;
+}
 
 .option:hover {
   background-color: #03a9f4;
