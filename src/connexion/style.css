@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Exo', sans-serif;
   }
   
   body{
@@ -14,7 +15,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     /* font-family: 'Whitney', sans-serif; */
-    font-family: 'Exo', sans-serif;
     text-rendering: optimizeLegibility;
     user-select: none;
   }
@@ -68,7 +68,7 @@
     border: 0;
     font-weight: inherit;
     font-style: inherit;
-    font-family: inherit;
+    /* font-family: inherit; */
     font-size: 100%;
     vertical-align: baseline;
     flex: 1 1 auto;
@@ -124,6 +124,9 @@
   .form-group{ 
     width: 100%;
     text-align: left;
+  }
+  input{
+    font-family: 'Exo', sans-serif;
   }
   
   .input-placeholder{
