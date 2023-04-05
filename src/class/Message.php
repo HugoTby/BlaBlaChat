@@ -106,9 +106,9 @@ class message
                 <div class="message-content">
                     <div class="message-header">
                         <span class="username"><?php echo $this->nom_ . " " . $this->prenom_ ?></span>
-                        <img style="height:15px;" src="<?php echo $this->icon_  ?>">
-                        <img style="height:15px;" src="<?php echo $this->icon2_  ?>">
-                        <img style="height:15px;" src="<?php echo $this->icon3_  ?>">
+                        <img style="height:15px;" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon_ ; }?>">
+                        <img style="height:15px;" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon2_ ; }?>">
+                        <img style="height:15px;" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon3_ ; }?>">
                         <span class="timestamp"><?php echo $date_formattee; ?></span>
                     </div>
                     <div class="message-text">

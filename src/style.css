@@ -4,17 +4,20 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: 
-  url('fonts/Roboto/Roboto-Black.ttf') format('truetype');
+  src:
+    url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'Poppins';
-  src: url('fonts/Poppins/Poppins-Black.ttf') format('truetype');
+  src: url('../fonts/Poppins/Poppins-Black.ttf') format('truetype');
 }
+
 @font-face {
-  font-family: 'Poppins';
-  src: url('fonts/Exo/Exo-VariableFont_wght.ttf') format('truetype');
+  font-family: 'Exo';
+  src: url('../fonts/Exo/static/Exo-Bold.ttf') format('truetype');
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -749,7 +752,7 @@ button#logout-button {
   height: 50px;
   width: 100%;
   font-size: 16px;
-  
+
 }
 
 /* Style pour le survol du bouton Envoyer */
@@ -819,14 +822,15 @@ button#logout-button:hover {
   color: #1e2124;
 }
 
-*::-webkit-scrollbar-thumb {        
+*::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 0 10px;
   color: #282b30;
 }
 
 /* Personnalisation de la largeur de la barre de défilement */
 body {
-  scrollbar-width: thin; /* ou auto ou none */
+  scrollbar-width: thin;
+  /* ou auto ou none */
 }
 
 /* Personnalisation de la couleur de la barre de défilement */
@@ -842,12 +846,14 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #282b30;;
+  background-color: #282b30;
+  ;
   box-shadow: inset 0 0 0 10px;
 }
 
 body {
-  scrollbar-color: #1e2124 #282b30; /* la couleur de la poignée et la couleur de fond de la barre de défilement */
+  scrollbar-color: #1e2124 #282b30;
+  /* la couleur de la poignée et la couleur de fond de la barre de défilement */
 }
 
 
@@ -1228,7 +1234,7 @@ h4 {
 #main {
   width: 100%;
   font-family: 'Exo', sans-serif;
-  padding-top: 50px;
+  /* padding-top: 50px; */
 }
 
 #options {
@@ -1254,22 +1260,27 @@ h4 {
   padding: 10px;
   font-size: 10px;
 }
-.option h1{
+
+.option h1 {
   font-weight: normal;
 }
-#details-view-label h1{
+
+#details-view-label h1 {
   font-weight: normal;
 }
-.account-field h1{
+
+.account-field h1 {
   font-weight: normal;
 }
-#save-options h1{
+
+#save-options h1 {
   font-weight: normal;
 }
 
 .option:hover {
   background-color: #03a9f4;
 }
+
 .option.selected {
   background-color: #03a9f4;
 }
@@ -1310,7 +1321,8 @@ h4 {
   vertical-align: top;
   width: calc(100% - 90px);
 }
-#account-fields h1{
+
+#account-fields h1 {
   padding-top: 10px;
 }
 
@@ -1326,7 +1338,7 @@ h4 {
 }
 
 #save-options {
-  margin-top: 20px;
+  margin-top: 15px;
   text-align: right;
   white-space: nowrap;
   font-size: 8px;
@@ -1344,6 +1356,344 @@ h4 {
   background-color: #4caf50;
   margin-left: 10px;
 }
-#cancel-button:hover{
+
+#cancel-button:hover {
   background-color: red;
+}
+
+.save-option-button input {
+  color: #fff;
+  border: none;
+  font-family: 'Exo', sans-serif;
+  font-size: 18px;
+}
+
+
+
+
+#option1 {
+  padding-left: 25%;
+}
+
+.profile {
+  /* width: 300px; */
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: calc(100vh - 20px);
+  box-shadow: var(--elevation-high);
+  background: #18191c;
+  padding-bottom: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  background: url("https://i.redd.it/1urtbjxssmt81.gif");
+  width: inherit;
+  height: 120px;
+  position: absolute;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  /*background-position: center center;
+ */
+  background-size: cover;
+}
+
+.banner .change-banner {
+  pointer-events: none;
+  visibility: hidden;
+  color: white;
+  font-family: inherit;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  position: absolute;
+  inset: 0;
+  /*text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+ */
+}
+
+.banner:hover {
+  box-shadow: inset 0 0 120px #000;
+}
+
+.banner:hover .change-banner {
+  visibility: visible;
+}
+
+.avatar2 {
+  pointer-events: all;
+  z-index: 101;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: url('https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png');
+  background-size: cover;
+  border: 6px solid #18191c;
+  cursor: pointer;
+}
+
+
+
+.avatar2__wrapper {
+  z-index: 102;
+  position: absolute;
+  position: relative;
+  top: 75px;
+  left: 16px;
+  overflow: hidden;
+  pointer-events: none;
+  padding-top: 5px;
+}
+
+.avatar2 .change-avatar {
+  /* visibility: hidden; */
+  max-width: 90px;
+  font-family: inherit;
+  font-size: 10px;
+  box-sizing: border-box;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 12px;
+  text-align: center;
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  color: white;
+}
+
+.avatar2:hover {
+  box-shadow: inset 0 0 120px #000;
+}
+
+.avatar2:hover .change-avatar {
+  visibility: visible;
+}
+
+.status-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: url("https://raw.githubusercontent.com/asty8926/icons/5f95e145ebfc5c65fb803db267c9832c67c004ec/status/online.svg"), #18191c;
+  float: right;
+  top: 55px;
+  border-radius: 50%;
+  border: 6px solid #18191c;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.headerTop {
+  padding-bottom: 12px;
+  flex-shrink: 0;
+  padding: 90px 16px 16px;
+  overflow: hidden;
+  position: relative;
+  pointer-events: none;
+}
+
+.headerTop .badges {
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  min-width: 100px;
+  max-width: 180px;
+  max-width: 185px;
+  justify-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -2px;
+  margin-bottom: -2px;
+  margin-top: 25px;
+  pointer-events: all;
+}
+
+.headerTop .badges .badge {
+  cursor: pointer;
+  margin: 0 2px 2px 0;
+  pointer-events: all;
+}
+
+.headerTop .headerText {
+  pointer-events: all;
+}
+
+.headerTop .headerText .nickname {
+  background: none;
+  border: none;
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.headerTop .headerText .headerTag {
+  margin-top: 0.3em;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.headerTop .headerText .headerTag .username {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  width: auto;
+  overflow: auto;
+  word-break: break-all;
+  text-overflow: unset;
+  white-space: normal;
+  color: #b9bbbe;
+  vertical-align: top;
+  display: inline;
+  -webkit-box-flex: 0;
+  flex: 0 1 auto;
+}
+
+.headerTop .headerText .headerTag .discrim {
+  color: #b9bbbe;
+  vertical-align: top;
+}
+
+.test {
+  background: red;
+  width: 200px;
+  height: 150px;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+/* input[type=number] {
+  -moz-appearance: textfield;
+} */
+.discrim-input {
+  color: #b9bbbe;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+p::text2 {
+  color: white;
+  text-shadow: 1px 1px #fff;
+}
+
+.badge img {
+  height: 15px;
+  width: 15px;
+}
+
+
+
+
+
+
+
+.container3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-input {
+  margin-bottom: 10px;
+  width: 50%;
+  height: 44px;
+  font-size: 18px;
+  background-color: #323338;
+  border: 1px solid #282a2e;
+  border-radius: 5px;
+  color: #a2a3a7;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.profile-label {
+  width: 50%;
+  background-color: #323338;
+  border: 1px solid #282a2e;
+  height: 44px;
+  border-radius: 5px;
+  color: #a2a3a7;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.profile-file {
+  display: none;
+}
+
+.profile-btn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+#backgroundlink {
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  padding-left: 15px;
+  font-size: 18px;
+  background-color: #323338;
+  border: 1px solid #282a2e;
+  color: #fff;
+}
+
+.profile-form {
+  display: flex;
 }

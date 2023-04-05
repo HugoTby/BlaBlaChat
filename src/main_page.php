@@ -56,6 +56,7 @@ if (array_key_exists($ip, $blacklist)) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <title>BlaBlaChat</title>
     </head>
+
     <body>
 
         <?php
@@ -139,6 +140,18 @@ if (array_key_exists($ip, $blacklist)) {
             $resultServ = $GLOBALS["pdo"]->query($requeteServ);
             $_SESSION['idServer'] = $_SESSION['saveSession'];
         }
+        if (isset($_POST['boutonEnvoiModif'])) {
+            $requeteModif = "UPDATE user SET nom='" . $_POST['nom'] . "', prenom='" . $_POST['prenom'] . "', mail='" . $_POST['mail'] . "', login='" . $_POST['login'] . "' WHERE id='" . $_SESSION['id'] . "';";
+            $resultModif = $GLOBALS["pdo"]->query($requeteModif);
+            header("Location:main_page.php");
+        }
+
+        if (isset($_POST['buttonChangeImg'])) {
+            echo $_POST['avatarText'];
+            $requeteModifImg = "UPDATE user SET avatar='" . $_POST['avatarText'] . "' WHERE id='" . $_SESSION['id'] . "';";
+            $resultModifImg = $GLOBALS["pdo"]->query($requeteModifImg);
+            header("Location:main_page.php");
+        }
         ?>
         <main class="container">
             <aside class="servers">
@@ -162,7 +175,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <!--server focusable active -->
                             <div class="server focusable <?php if ($_SESSION['idServer'] == 1) {
                                                                 echo "active";
-                                                            } ?> role="button" aria-label="My Server" aria-selected="true">
+                                                            } ?> role=" button" aria-label="My Server" aria-selected="true">
                                 <div class="server-icon" style="position: relative;">
                                     <button class="server-icon" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 0;" type="submit" name="SN1"></button>
                                     <img style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 1;pointer-events: none;" src="sn1.JPG" />
@@ -567,7 +580,7 @@ if (array_key_exists($ip, $blacklist)) {
                         }*/
                     ?>
 
-                    
+
 
                     <script>
                         // scrollToBottom();
@@ -634,7 +647,7 @@ if (array_key_exists($ip, $blacklist)) {
                 ?>
 
             </div>
-                
+
             <!-- A déplacer dans User.php [!] -->
             <script>
                 const openprofile = document.getElementById('openprofile');
@@ -710,56 +723,183 @@ if (array_key_exists($ip, $blacklist)) {
                             <div class="option" id="option-1">
                                 <h1>Vue globale</h1>
                             </div>
-                            <div class="option selected" id="option-2">
+                            <div class="option" id="option-2">
                                 <h1>Mon compte</h1>
                             </div>
                             <div class="option" id="option-3">
-                                <h1>Confidentialité</h1>
+                                <h1>Photo de profil</h1>
                             </div>
                             <div class="option" id="option-4">
-                                <h1>Langue</h1>
+                                <h1>Confidentialité</h1>
                             </div>
                             <div class="option" id="option-5">
-                                <h1>Logs</h1>
+                                <h1>Langue</h1>
                             </div>
                         </div>
                         <div id="details-view-wrapper">
-                            <div id="details-view">
+
+                            <div id="option1">
+                                <div class="profile">
+                                    <div class="banner">
+                                        <div class="change-banner">
+                                        </div>
+                                        <script>
+                                            // Liste des classes CSS correspondant aux différentes images de fond possibles
+                                            var backgrounds = ['background-1', 'background-2', 'background-3'];
+
+                                            // Choix aléatoire d'une classe CSS parmi les images de fond possibles
+                                            var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+                                            // Ajout de la classe CSS choisie à l'élément HTML correspondant à la bannière
+                                            document.getElementsByClassName('banner')[0].classList.add(randomBackground);
+                                        </script>
+                                    </div>
+                                    <div class="avatar2__wrapper">
+                                        <div class="avatar2">
+                                            <div class="change-avatar2">
+                                                <div><?php //$User1->getAvatar(); 
+                                                        ?></div>
+                                            </div>
+
+                                            <div class="status-icon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="headerTop">
+                                        <div class="headerText">
+                                            <p style="text-align: left;">
+                                                <strong>
+                                                    <span style=" color: #ffffff;text-align: left;"><b><?php $User1->getPseudo(); ?></b></span>
+                                                </strong>
+                                                <span style="color: #ffffff;">
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span>
+                                                </span>
+
+                                            </p>
+                                            <div class="headerTag">
+                                                <p style="color:#b6b8bb;text-align: left;">Utilisateur de BlaBlaChat</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="option2">
                                 <div id="details-view-label">
                                     <h1>MON COMPTE</h1>
                                 </div>
-                                <div id="my-account-info-wrapper">
-                                    <div id="my-account-info">
-                                        <div id="profile-pic">
-                                            <img id="profile-pic" src="https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png">
+                                <form method="post">
+                                    <div id="my-account-info-wrapper">
+                                        <div id="my-account-info">
+                                            <div id="profile-pic">
+                                                <img id="profile-pic" src="<?php $User1->getAvatar(); ?>">
+                                            </div>
+
+                                            <div id="account-fields">
+                                                <div class="account-field">
+                                                    <h1 style="padding-top: 0px;" class="label">NOM D'UTILISATEUR :</h1><input class="input" type="text" name="login" value="<?php $User1->getPseudo(); ?>" />
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">ADRESSE E-MAIL :</h1><input class="input" type="text" name="mail" value="<?php $User1->getMail(); ?>" />
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">NOM :</h1><input class="input" type="text" name="nom" value="<?php $User1->getNom(); ?>" />
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">PRENOM :</h1><input class="input" type="text" name="prenom" value="<?php $User1->getPrenom(); ?>" />
+                                                </div>
+
+                                            </div>
+
                                         </div>
-                                        <div id="account-fields">
-                                            <div class="account-field">
-                                                <h1 style="padding-top: 0px;" class="label">NOM D'UTILISATEUR</h1><input class="input" type="text" value="Bloop" />
-                                            </div>
-                                            <div class="account-field">
-                                                <h1 class="label">ADRESSE E-MAIL</h1><input class="input" type="text" value="bloop@blablachat.fr" />
-                                            </div>
-                                            <div class="account-field">
-                                                <h1 class="label">MOT DE PASSE ACTUEL</h1><input class="input" type="password" value="bloopiedoopiedoo" />
-                                            </div>
+
+
+                                    </div>
+                                    <div id="save-options">
+
+                                        <!-- <div class="save-option-button" id="cancel-button">
+                                            <h1 type="submit">Supprimer le compte</h1>
+                                        </div> -->
+                                        <div class="save-option-button" id="save-button">
+                                            <input type="submit" class="save-option-button" id="save-button" value="Modifier le profil" name="boutonEnvoiModif">
+
+
                                         </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="option3">
+                                <div class="container3">
+                                    <img class="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="Photo de profil"><br>
+                                    <div class="profile-form">
+                                        <form method="post">
+                                            <!-- <input type="file" style="display: none;" name="avatarFile" placeholder="Par Lien"></label><br> -->
+                                            <input type="text" id="backgroundlink" name="avatarText" style="width: 100%;" placeholder="Copiez votre lien ici" /><br><br>
+                                            <button type="submit" class="profile-btn" name="buttonChangeImg">Changer</button>
+                                        </form>
                                     </div>
                                 </div>
-                                <div id="save-options">
-                                    <div class="save-option-button" id="cancel-button">
-                                        <h1>Supprimer le compte</h1>
-                                    </div>
-                                    <div class="save-option-button" id="save-button">
-                                        <h1>Confirmer</h1>
-                                    </div>
-                                </div>
+                            </div>
+                            <div id="option4">
+                                Fonctionnalité en cours de développement ...
+                            </div>
+                            <div id="option5">
+                                Fonctionnalité en cours de développement ...
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <script>
+            // Récupérer les éléments du DOM nécessaires
+            const options = document.querySelectorAll('.option');
+            const detailsViews = document.querySelectorAll('#details-view-wrapper > div');
+
+            // Fonction pour masquer toutes les vues détaillées
+            function hideAllDetailsViews() {
+                detailsViews.forEach((view) => {
+                    view.style.display = 'none';
+                });
+            }
+
+            // Fonction pour afficher une vue détaillée
+            function showDetailsView(viewId) {
+                // Masquer toutes les vues détaillées
+                hideAllDetailsViews();
+
+                // Retirer la classe "selected" de toutes les options
+                options.forEach((option) => {
+                    option.classList.remove('selected');
+                });
+
+                // Ajouter la classe "selected" à l'option correspondante
+                const selectedOption = document.querySelector(`#option-${viewId}`);
+                selectedOption.classList.add('selected');
+
+                // Afficher la vue détaillée correspondant à l'option sélectionnée
+                const detailsView = document.querySelector(`#option${viewId}`);
+                detailsView.style.display = 'block';
+            }
+
+            // Écouteurs d'événements pour chaque option
+            options.forEach((option) => {
+                option.addEventListener('click', () => {
+                    const viewId = option.id.replace('option-', '');
+                    showDetailsView(viewId);
+                });
+            });
+
+            // Masquer toutes les vues détaillées initialement
+            hideAllDetailsViews();
+
+            // Afficher la première vue détaillée (option1) initialement
+            const firstDetailsView = document.querySelector('#option1');
+            firstDetailsView.style.display = 'block';
+            const firstOption = document.querySelector('#option-1');
+            firstOption.classList.add('selected');
+        </script>
 
         <script>
             const opensettings = document.getElementById('opensettings');
@@ -773,7 +913,6 @@ if (array_key_exists($ip, $blacklist)) {
                 modalsettings_container.classList.remove('show');
             });
         </script>
-
 
 
         <!-- ICONS -->

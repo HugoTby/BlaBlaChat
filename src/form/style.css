@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,500,700");
+@font-face {
+    font-family: 'Roboto';
+    src: 
+    url('../../fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    src: url('../../fonts/Poppins/Poppins-Black.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Exo';
+    src: url('../../fonts/Exo/static/Exo-Bold.ttf') format('truetype');
+  }
 
 * {
     box-sizing: border-box;

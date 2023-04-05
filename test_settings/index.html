@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="settings-panel">
+        <div class="button" id="close-button"><i class="fas fa-times"></i></div>
+        <div id="options">
+            <div id="options-label">
+                <h1>PARAMÈTRES UTILISATEUR</h1>
+            </div>
+            <div class="option" id="option-1">
+                <h1>Vue globale</h1>
+            </div>
+            <div class="option selected" id="option-2">
+                <h1>Mon compte</h1>
+            </div>
+            <div class="option" id="option-3">
+                <h1>Photo de profil</h1>
+            </div>
+            <div class="option" id="option-4">
+                <h1>Confidentialité</h1>
+            </div>
+            <div class="option" id="option-5">
+                <h1>Langue</h1>
+            </div>
+        </div>
+        <div id="details-view-wrapper">
+            <div id="option1">
+                option 1
+            </div>
+            <div id="option2">
+                option 2
+            </div>
+            <div id="option3">
+                option 3
+            </div>
+            <div id="option4">
+                option 4
+            </div>
+            <div id="option5">
+                option 5
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        // Récupérer les éléments du DOM nécessaires
+        const options = document.querySelectorAll('.option');
+        const detailsViews = document.querySelectorAll('#details-view-wrapper > div');
+
+        // Fonction pour masquer toutes les vues détaillées
+        function hideAllDetailsViews() {
+            detailsViews.forEach((view) => {
+                view.style.display = 'none';
+            });
+        }
+
+        // Fonction pour afficher une vue détaillée
+        function showDetailsView(viewId) {
+            // Masquer toutes les vues détaillées
+            hideAllDetailsViews();
+
+            // Retirer la classe "selected" de toutes les options
+            options.forEach((option) => {
+                option.classList.remove('selected');
+            });
+
+            // Ajouter la classe "selected" à l'option correspondante
+            const selectedOption = document.querySelector(`#option-${viewId}`);
+            selectedOption.classList.add('selected');
+
+            // Afficher la vue détaillée correspondant à l'option sélectionnée
+            const detailsView = document.querySelector(`#option${viewId}`);
+            detailsView.style.display = 'block';
+        }
+
+        // Écouteurs d'événements pour chaque option
+        options.forEach((option) => {
+            option.addEventListener('click', () => {
+                const viewId = option.id.replace('option-', '');
+                showDetailsView(viewId);
+            });
+        });
+
+        // Masquer toutes les vues détaillées initialement
+        hideAllDetailsViews();
+
+        // Afficher la première vue détaillée (option-1) initialement
+        const firstDetailsView = document.querySelector('#option1');
+        firstDetailsView.style.display = 'block';
+
+    </script>
+</body>
+
+</html>

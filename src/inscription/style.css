@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
+@font-face {
+    font-family: 'Roboto';
+    src: 
+    url('../../fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    src: url('../../fonts/Poppins/Poppins-Black.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Exo';
+    src: url('../../fonts/Exo/static/Exo-Bold.ttf') format('truetype');
+  }
 * {
     margin: 0;
     padding: 0;

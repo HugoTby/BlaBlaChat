@@ -14,6 +14,18 @@ class user
     private $icon2_;
     private $icon3_;
 
+    private $id2_;
+    private $nom2_;
+    private $prenom2_;
+    private $avatar2_;
+    private $icon_1_2_;
+    private $icon2_2_;
+    private $icon3_2_;
+    private $role2_;
+
+
+
+
     public function __construct($id, $prenom, $nom, $mail, $role, $classe, $login, $avatar)
     {
         $this->id_ = $id;
@@ -131,6 +143,18 @@ class user
     {
         echo $this->nom_ . " " . $this->prenom_;
     }
+    public function getNomPrenom2()
+    {
+        echo $this->nom2_ . " " . $this->prenom2_;
+    }
+    public function getNom()
+    {
+        echo $this->nom_;
+    }
+    public function getPrenom()
+    {
+        echo $this->prenom_;
+    }
     public function getPseudo()
     {
         echo $this->login_;
@@ -139,11 +163,33 @@ class user
     {
         echo $this->idbdd_;
     }
+    public function getMail()
+    {
+        echo $this->mail_;
+    }
+    /*
+    public function getMdp()
+    {
+        echo $this->password_;
+    }*/
     public function getAvatar()
     {
         echo $this->avatar_;
     }
-
+    public function getAvatar2()
+    {
+        echo $this->avatar2_;
+    }
+    public function getIcon1(){
+        echo $this->icon_ ;
+    }
+    public function getIcon2(){
+        echo $this->icon2_ ;
+    }
+    public function getIcon3(){
+        echo $this->icon3_ ;
+    }
+    
     public function affichePseudoServ1($id)
     {
         $requete2 = "SELECT * FROM `user` 
@@ -154,14 +200,14 @@ class user
         if ($result2->rowCount() > 0) {
             $tab = $result2->fetch();
 
-            $this->id_ = $tab['id'];
-            $this->nom_ = $tab['nom'];
-            $this->prenom_ = $tab['prenom'];
-            $this->avatar_ = $tab['avatar'];
-            $this->icon_ = $tab['icon'];
-            $this->icon2_ = $tab['icon2'];
-            $this->icon3_ = $tab['icon3'];
-            $this->role_ = $tab['role'];
+            $this->id2_ = $tab['id'];
+            $this->nom2_ = $tab['nom'];
+            $this->prenom2_ = $tab['prenom'];
+            $this->avatar2_ = $tab['avatar'];
+            $this->icon_1_2_ = $tab['icon'];
+            $this->icon2_2_ = $tab['icon2'];
+            $this->icon3_2_ = $tab['icon3'];
+            $this->role2_ = $tab['role'];
 
 ?>
 
@@ -172,7 +218,7 @@ class user
                             <svg width="40" height="40" viewBox="0 0 40 40" class="mask" aria-hidden="true">
                                 <foreignObject x="0" y="0" width="32" height="32" mask="url(#svg-mask-avatar-status-round-32)">
                                     <div class="avatarStack-3Bjmsl">
-                                        <img src="<?php $this->getAvatar() ?>" alt=" " class="avatar-31d8He" aria-hidden="true">
+                                        <img src="<?php $this->getAvatar2() ?>" alt=" " class="avatar-31d8He" aria-hidden="true">
                                     </div>
                                 </foreignObject>
                                 <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)" class="pointerEvents"></circle>
@@ -183,12 +229,12 @@ class user
                         <div class="nameAndDecorators-3ERwy2">
                             <div class="name-3Vmqxm">
                                 <span class="username-i5-wv-">
-                                    <span class="username-3_PJ5r desaturateUserColors-1O-G89"><?php $this->getNomPrenom() ?></span>
+                                    <span class="username-3_PJ5r desaturateUserColors-1O-G89"><?php $this->getNomPrenom2() ?></span>
                                 </span>
                             </div>
-                            <img style="padding-left:8px;height:15px" src="<?php echo $this->icon_ ?>">
-                            <img style="padding-left:8px;height:15px" src="<?php echo $this->icon2_ ?>">
-                            <img style="padding-left:8px;height:15px" src="<?php echo $this->icon3_ ?>">
+                            <img style="padding-left:8px;height:15px" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon_1_2_ ; }?>">
+                            <img style="padding-left:8px;height:15px" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon2_2_ ; }?>">
+                            <img style="padding-left:8px;height:15px" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon3_2_ ; }?>">
                         </div>
                         <div class="subText-OGOWMj"><?php /*echo $this->role_*/ ?>functionality in progress...</div>
                     </div>

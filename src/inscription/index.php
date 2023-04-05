@@ -7,7 +7,7 @@ session_start();
 include("../class/User.php");
 ?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr" oncontextmenu="return false;">
+<html lang="en" dir="ltr" oncontextmenu="return true;">
 
 <head>
     <meta charset="utf-8">
@@ -85,15 +85,15 @@ include("../class/User.php");
                         <div class="title">Informations générales:</div>
                         <div class="field">
                             <div class="label">Adresse e-mail<span style="color: red;">*</span></div>
-                            <input type="text" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                            <input type="text" autocomplete="off" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                         </div>
                         <div class="field">
                             <div class="label">Prénom<span style="color: red;">*</span></div>
-                            <input type="text" name="prenom"required>
+                            <input type="text" autocomplete="off" name="prenom"required>
                         </div>
                         <div class="field">
                             <div class="label">Nom<span style="color: red;">*</span></div>
-                            <input type="text" name="nom"required>
+                            <input type="text" autocomplete="off" name="nom"required>
                         </div>
                         <div class="field">
                             <button class="firstNext next">Suivant</button>
@@ -130,16 +130,16 @@ include("../class/User.php");
                         <div class="title">Informations compte:</div>
                         <div class="field">
                             <div class="label">Nom d'utilisateur<span style="color: red;">*</span></div>
-                            <input type="text" id="nom" name="login" onchange="onNomChange();"required>
+                            <input type="text" id="nom" name="login" autocomplete="off" onchange="onNomChange();"required>
                         </div>
                         <div class="field">
                             <div class="label">Mot de passe<span style="color: red;">*</span></div>
-                            <input type="password" name="password"required>
+                            <input type="password" autocomplete="off" name="password"required>
                         </div>
                         <div class="field">
                             <div class="label">Avatar (non-obligatoire)</div>
-                            <label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;">Par fichier<input type="file" style="display: none;" name="avatar" placeholder="Par Lien" onchange="onPdpChange2(event);"></label>
-                            <input type="text" id="background" name="avatar" style="width: 50%;" placeholder="Par Lien" onchange="onPdpChange();" />
+                            <!--<label style="width: 50%;background-color: #323338;border: 1px solid #282a2e;height: 100%;border-radius: 5px;color:#a2a3a7;font-size:18px;line-height: 44px;">Par fichier<input type="file" style="display: none;" name="avatar" placeholder="Par Lien" onchange="onPdpChange2(event);"></label>-->
+                            <input type="text" id="background" name="avatar" autocomplete="off" style="width: 100%;" placeholder="Par Lien" onchange="onPdpChange();" />
                         </div>
                         <div class="field btns">
                             <button class="prev-2 prev">Précédent</button>
