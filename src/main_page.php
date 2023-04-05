@@ -56,8 +56,6 @@ if (array_key_exists($ip, $blacklist)) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <title>BlaBlaChat</title>
     </head>
-
-
     <body>
 
         <?php
