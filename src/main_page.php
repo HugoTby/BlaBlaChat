@@ -42,7 +42,7 @@ if (array_key_exists($ip, $blacklist)) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="fr" oncontextmenu="return false;">
+    <html lang="fr" oncontextmenu="return true;">
 
     <head>
         <meta charset="UTF-8">
@@ -567,12 +567,7 @@ if (array_key_exists($ip, $blacklist)) {
                         }*/
                     ?>
 
-                    <script>
-                        // setInterval('load_messages()',5000);
-                        // function load_messages(){
-                        //     $('#messages').load('get_latest_messages.php');
-                        // }
-                    </script>
+                    
 
                     <script>
                         // scrollToBottom();
