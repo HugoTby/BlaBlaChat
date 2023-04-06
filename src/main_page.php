@@ -550,15 +550,21 @@ if (array_key_exists($ip, $blacklist)) {
                 </section>
                 <?php
                 if ($_SESSION['messageErreur'] != 0) {
-                    if ($_SESSION['messageErreur'] == 3) {
+                    if ($_SESSION['messageErreur'] == 3 or $_SESSION['messageErreur'] ==4 or $_SESSION['messageErreur'] ==5) {
                 ?>
                         <div class="warning-active" id="warning-content">
                             <div class="rectangle" style="background: #2fda1e;">
                                 <div class="notification-text">
                                     <i class="gg-info"></i>
-                                    <span style="text-align: right;">
-                                        &nbsp;&nbsp;Votre mot de passe à bien été changé.
-                                        <?php $_SESSION['messageErreur'] = 0; ?>
+                                    <span style="text-align: right;"><?php
+                                    if($_SESSION['messageErreur'] == 3){
+                                        echo "&nbsp;&nbsp;Votre mot de passe à bien été changé.";
+                                    }
+                                    elseif($_SESSION['messageErreur'] == 4){
+                                        echo "&nbsp;&nbsp;Votre mot de passe à bien été changé.";
+                                    }
+                                        
+                                         $_SESSION['messageErreur'] = 0; ?>
                                     </span>
                                 </div>
                             </div>
