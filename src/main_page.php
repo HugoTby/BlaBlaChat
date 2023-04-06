@@ -730,10 +730,10 @@ if (array_key_exists($ip, $blacklist)) {
                                 <h1>Photo de profil</h1>
                             </div>
                             <div class="option" id="option-4">
-                                <h1>Confidentialité</h1>
+                                <h1>Changer mot de passe</h1>
                             </div>
                             <div class="option" id="option-5">
-                                <h1>Langue</h1>
+                                <h1>Confidentialité</h1>
                             </div>
                         </div>
                         <div id="details-view-wrapper">
@@ -829,9 +829,17 @@ if (array_key_exists($ip, $blacklist)) {
                             </div>
                             <div id="option3">
                                 <div class="container3">
-                                    <img class="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="Photo de profil"><br>
+                                    <div class="account-field">
+                                        <h1 class="label">Apercu :</h1><br>
+                                    </div>
+                                    <img class="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="Photo de profil"><br><br>
+
+                                    <div class="account-field">
+                                        <h1 class="label" style="font-size : 16px"><u>Changer sa photo de profil :</h1></u><br>
+                                    </div>
                                     <div class="profile-form">
                                         <form method="post">
+                                            
                                             <!-- <input type="file" style="display: none;" name="avatarFile" placeholder="Par Lien"></label><br> -->
                                             <input type="text" id="backgroundlink" name="avatarText" style="width: 100%;" placeholder="Copiez votre lien ici" /><br><br>
                                             <button type="submit" class="profile-btn" name="buttonChangeImg">Changer</button>
@@ -840,7 +848,48 @@ if (array_key_exists($ip, $blacklist)) {
                                 </div>
                             </div>
                             <div id="option4">
-                                Fonctionnalité en cours de développement ...
+                            <div id="details-view-label">
+                                    <h1>CHANGER MOT DE PASSE</h1>
+                                </div>
+                                <form method="post">
+                                    <div id="my-account-info-wrapper">
+                                        <div id="my-account-info">
+                                            <div id="profile-pic">
+                                                <img id="profile-pic" src="<?php $User1->getAvatar(); ?>">
+                                            </div>
+
+                                            <div id="account-fields">
+                                                <div class="account-field">
+                                                    <h1 style="padding-top: 0px;" class="label">Mot de passe ACTUEL :</h1><input class="input" type="text" name="login"/>
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">Nouveau mot de passe :</h1><input class="input" type="text" name="mail" value="<?php $User1->getMail(); ?>" />
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">Mot de passe ACTUEL :</h1><input class="input" type="text" name="nom" value="<?php $User1->getNom(); ?>" />
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">PRENOM :</h1><input class="input" type="text" name="prenom" value="<?php $User1->getPrenom(); ?>" />
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div id="save-options">
+
+                                        <!-- <div class="save-option-button" id="cancel-button">
+                                            <h1 type="submit">Supprimer le compte</h1>
+                                        </div> -->
+                                        <div class="save-option-button" id="save-button">
+                                            <input type="submit" class="save-option-button" id="save-button" value="Modifier le profil" name="boutonEnvoiModif">
+
+
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div id="option5">
                                 Fonctionnalité en cours de développement ...
