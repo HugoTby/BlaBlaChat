@@ -144,14 +144,12 @@ if (array_key_exists($ip, $blacklist)) {
         if (isset($_POST['boutonEnvoiModif'])) {
             $requeteModif = "UPDATE user SET nom='" . $_POST['nom'] . "', prenom='" . $_POST['prenom'] . "', mail='" . $_POST['mail'] . "', login='" . $_POST['login'] . "' WHERE id='" . $_SESSION['id'] . "';";
             $resultModif = $GLOBALS["pdo"]->query($requeteModif);
-            $_SESSION['messageErreur'] = 4;
             header("Location:main_page.php");
         }
 
         if (isset($_POST['buttonChangeImg'])) {
             $requeteModifImg = "UPDATE user SET avatar='" . $_POST['avatarText'] . "' WHERE id='" . $_SESSION['id'] . "';";
             $resultModifImg = $GLOBALS["pdo"]->query($requeteModifImg);
-            $_SESSION['messageErreur'] = 5;
             header("Location:main_page.php");
         }
 
@@ -550,21 +548,15 @@ if (array_key_exists($ip, $blacklist)) {
                 </section>
                 <?php
                 if ($_SESSION['messageErreur'] != 0) {
-                    if ($_SESSION['messageErreur'] == 3 or $_SESSION['messageErreur'] ==4 or $_SESSION['messageErreur'] ==5) {
+                    if ($_SESSION['messageErreur'] == 3) {
                 ?>
                         <div class="warning-active" id="warning-content">
                             <div class="rectangle" style="background: #2fda1e;">
                                 <div class="notification-text">
                                     <i class="gg-info"></i>
-                                    <span style="text-align: right;"><?php
-                                    if($_SESSION['messageErreur'] == 3){
-                                        echo "&nbsp;&nbsp;Votre mot de passe à bien été changé.";
-                                    }
-                                    elseif($_SESSION['messageErreur'] == 4){
-                                        echo "&nbsp;&nbsp;Votre mot de passe à bien été changé.";
-                                    }
-                                        
-                                         $_SESSION['messageErreur'] = 0; ?>
+                                    <span style="text-align: right;">
+                                        &nbsp;&nbsp;Votre mot de passe à bien été changé.
+                                        <?php $_SESSION['messageErreur'] = 0; ?>
                                     </span>
                                 </div>
                             </div>
@@ -590,8 +582,7 @@ if (array_key_exists($ip, $blacklist)) {
                                     } elseif ($_SESSION['messageErreur'] == 3) {
                                         echo "&nbsp;&nbsp;Votre mot de passe a bien été changé.";
                                         $_SESSION['messageErreur'] = 0;
-                                    } 
-                                    else {
+                                    } else {
                                     } ?>
 
                                     <!-- &nbsp;&nbsp;This is a test notification. -->
