@@ -116,6 +116,7 @@ if (array_key_exists($ip, $blacklist)) {
         }
 
 
+
         $idSession = $_SESSION['id'];
         if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
             $requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $_POST['contenuMess'] . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
@@ -143,16 +144,39 @@ if (array_key_exists($ip, $blacklist)) {
         if (isset($_POST['boutonEnvoiModif'])) {
             $requeteModif = "UPDATE user SET nom='" . $_POST['nom'] . "', prenom='" . $_POST['prenom'] . "', mail='" . $_POST['mail'] . "', login='" . $_POST['login'] . "' WHERE id='" . $_SESSION['id'] . "';";
             $resultModif = $GLOBALS["pdo"]->query($requeteModif);
+            $_SESSION['messageErreur'] = 4;
             header("Location:main_page.php");
         }
 
         if (isset($_POST['buttonChangeImg'])) {
-            echo $_POST['avatarText'];
             $requeteModifImg = "UPDATE user SET avatar='" . $_POST['avatarText'] . "' WHERE id='" . $_SESSION['id'] . "';";
             $resultModifImg = $GLOBALS["pdo"]->query($requeteModifImg);
+            $_SESSION['messageErreur'] = 5;
             header("Location:main_page.php");
         }
+
+        if (isset($_POST['boutonChangePass'])) {
+            $passwerify = hash('sha256', $_POST['oldPass']);
+            $requeteVerifMDP = "SELECT * FROM `user` WHERE `id` =  '" . $_SESSION['id'] . "' AND `password` = '" . $passwerify . "' ;";
+            $resultVerifMDP = $GLOBALS["pdo"]->query($requeteVerifMDP);
+            if ($resultVerifMDP->rowCount() > 0) {
+                if ($_POST['newPass'] == $_POST['confirmNewPass']) {
+                    $passNew = hash('sha256', $_POST['newPass']);
+                    $requeteNewMDP = "UPDATE `user` SET `password` =  '$passNew' WHERE id='" . $_SESSION['id'] . "';";
+                    $resultNewMDP = $GLOBALS["pdo"]->query($requeteNewMDP);
+                    $_SESSION['messageErreur'] = 3;
+                } else {
+                    // echo "Nouveaux mots de passes non-identiques";
+                    $_SESSION['messageErreur'] = 1;
+                }
+            } else {
+                // echo "Ancien mot de passe incorrect";
+                $_SESSION['messageErreur']  = 2;
+            }
+            //header("Location:main_page.php");
+        }
         ?>
+
         <main class="container">
             <aside class="servers">
                 <div class="servers-collection">
@@ -524,16 +548,60 @@ if (array_key_exists($ip, $blacklist)) {
                     <h5>Voice Channels</h5>
                 </header> -->
                 </section>
-                <div class="warning-inactive" id="warning-content">
-                    <div class="rectangle">
-                        <div class="notification-text">
-                            <i class="gg-info"></i>
-                            <span style="text-align: right;">&nbsp;&nbsp;This is a test notification.</span>
+                <?php
+                if ($_SESSION['messageErreur'] != 0) {
+                    if ($_SESSION['messageErreur'] == 3) {
+                ?>
+                        <div class="warning-active" id="warning-content">
+                            <div class="rectangle" style="background: #2fda1e;">
+                                <div class="notification-text">
+                                    <i class="gg-info"></i>
+                                    <span style="text-align: right;">
+                                        &nbsp;&nbsp;Votre mot de passe à bien été changé.
+                                        <?php $_SESSION['messageErreur'] = 0; ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div><?php
+                            }
+                    else{
+                                ?>
+
+                    <div class="warning-active" id="warning-content">
+                        <div class="rectangle">
+                            <div class="notification-text">
+                                <i class="gg-info"></i>
+                                <span style="text-align: right;">
+
+
+                                    <?php
+                                    if ($_SESSION['messageErreur'] == 1) {
+                                        echo "&nbsp;&nbsp;Les nouveaux mots de passe saisis ne sont pas identiques.";
+                                        $_SESSION['messageErreur'] = 0;
+                                    } elseif ($_SESSION['messageErreur'] == 2) {
+                                        echo "&nbsp;&nbsp;L'ancien mot de passe saisi est incorrect.";
+                                        $_SESSION['messageErreur'] = 0;
+                                    } elseif ($_SESSION['messageErreur'] == 3) {
+                                        echo "&nbsp;&nbsp;Votre mot de passe a bien été changé.";
+                                        $_SESSION['messageErreur'] = 0;
+                                    } 
+                                    else {
+                                    } ?>
+
+                                    <!-- &nbsp;&nbsp;This is a test notification. -->
+
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php
+                    }
+                }
+
+                ?>
+
                 <footer class="channels-footer">
-                    <img class="avatar" alt="404" src="<?php $User1->getAvatar(); ?>" />
+                    <img class="avatar" alt="409" src="<?php $User1->getAvatar(); ?>" />
                     <div class="channels-footer-details">
                         <span class="username"><?php $User1->getPseudo(); ?></span>
                         <span class="tag">#<?php $User1->getId(); ?></span>
@@ -791,7 +859,7 @@ if (array_key_exists($ip, $blacklist)) {
                                     <div id="my-account-info-wrapper">
                                         <div id="my-account-info">
                                             <div id="profile-pic">
-                                                <img id="profile-pic" src="<?php $User1->getAvatar(); ?>">
+                                                <img id="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="EMPTY">
                                             </div>
 
                                             <div id="account-fields">
@@ -832,44 +900,41 @@ if (array_key_exists($ip, $blacklist)) {
                                     <div class="account-field">
                                         <h1 class="label">Apercu :</h1><br>
                                     </div>
-                                    <img class="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="Photo de profil"><br><br>
+                                    <img class="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="EMPTY"><br><br>
 
                                     <div class="account-field">
-                                        <h1 class="label" style="font-size : 16px"><u>Changer sa photo de profil :</h1></u><br>
+                                        <h1 class="label" style="font-size : 16px">Changer sa photo de profil :</h1><br>
                                     </div>
                                     <div class="profile-form">
                                         <form method="post">
-                                            
+
                                             <!-- <input type="file" style="display: none;" name="avatarFile" placeholder="Par Lien"></label><br> -->
-                                            <input type="text" id="backgroundlink" name="avatarText" style="width: 100%;" placeholder="Copiez votre lien ici" /><br><br>
+                                            <input type="text" id="backgroundlink" name="avatarText" style="width: 100%;" placeholder="Copiez votre lien ici" value="<?php $User1->getAvatar(); ?>" /><br><br>
                                             <button type="submit" class="profile-btn" name="buttonChangeImg">Changer</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div id="option4">
-                            <div id="details-view-label">
+                                <div id="details-view-label">
                                     <h1>CHANGER MOT DE PASSE</h1>
                                 </div>
-                                <form method="post">
+                                <form method="post" id="nom-du-formulaire">
                                     <div id="my-account-info-wrapper">
                                         <div id="my-account-info">
                                             <div id="profile-pic">
-                                                <img id="profile-pic" src="<?php $User1->getAvatar(); ?>">
+                                                <img id="profile-pic" src="<?php $User1->getAvatar(); ?>" alt="EMPTY">
                                             </div>
 
                                             <div id="account-fields">
                                                 <div class="account-field">
-                                                    <h1 style="padding-top: 0px;" class="label">Mot de passe ACTUEL :</h1><input class="input" type="text" name="login"/>
+                                                    <h1 style="padding-top: 0px;" class="label">Saisissez votre ancien mot de passe :</h1><input class="input" type="password" name="oldPass" />
                                                 </div>
                                                 <div class="account-field">
-                                                    <h1 class="label">Nouveau mot de passe :</h1><input class="input" type="text" name="mail" value="<?php $User1->getMail(); ?>" />
+                                                    <h1 class="label">Saisissez votre nouveau mot de passe :</h1><input class="input" type="password" name="newPass" />
                                                 </div>
                                                 <div class="account-field">
-                                                    <h1 class="label">Mot de passe ACTUEL :</h1><input class="input" type="text" name="nom" value="<?php $User1->getNom(); ?>" />
-                                                </div>
-                                                <div class="account-field">
-                                                    <h1 class="label">PRENOM :</h1><input class="input" type="text" name="prenom" value="<?php $User1->getPrenom(); ?>" />
+                                                    <h1 class="label">Confirmer votre nouveau mot de passe :</h1><input class="input" type="password" name="confirmNewPass" />
                                                 </div>
 
                                             </div>
@@ -884,7 +949,7 @@ if (array_key_exists($ip, $blacklist)) {
                                             <h1 type="submit">Supprimer le compte</h1>
                                         </div> -->
                                         <div class="save-option-button" id="save-button">
-                                            <input type="submit" class="save-option-button" id="save-button" value="Modifier le profil" name="boutonEnvoiModif">
+                                            <input onclick="toggleDiv();" type="submit" class="save-option-button" id="save-button" value="Changer mot de passe" name="boutonChangePass">
 
 
                                         </div>

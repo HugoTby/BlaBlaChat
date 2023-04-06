@@ -42,6 +42,7 @@ class user
     {
 
         $newpass = hash('sha256', $pass);
+        //$newpass = password_verify($pass, PASSWORD_DEFAULT);
         $requete = "SELECT * FROM `user` 
         WHERE
         `login` = '" . $login . "'
@@ -218,7 +219,7 @@ class user
                             <svg width="40" height="40" viewBox="0 0 40 40" class="mask" aria-hidden="true">
                                 <foreignObject x="0" y="0" width="32" height="32" mask="url(#svg-mask-avatar-status-round-32)">
                                     <div class="avatarStack-3Bjmsl">
-                                        <img src="<?php $this->getAvatar2() ?>" alt=" " class="avatar-31d8He" aria-hidden="true">
+                                        <img src="<?php $this->getAvatar2() ?>" alt="EMPTY" class="avatar-31d8He" aria-hidden="true">
                                     </div>
                                 </foreignObject>
                                 <circle cx="27" cy="27" r="5" fill="#00ff0c" mask="url(#svg-mask-status-dnd)" class="pointerEvents"></circle>

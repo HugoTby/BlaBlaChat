@@ -27,6 +27,7 @@ include("../class/User.php");
         // Si le bouton de confiramation est saisi, on crypte le mot de passe et on fini l'inscription en BDD, on renvoi l'user vers la page principale
         $motDePasse = $_POST['password'];
         $motDePasseCrypte = hash('sha256', $motDePasse);
+        //$motDePasseCrypte = password_hash($motDePasse, PASSWORD_DEFAULT);
         $User1->CreateNewUser($_POST['login'], $motDePasseCrypte,  $_POST['mail'], $_POST['prenom'], $_POST['nom'], $_POST['classe'], $_POST['avatar']);
         header('Location: ../main_page.php');
     }
