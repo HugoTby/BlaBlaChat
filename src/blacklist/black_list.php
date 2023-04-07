@@ -11,7 +11,7 @@ $blacklist = array(
     // Ajout des IP bloquées
     // " IP " => " user",
 
-    "192.168.65.3" => "hugo.tabary#6548",
+    "192.168.65.3" => "hugo.tabary#8180",
     // "192.168.65.19" => "prof",
 );
 
