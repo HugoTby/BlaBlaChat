@@ -142,10 +142,10 @@ if (array_key_exists($ip, $blacklist)) {
             $_SESSION['idServer'] = $_SESSION['saveSession'];
         }
         if (isset($_POST['boutonEnvoiModif'])) {
-            $requeteModif = "UPDATE user SET nom='" . $_POST['nom'] . "', prenom='" . $_POST['prenom'] . "', mail='" . $_POST['mail'] . "', login='" . $_POST['login'] . "' WHERE id='" . $_SESSION['id'] . "';";
+            $requeteModif = "UPDATE user SET nom='" . $_POST['nom'] . "', prenom='" . $_POST['prenom'] . "', mail='" . $_POST['mail'] . "', login='" . $_POST['login'] . "' , description='" . $_POST['description'] . "' WHERE id='" . $_SESSION['id'] . "';";
             $resultModif = $GLOBALS["pdo"]->query($requeteModif);
-            
-        $User1->setPseudoNomPrenomMail($_SESSION['id']);
+
+            $User1->setPseudoNomPrenomMail($_SESSION['id']);
             $_SESSION['messageErreur'] = 4;
         }
 
@@ -565,7 +565,7 @@ if (array_key_exists($ip, $blacklist)) {
                                 </div>
                             </div>
                         </div><?php
-                    } else if ($_SESSION['messageErreur'] == 4) {
+                            } else if ($_SESSION['messageErreur'] == 4) {
                                 ?>
                         <div class="warning-active" id="warning-content">
                             <div class="rectangle" style="background: #2fda1e;">
@@ -578,7 +578,7 @@ if (array_key_exists($ip, $blacklist)) {
                                 </div>
                             </div>
                         </div><?php
-                    } else if ($_SESSION['messageErreur'] == 5) {
+                            } else if ($_SESSION['messageErreur'] == 5) {
                                 ?>
                         <div class="warning-active" id="warning-content">
                             <div class="rectangle" style="background: #2fda1e;">
@@ -591,8 +591,8 @@ if (array_key_exists($ip, $blacklist)) {
                                 </div>
                             </div>
                         </div><?php
-                     
-                    }else {
+
+                            } else {
                                 ?>
 
                         <div class="warning-active" id="warning-content">
@@ -609,7 +609,7 @@ if (array_key_exists($ip, $blacklist)) {
                                         } else if ($_SESSION['messageErreur'] == 2) {
                                             echo "&nbsp;&nbsp;L'ancien mot de passe saisi est incorrect.";
                                             $_SESSION['messageErreur'] = 0;
-                                        }?>
+                                        } ?>
 
                                         <!-- &nbsp;&nbsp;This is a test notification. -->
 
@@ -847,29 +847,54 @@ if (array_key_exists($ip, $blacklist)) {
                                     </div>
                                     <div class="avatar2__wrapper">
                                         <div class="avatar2">
+                                            <style>
+                                                .avatar2 {
+                                                    pointer-events: all;
+                                                    z-index: 101;
+                                                    border-radius: 50%;
+                                                    width: 100px;
+                                                    height: 100px;
+                                                    background: url('<?php $User1->getAvatar(); ?>');
+                                                    background-size: cover;
+                                                    border: 6px solid #18191c;
+                                                    cursor: pointer;
+                                                }
+                                            </style>
+
                                             <div class="change-avatar2">
-                                                <img id="profile-pic" src="<?php $User1->getAvatar(); 
-                                                        ?>">
-                                                <div></div>
+                                                <div class="status-icon"></div>
                                             </div>
 
-                                            <div class="status-icon">
-                                            </div>
                                         </div>
                                     </div>
+                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
                                     <div class="headerTop">
+                                        <div class="badges">
+                                            <div class="badge">
+                                                 <?php if($User1->getIcon1() != NULL){ ?><img src=" <?php echo $User1->getIcon1() ;?> "><?php }?>
+                                            </div>
+                                            <div class="badge">
+                                                <img src="<?php $User1->getIcon2(); ?>"></img>
+                                            </div>
+                                            <div class="badge">
+                                                <img src="<?php $User1->getIcon3(); ?>"></img>
+                                            </div>
+                                        </div>
                                         <div class="headerText">
                                             <p style="text-align: left;">
                                                 <strong>
-                                                    <span style=" color: #ffffff;text-align: left;"><b><?php $User1->getPseudo(); ?></b></span>
+                                                    <span style=" color: ;text-align: left;"><b><?php $User1->getPseudo(); ?></b></span>
                                                 </strong>
                                                 <span style="color: #ffffff;">
-                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span>
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span><span style="text-align: right;padding-left:60%"><?php $User1->getClasse($id); ?></span>
                                                 </span>
+
 
                                             </p>
                                             <div class="headerTag">
-                                                <p style="color:#b6b8bb;text-align: left;">Utilisateur de BlaBlaChat</p>
+                                                <p style="color:#b6b8bb;text-align: left;">Statut : <?php $User1->getRole(); ?></p><br>
+                                                <p style="color:#ffffff;text-align: left;">Description : </p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php $User1->getDescription(); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -888,16 +913,19 @@ if (array_key_exists($ip, $blacklist)) {
 
                                             <div id="account-fields">
                                                 <div class="account-field">
-                                                    <h1 style="padding-top: 0px;" class="label">NOM D'UTILISATEUR :</h1><input class="input" type="text" name="login" value="<?php $User1->getPseudo(); ?>" />
+                                                    <h1 style="padding-top: 0px;" class="label">Nom d'utilisateur :</h1><input class="input" type="text" name="login" value="<?php $User1->getPseudo(); ?>" />
                                                 </div>
                                                 <div class="account-field">
-                                                    <h1 class="label">ADRESSE E-MAIL :</h1><input class="input" type="text" name="mail" value="<?php $User1->getMail(); ?>" />
+                                                    <h1 class="label">Adresse e-mail :</h1><input class="input" type="text" name="mail" value="<?php $User1->getMail(); ?>" />
                                                 </div>
                                                 <div class="account-field">
-                                                    <h1 class="label">NOM :</h1><input class="input" type="text" name="nom" value="<?php $User1->getNom(); ?>" />
+                                                    <h1 class="label">Nom :</h1><input class="input" type="text" name="nom" value="<?php $User1->getNom(); ?>" />
                                                 </div>
                                                 <div class="account-field">
-                                                    <h1 class="label">PRENOM :</h1><input class="input" type="text" name="prenom" value="<?php $User1->getPrenom(); ?>" />
+                                                    <h1 class="label">Prenom :</h1><input class="input" type="text" name="prenom" value="<?php $User1->getPrenom(); ?>" />
+                                                </div>
+                                                <div class="account-field">
+                                                    <h1 class="label">Description : (non-obligatoire)</h1><input class="input" type="text" name="description" value="<?php $User1->getDescription(); ?>" />
                                                 </div>
 
                                             </div>

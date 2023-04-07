@@ -29,7 +29,8 @@ include("../class/User.php");
         $motDePasseCrypte = hash('sha256', $motDePasse);
         //$motDePasseCrypte = password_hash($motDePasse, PASSWORD_DEFAULT);
         $User1->CreateNewUser($_POST['login'], $motDePasseCrypte,  $_POST['mail'], $_POST['prenom'], $_POST['nom'], $_POST['classe'], $_POST['avatar']);
-        header('Location: ../main_page.php');
+        
+        //header('Location: ../main_page.php');
     }
     ?>
 

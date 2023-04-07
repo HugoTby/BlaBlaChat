@@ -10,6 +10,7 @@ class user
     private $classe_;
     private $login_;
     private $avatar_;
+    private $description_;
     private $icon_;
     private $icon2_;
     private $icon3_;
@@ -63,6 +64,7 @@ class user
             $this->classe_ = $tab['classe'];
             $this->login_ = $tab['login'];
             $this->avatar_ = $tab['avatar'];
+            $this->description_ = ['description'];
 
             $this->icon_ = $tab['icon'];
             $this->icon2_ = $tab['icon2'];
@@ -90,11 +92,15 @@ class user
             $this->classe_ = $tab['classe'];
             $this->login_ = $tab['login'];
             $this->avatar_ = $tab['avatar'];
+            $this->description_ = $tab['description'];
             $pass = $tab['pass'];
-        } else {
+
+
+            // Définir l'avatar par défaut s'il n'est pas fourni
             if ($avatar1 == NULL) {
                 $avatar1 = 'https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png';
             }
+        }else{
             $requete = "INSERT INTO `user`(`prenom`, `nom`, `mail`, `classe`, `login`, `password`, `avatar`) 
             VALUES('$prenom1', '$nom1','$mail1', '$classe1', '$login1', '$pass1', '$avatar1');";
             $result = $GLOBALS["pdo"]->query($requete);
@@ -122,6 +128,7 @@ class user
             $this->role_ = $tab['role'];
             $this->classe_ = $tab['classe'];
             $this->avatar_ = $tab['avatar'];
+            $this->description_ = $tab['description'];
         }
     }
     public function isConnect()
@@ -140,9 +147,10 @@ class user
         }
     }
 
-    public function setPseudoNomPrenomMail($id){
+    public function setPseudoNomPrenomMail($id)
+    {
         $sql = "SELECT * FROM `user` 
-        WHERE `id` = '" . $id . "'" ;
+        WHERE `id` = '" . $id . "'";
         $resultat = $GLOBALS["pdo"]->query($sql);
         if ($tab = $resultat->fetch()) {
             $this->login_ = $tab['login'];
@@ -150,7 +158,11 @@ class user
             $this->nom_ = $tab['nom'];
             $this->mail_ = $tab['mail'];
             $this->avatar_ = $tab['avatar'];
+            $this->description_ = $tab['description'];
 
+            $this->icon_ = $tab['icon'];
+            $this->icon2_ = $tab['icon2'];
+            $this->icon3_ = $tab['icon3'];
         }
     }
 
@@ -182,6 +194,10 @@ class user
     {
         echo $this->mail_;
     }
+    public function getDescription()
+    {
+        echo $this->description_;
+    }
     /*
     public function getMdp()
     {
@@ -195,16 +211,32 @@ class user
     {
         echo $this->avatar2_;
     }
-    public function getIcon1(){
-        echo $this->icon_ ;
+    public function getIcon1()
+    {
+        echo $this->icon_;
     }
-    public function getIcon2(){
-        echo $this->icon2_ ;
+    public function getIcon2()
+    {
+        echo $this->icon2_;
     }
-    public function getIcon3(){
-        echo $this->icon3_ ;
+    public function getIcon3()
+    {
+        echo $this->icon3_;
     }
-    
+    public function getRole()
+    {
+        echo $this->role_;
+    }
+    public function getClasse($id)
+    {
+        $requeteClasse = "SELECT server.nom2 FROM `user`, `server` WHERE server.id=user.classe AND user.id= '" . $id . "';";
+        $resultClasse = $GLOBALS["pdo"]->query($requeteClasse);
+        if ($tab = $resultClasse->fetch()) {
+            $this->classe_ = $tab['nom2'];
+        }
+        echo $this->classe_;
+    }
+
     public function affichePseudoServ1($id)
     {
         $requete2 = "SELECT * FROM `user` 
@@ -247,9 +279,12 @@ class user
                                     <span class="username-3_PJ5r desaturateUserColors-1O-G89"><?php $this->getNomPrenom2() ?></span>
                                 </span>
                             </div>
-                            <img style="padding-left:8px;height:15px" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon_1_2_ ; }?>">
-                            <img style="padding-left:8px;height:15px" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon2_2_ ; }?>">
-                            <img style="padding-left:8px;height:15px" <?php if($this->icon_ != NULL){ ?> src=" <?php echo $this->icon3_2_ ; }?>">
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_ != NULL) { ?> src=" <?php echo $this->icon_1_2_;
+                                                                                                            } ?>">
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_ != NULL) { ?> src=" <?php echo $this->icon2_2_;
+                                                                                                            } ?>">
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_ != NULL) { ?> src=" <?php echo $this->icon3_2_;
+                                                                                                            } ?>">
                         </div>
                         <div class="subText-OGOWMj"><?php /*echo $this->role_*/ ?>functionality in progress...</div>
                     </div>
