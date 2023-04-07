@@ -39,4 +39,3 @@ Merci d'avoir choisi BlaBlaChat pour vos communications en ligne !
 - concept art
 
 ![preview](https://media.discordapp.net/attachments/733366929561092157/1086408396611272774/image.png?width=1381&height=910)
-![preview]()
