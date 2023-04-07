@@ -78,7 +78,7 @@ body {
   background: #2E3136;
   display: flex;
   flex-direction: column;
-  flex: 0 0 240px;
+  flex: 0 0 260px;
   overflow-y: auto;
 }
 

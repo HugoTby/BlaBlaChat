@@ -227,6 +227,10 @@ class user
     {
         echo $this->role_;
     }
+    public function getRole2()
+    {
+        echo $this->role2_;
+    }
     public function getClasse($id)
     {
         $requeteClasse = "SELECT server.nom2 FROM `user`, `server` WHERE server.id=user.classe AND user.id= '" . $id . "';";
@@ -279,14 +283,14 @@ class user
                                     <span class="username-3_PJ5r desaturateUserColors-1O-G89"><?php $this->getNomPrenom2() ?></span>
                                 </span>
                             </div>
-                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_ != NULL) { ?> src=" <?php echo $this->icon_1_2_;
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_1_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> src=" <?php echo $this->icon_1_2_;
                                                                                                             } ?>">
-                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_ != NULL) { ?> src=" <?php echo $this->icon2_2_;
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon2_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> src=" <?php echo $this->icon2_2_;
                                                                                                             } ?>">
-                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_ != NULL) { ?> src=" <?php echo $this->icon3_2_;
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon3_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> src=" <?php echo $this->icon3_2_;
                                                                                                             } ?>">
                         </div>
-                        <div class="subText-OGOWMj"><?php /*echo $this->role_*/ ?>functionality in progress...</div>
+                        <div class="subText-OGOWMj"><?php echo $this->role2_ ?></div>
                     </div>
                 </div>
             </div>

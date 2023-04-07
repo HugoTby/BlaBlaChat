@@ -868,15 +868,16 @@ if (array_key_exists($ip, $blacklist)) {
                                         </div>
                                     </div>
                                     <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
-                                    <div class="headerTop">
+                                    <div class="headerTop" >
                                         <div class="badges">
-                                            <div class="badge">
-                                                 <?php if($User1->getIcon1() != NULL){ ?><img src=" <?php echo $User1->getIcon1() ;?> "><?php }?>
+                                        <span style="padding-right: 20px;" ><?php $User1->getClasse($id); ?></span>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                                <img src="<?php $User1->getIcon1(); ?>"></img>
                                             </div>
-                                            <div class="badge">
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
                                                 <img src="<?php $User1->getIcon2(); ?>"></img>
                                             </div>
-                                            <div class="badge">
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
                                                 <img src="<?php $User1->getIcon3(); ?>"></img>
                                             </div>
                                         </div>
@@ -886,13 +887,14 @@ if (array_key_exists($ip, $blacklist)) {
                                                     <span style=" color: ;text-align: left;"><b><?php $User1->getPseudo(); ?></b></span>
                                                 </strong>
                                                 <span style="color: #ffffff;">
-                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span><span style="text-align: right;padding-left:60%"><?php $User1->getClasse($id); ?></span>
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span>
                                                 </span>
 
 
                                             </p>
                                             <div class="headerTag">
-                                                <p style="color:#b6b8bb;text-align: left;">Statut : <?php $User1->getRole(); ?></p><br>
+                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php $User1->getRole(); ?></span></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php $User1->getNomPrenom(); ?></p><br>
                                                 <p style="color:#ffffff;text-align: left;">Description : </p>
                                                 <p style="color:#b6b8bb;text-align: left;"><?php $User1->getDescription(); ?></p>
                                             </div>
