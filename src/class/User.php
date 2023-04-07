@@ -140,6 +140,20 @@ class user
         }
     }
 
+    public function setPseudoNomPrenomMail($id){
+        $sql = "SELECT * FROM `user` 
+        WHERE `id` = '" . $id . "'" ;
+        $resultat = $GLOBALS["pdo"]->query($sql);
+        if ($tab = $resultat->fetch()) {
+            $this->login_ = $tab['login'];
+            $this->prenom_ = $tab['prenom'];
+            $this->nom_ = $tab['nom'];
+            $this->mail_ = $tab['mail'];
+            $this->avatar_ = $tab['avatar'];
+
+        }
+    }
+
     public function getNomPrenom()
     {
         echo $this->nom_ . " " . $this->prenom_;
