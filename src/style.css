@@ -878,6 +878,91 @@ body {
 
 /* Notifications */
 
+.modalprofile-container {
+  background-color: rgba(0, 0, 0, 0.7); /*Fond transparent*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 0.3s ease;
+}
+
+.modalprofile-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalprofile {
+  background-color: #1e2124;
+  width: 700px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 30px 50px;
+  max-width: 100%;
+}
+
+.modalprofile .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modalprofile h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+}
+
+.modalprofile .date {
+  margin: 0;
+  color: #B9BBBE;
+  font-size: 16px;
+}
+
+.modalprofile img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.modalprofile .description h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.modalprofile .bar {
+  height: 5px;
+  width: 100%;
+  background-color: #43B581;
+  margin-bottom: 10px;
+}
+
+.modalprofile .bar2 {
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  margin-bottom: 10px;
+}
+
+.modalprofile ul {
+
+  margin: 0;
+  padding: 0;
+  color: #B9BBBE;
+}
+
+.modalprofile li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
 
 .modal-container {
   background-color: rgba(0, 0, 0, 0.7);

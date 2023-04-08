@@ -739,28 +739,17 @@ if (array_key_exists($ip, $blacklist)) {
 
             </div>
 
-            <!-- A déplacer dans User.php [!] -->
-            <script>
-                const openprofile = document.getElementById('openprofile');
-                const modalprofile_container = document.getElementById('modalprofile_container');
-                const closeprofile = document.getElementById('closeprofile');
+            
 
-                openprofile.addEventListener('click', () => {
-                    modalprofile_container.classList.add('show');
-                });
-                closeprofile.addEventListener('click', () => {
-                    modalprofile_container.classList.remove('show');
-                });
-            </script>
-            <!-- A déplacer dans User.php [!] -->
+            
 
 
 
             <aside class="accounts">
                 <?php $User1->affichePseudoServ2($_SESSION['idServer']); ?>
+                
 
-
-                <div class="member" aria-expanded="false">
+                <div class="member" aria-expanded="false" id="openprofile" class="openprofile" >
                     <div class="layout">
                         <div class="avatar">
                             <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">
@@ -787,6 +776,8 @@ if (array_key_exists($ip, $blacklist)) {
                         </div>
                     </div>
                 </div>
+
+               
 
                 <!-- <aside class="channels" style="flex: 1 1;padding-bottom: 5px;" >
                 <footer class="channels-footer">
@@ -1018,7 +1009,87 @@ if (array_key_exists($ip, $blacklist)) {
                 </div>
             </div>
         </div>
+        <div class="modalprofile-container" id="modalprofile_container">
+                    <div class="modalprofile">
+                        <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                            <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                        <div class="profile">
+                                    <div class="banner">
+                                        <div class="change-banner">
+                                        </div>
+                                        <script>
+                                            // Liste des classes CSS correspondant aux différentes images de fond possibles
+                                            var backgrounds = ['background-1', 'background-2', 'background-3'];
 
+                                            // Choix aléatoire d'une classe CSS parmi les images de fond possibles
+                                            var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+                                            // Ajout de la classe CSS choisie à l'élément HTML correspondant à la bannière
+                                            document.getElementsByClassName('banner')[0].classList.add(randomBackground);
+                                        </script>
+                                    </div>
+                                    <div class="avatar2__wrapper">
+                                        <div class="avatar2">
+                                            <style>
+                                                .avatar2 {
+                                                    pointer-events: all;
+                                                    z-index: 101;
+                                                    border-radius: 50%;
+                                                    width: 100px;
+                                                    height: 100px;
+                                                    background: url('<?php $User1->getAvatar(); ?>');
+                                                    background-size: cover;
+                                                    border: 6px solid #18191c;
+                                                    cursor: pointer;
+                                                }
+                                            </style>
+
+                                            <div class="change-avatar2">
+                                                <div class="status-icon"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
+                                    <div class="headerTop" >
+                                        <div class="badges">
+                                        <span style="padding-right: 20px;" ><?php $User1->getClasse($id); ?></span>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                                <img src="<?php $User1->getIcon1(); ?>"></img>
+                                            </div>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                                <img src="<?php $User1->getIcon2(); ?>"></img>
+                                            </div>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
+                                                <img src="<?php $User1->getIcon3(); ?>"></img>
+                                            </div>
+                                        </div>
+                                        <div class="headerText">
+                                            <p style="text-align: left;">
+                                                <strong>
+                                                    <span style=" color: ;text-align: left;"><b><?php $User1->getPseudo(); ?></b></span>
+                                                </strong>
+                                                <span style="color: #ffffff;">
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span>
+                                                </span>
+
+
+                                            </p>
+                                            <div class="headerTag">
+                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php $User1->getRole(); ?></span></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php $User1->getNomPrenom(); ?></p><br>
+                                                <p style="color:#ffffff;text-align: left;">Description : </p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php $User1->getDescription(); ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
 
         <script>
             // Récupérer les éléments du DOM nécessaires
@@ -1081,6 +1152,20 @@ if (array_key_exists($ip, $blacklist)) {
                 modalsettings_container.classList.remove('show');
             });
         </script>
+         <!-- A déplacer dans User.php [!] -->
+         <script>
+                const openprofile = document.getElementById('openprofile');
+                const modalprofile_container = document.getElementById('modalprofile_container');
+                const closeprofile = document.getElementById('closeprofile');
+
+                openprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.add('show');
+                });
+                closeprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.remove('show');
+                });
+            </script>
+            <!-- A déplacer dans User.php [!] -->
 
 
         <!-- ICONS -->
