@@ -262,7 +262,7 @@ class user
 
 ?>
 
-            <div class="member" aria-expanded="false" id="openprofile" class="openprofile">
+            <div class="member" aria-expanded="false" id="openprofile-<?php echo $id ?>" class="openprofile">
                 <div class="layout">
                     <div class="avatar">
                         <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">

@@ -1009,6 +1009,8 @@ if (array_key_exists($ip, $blacklist)) {
                 </div>
             </div>
         </div>
+
+
         <div class="modalprofile-container" id="modalprofile_container">
                     <div class="modalprofile">
                         <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
