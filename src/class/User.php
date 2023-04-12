@@ -129,6 +129,10 @@ class user
             $this->classe_ = $tab['classe'];
             $this->avatar_ = $tab['avatar'];
             $this->description_ = $tab['description'];
+            
+            $this->icon_ = $tab['icon'];
+            $this->icon2_ = $tab['icon2'];
+            $this->icon3_ = $tab['icon3'];
         }
     }
     public function isConnect()
@@ -262,7 +266,7 @@ class user
 
 ?>
 
-            <div class="member" aria-expanded="false" id="openprofile-<?php echo $id ?>" class="openprofile">
+            <div class="member" aria-expanded="false" id="openprofile" class="openprofile">
                 <div class="layout">
                     <div class="avatar">
                         <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">
@@ -283,14 +287,14 @@ class user
                                     <span class="username-3_PJ5r desaturateUserColors-1O-G89"><?php $this->getNomPrenom2() ?></span>
                                 </span>
                             </div>
-                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_1_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> src=" <?php echo $this->icon_1_2_;
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon_1_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> alt="" src=" <?php echo $this->icon_1_2_;
                                                                                                             } ?>">
-                            <img style="padding-left:8px;height:15px" <?php if ($this->icon2_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> src=" <?php echo $this->icon2_2_;
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon2_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> alt="" src=" <?php echo $this->icon2_2_;
                                                                                                             } ?>">
-                            <img style="padding-left:8px;height:15px" <?php if ($this->icon3_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> src=" <?php echo $this->icon3_2_;
+                            <img style="padding-left:8px;height:15px" <?php if ($this->icon3_2_ != "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png") { ?> alt="" src=" <?php echo $this->icon3_2_;
                                                                                                             } ?>">
                         </div>
-                        <div class="subText-OGOWMj"><?php echo $this->role2_ ?></div>
+                        <div class="subText-OGOWMj"><?php if($this->role2_ == "eleve"){echo "Élève";}else if($this->role2_ == "professeur"){echo "Professeur";} else if($this->role2_ == "developpeur"){echo "Développeur";} ?></div>
                     </div>
                 </div>
             </div>
@@ -310,5 +314,29 @@ class user
             $test = $Message['id'];
             $this->affichePseudoServ1($test);
         }
+    }
+
+    public function afficheIcon1(){
+        if($this->icon_!=NULL){
+            ?>
+            <img src=" <?php echo $this->icon_ ; ?> " alt="" ><?php 
+        }
+
+    }
+
+    public function afficheIcon2(){
+        if($this->icon2_!=NULL){
+            ?>
+            <img src=" <?php echo $this->icon2_ ; ?> " alt="" ><?php 
+        }
+
+    }
+
+    public function afficheIcon3(){
+        if($this->icon3_!=NULL){
+            ?>
+            <img src=" <?php echo $this->icon3_ ; ?> " alt="" ><?php 
+        }
+
     }
 }

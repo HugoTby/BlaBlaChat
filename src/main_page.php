@@ -177,6 +177,8 @@ if (array_key_exists($ip, $blacklist)) {
             }
             //header("Location:main_page.php");
         }
+
+
         ?>
 
         <main class="container">
@@ -660,6 +662,7 @@ if (array_key_exists($ip, $blacklist)) {
 
 
 
+
                     /*$_SESSION['idServer'] = 1;
                         $requetes = "SELECT * FROM `message` WHERE idServer=1 ;";
                         $resultat2 = $GLOBALS["pdo"]->query($requetes);
@@ -858,18 +861,20 @@ if (array_key_exists($ip, $blacklist)) {
 
                                         </div>
                                     </div>
-                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
+                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); 
+                                    ?>
+                                    
                                     <div class="headerTop" >
                                         <div class="badges">
                                         <span style="padding-right: 20px;" ><?php $User1->getClasse($id); ?></span>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php $User1->getIcon1(); ?>"></img>
+                                                <?php $User1->afficheIcon1(); ?>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php $User1->getIcon2(); ?>"></img>
+                                                <?php $User1->afficheIcon2(); ?>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
-                                                <img src="<?php $User1->getIcon3(); ?>"></img>
+                                                <?php $User1->afficheIcon3(); ?>
                                             </div>
                                         </div>
                                         <div class="headerText">
@@ -1061,13 +1066,13 @@ if (array_key_exists($ip, $blacklist)) {
                                         <div class="badges">
                                         <span style="padding-right: 20px;" ><?php $User1->getClasse($id); ?></span>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php $User1->getIcon1(); ?>"></img>
+                                                <img src="<?php $User1->getIcon1(); ?>" alt=""></img>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php $User1->getIcon2(); ?>"></img>
+                                                <img src="<?php $User1->getIcon2(); ?>" alt=""></img>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
-                                                <img src="<?php $User1->getIcon3(); ?>"></img>
+                                                <img src="<?php $User1->getIcon3(); ?>" alt=""></img>
                                             </div>
                                         </div>
                                         <div class="headerText">
