@@ -27,16 +27,9 @@ Pour toute question, commentaire ou suggestion concernant BlaBlaChat, veuillez n
 
 Merci d'avoir choisi BlaBlaChat pour vos communications en ligne !
 
-# Videos
-
-[![Watch the video](https://media.discordapp.net/attachments/733366929561092157/1086790980486832228/image.png)](https://youtu.be/iuKe9mZo5eg)
-[![Watch the video](https://media.discordapp.net/attachments/733366929561092157/1086791390668787813/image.png)](https://youtu.be/MQ-aPFWpJ6g)
 
 # Galerie
-- vue actuelle
 
-![preview](https://media.discordapp.net/attachments/733366929561092157/1086763366812495883/image.png?width=1618&height=910)
-- concept art
+![preview](https://github.com/HugoTby/BlaBlaChat/blob/main/logo/actual.png)
 
-![preview](https://media.discordapp.net/attachments/733366929561092157/1086408396611272774/image.png?width=1381&height=910)
 
