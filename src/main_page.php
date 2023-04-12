@@ -184,7 +184,8 @@ if (array_key_exists($ip, $blacklist)) {
         <main class="container">
             <aside class="servers">
                 <div class="servers-collection">
-                    <div class="server focusable server-friends unread" role="button" aria-label="Friends unread">
+                <!--<div class="server focusable server-friends unread" role="button" aria-label="Friends unread">-->
+                    <div class="server focusable server-friends" role="button" aria-label="Friends unread">
                         <div class="server-icon"><!--<svg>
                             <use xlink:href="#icon-friends" />
                         </svg> -->
@@ -529,12 +530,18 @@ if (array_key_exists($ip, $blacklist)) {
                     <ul class="channels-list-text">
                         <li class="channel focusable channel-text active">
                             <span class="channel-name">général</span>
-                            <button class="button" role="button" aria-label="Invite"><svg>
+                            <!--<button class="button" role="button" aria-label="Invite"><svg>
                                     <use xlink:href="#icon-invite" />
                                 </svg></button>
                             <button class="button" role="button" aria-label="settings"><svg>
                                     <use xlink:href="#icon-channel-settings" />
-                                </svg></button>
+                                </svg></button>-->
+                        </li>
+                        <li class="channel focusable channel-text">
+                            <span class="channel-name">aide</span>
+                        </li>
+                        <li class="channel focusable channel-text">
+                            <span class="channel-name">faq</span>
                         </li>
 
                         <!--<li class="channel focusable channel-text">
@@ -1015,8 +1022,7 @@ if (array_key_exists($ip, $blacklist)) {
             </div>
         </div>
 
-
-        <div class="modalprofile-container" id="modalprofile_container">
+        <!-- <div class="modalprofile-container" id="modalprofile_container">
                     <div class="modalprofile">
                         <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
                             <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -1048,7 +1054,7 @@ if (array_key_exists($ip, $blacklist)) {
                                                     border-radius: 50%;
                                                     width: 100px;
                                                     height: 100px;
-                                                    background: url('<?php $User1->getAvatar(); ?>');
+                                                    background: url('<?php //$User1->getAvatar(); ?>');
                                                     background-size: cover;
                                                     border: 6px solid #18191c;
                                                     cursor: pointer;
@@ -1061,42 +1067,43 @@ if (array_key_exists($ip, $blacklist)) {
 
                                         </div>
                                     </div>
-                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
+                                    <?php //$User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
                                     <div class="headerTop" >
                                         <div class="badges">
-                                        <span style="padding-right: 20px;" ><?php $User1->getClasse($id); ?></span>
+                                        <span style="padding-right: 20px;" ><?php //$User1->getClasse($id); ?></span>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php $User1->getIcon1(); ?>" alt=""></img>
+                                                <img src="<?php //$User1->getIcon1(); ?>" alt=""></img>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php $User1->getIcon2(); ?>" alt=""></img>
+                                                <img src="<?php //$User1->getIcon2(); ?>" alt=""></img>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
-                                                <img src="<?php $User1->getIcon3(); ?>" alt=""></img>
+                                                <img src="<?php //$User1->getIcon3(); ?>" alt=""></img>
                                             </div>
                                         </div>
                                         <div class="headerText">
                                             <p style="text-align: left;">
                                                 <strong>
-                                                    <span style=" color: ;text-align: left;"><b><?php $User1->getPseudo(); ?></b></span>
+                                                    <span style=" color: ;text-align: left;"><b><?php //$User1->getPseudo(); ?></b></span>
                                                 </strong>
                                                 <span style="color: #ffffff;">
-                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $User1->getId(); ?></span></span>
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php //$User1->getId(); ?></span></span>
                                                 </span>
 
 
                                             </p>
                                             <div class="headerTag">
-                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php $User1->getRole(); ?></span></p>
-                                                <p style="color:#b6b8bb;text-align: left;"><?php $User1->getNomPrenom(); ?></p><br>
+                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php //$User1->getRole(); ?></span></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getNomPrenom(); ?></p><br>
                                                 <p style="color:#ffffff;text-align: left;">Description : </p>
-                                                <p style="color:#b6b8bb;text-align: left;"><?php $User1->getDescription(); ?></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getDescription(); ?></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                     </div>
-                </div>
+                </div> -->
+        
 
         <script>
             // Récupérer les éléments du DOM nécessaires
@@ -1160,19 +1167,7 @@ if (array_key_exists($ip, $blacklist)) {
             });
         </script>
          <!-- A déplacer dans User.php [!] -->
-         <script>
-                //const openprofile = document.getElementById('openprofile');
-                const openprofile = document.getElementsByClassName('openprofile');
-                const modalprofile_container = document.getElementById('modalprofile_container');
-                const closeprofile = document.getElementById('closeprofile');
-
-                openprofile.addEventListener('click', () => {
-                    modalprofile_container.classList.add('show');
-                });
-                closeprofile.addEventListener('click', () => {
-                    modalprofile_container.classList.remove('show');
-                });
-            </script>
+         
             <!-- A déplacer dans User.php [!] -->
 
         

@@ -23,6 +23,7 @@ class user
     private $icon2_2_;
     private $icon3_2_;
     private $role2_;
+    private $description2_ ;
 
 
 
@@ -263,10 +264,11 @@ class user
             $this->icon2_2_ = $tab['icon2'];
             $this->icon3_2_ = $tab['icon3'];
             $this->role2_ = $tab['role'];
+            $this->description2_ = $tab['description'];
 
 ?>
 
-            <div class="member" aria-expanded="false" id="openprofile" class="openprofile">
+            <div class="member" aria-expanded="false" id="openprofile" class="openprofile <?php echo $id ?>">
                 <div class="layout">
                     <div class="avatar">
                         <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">
@@ -298,6 +300,101 @@ class user
                     </div>
                 </div>
             </div>
+
+            <div class="modalprofile-container" id="modalprofile_container">
+                    <div class="modalprofile">
+                        <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                            <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                        <div class="profile">
+                                    <div class="banner">
+                                        <div class="change-banner">
+                                        </div>
+                                        <script>
+                                            // Liste des classes CSS correspondant aux différentes images de fond possibles
+                                            var backgrounds = ['background-1', 'background-2', 'background-3'];
+
+                                            // Choix aléatoire d'une classe CSS parmi les images de fond possibles
+                                            var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+                                            // Ajout de la classe CSS choisie à l'élément HTML correspondant à la bannière
+                                            document.getElementsByClassName('banner')[0].classList.add(randomBackground);
+                                        </script>
+                                    </div>
+                                    <div class="avatar2__wrapper">
+                                        <div class="avatar2">
+                                            <style>
+                                                .avatar2 {
+                                                    pointer-events: all;
+                                                    z-index: 101;
+                                                    border-radius: 50%;
+                                                    width: 100px;
+                                                    height: 100px;
+                                                    background: url('<?php $this->getAvatar2(); ?>');
+                                                    background-size: cover;
+                                                    border: 6px solid #18191c;
+                                                    cursor: pointer;
+                                                }
+                                            </style>
+
+                                            <div class="change-avatar2">
+                                                <div class="status-icon"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="headerTop" >
+                                        <div class="badges">
+                                        <span style="padding-right: 20px;" ><?php //$this->getClasse($id); ?></span>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                                <img src="<?php $this->icon_1_2_; ?>" alt=""></img>
+                                            </div>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                                <img src="<?php $this->icon2_2_; ?>" alt=""></img>
+                                            </div>
+                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
+                                                <img src="<?php $this->icon3_2_; ?>" alt=""></img>
+                                            </div>
+                                        </div>
+                                        <div class="headerText">
+                                            <p style="text-align: left;">
+                                                <strong>
+                                                    <span style=" color: ;text-align: left;"><b><?php //$this->getPseudo2(); ?></b></span>
+                                                </strong>
+                                                <span style="color: #ffffff;">
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php $this->getId(); ?></span></span>
+                                                </span>
+
+
+                                            </p>
+                                            <div class="headerTag">
+                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php $this->role2_; ?></span></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php $this->getNomPrenom2(); ?></p><br>
+                                                <p style="color:#ffffff;text-align: left;">Description : </p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php echo $this->description2_; ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                                                                                                            
+            
+            <script>
+                const openprofile = document.getElementById('openprofile');
+                const modalprofile_container = document.getElementById('modalprofile_container');
+                const closeprofile = document.getElementById('closeprofile');
+
+                openprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.add('show');
+                });
+                closeprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.remove('show');
+                });
+            </script>
 <?php
         }
     }
