@@ -91,11 +91,11 @@ include("../class/User.php");
                         </div>
                         <div class="field">
                             <div class="label">Prénom<span style="color: red;">*</span></div>
-                            <input type="text" autocomplete="off" name="prenom"required>
+                            <input type="text" autocomplete="off" name="prenom" required>
                         </div>
                         <div class="field">
                             <div class="label">Nom<span style="color: red;">*</span></div>
-                            <input type="text" autocomplete="off" name="nom"required>
+                            <input type="text" autocomplete="off" name="nom" required>
                         </div>
                         <div class="field">
                             <button class="firstNext next">Suivant</button>

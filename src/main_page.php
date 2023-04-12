@@ -1161,7 +1161,8 @@ if (array_key_exists($ip, $blacklist)) {
         </script>
          <!-- A déplacer dans User.php [!] -->
          <script>
-                const openprofile = document.getElementById('openprofile');
+                //const openprofile = document.getElementById('openprofile');
+                const openprofile = document.getElementsByClassName('openprofile');
                 const modalprofile_container = document.getElementById('modalprofile_container');
                 const closeprofile = document.getElementById('closeprofile');
 
@@ -1174,7 +1175,7 @@ if (array_key_exists($ip, $blacklist)) {
             </script>
             <!-- A déplacer dans User.php [!] -->
 
-
+        
         <!-- ICONS -->
         <svg id="icon-friends" viewBox="-289 382 32 27.1">
             <style id="style3">
