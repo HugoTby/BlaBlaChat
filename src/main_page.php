@@ -159,8 +159,12 @@ if (array_key_exists($ip, $blacklist)) {
             if ($_POST['FAQ'] == NULL) {
                 $_POST['FAQ'] = 'NULL';
             }
+            
             $requeteServ = "UPDATE `user` SET `general`=" . $_POST['General'] . ",`gaming`=" . $_POST['Gaming'] . ",`humour`=" . $_POST['Humour'] . ",`faq`=" . $_POST['FAQ'] . " WHERE id= '" . $_SESSION['id'] . "';";
             $resultServ = $GLOBALS["pdo"]->query($requeteServ);
+            // $stmt = $pdo->prepare("UPDATE `user` SET `general`= ?, `gaming`= ?,`humour`= ?,`faq`= ? WHERE id= ? ");
+            // $stmt->execute(array($_POST['General'], $_POST['Gaming'], $_POST['Humour'], $_POST['FAQ'], $_SESSION['id']));
+
             $_SESSION['idServer'] = $_SESSION['saveSession'];
         }
         if (isset($_POST['boutonEnvoiModif'])) {
