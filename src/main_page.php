@@ -118,32 +118,31 @@ if (array_key_exists($ip, $blacklist)) {
 
 
         $idSession = $_SESSION['id'];
-?>
+        ?>
         <script>
-                    function verifierContenuMess() {
-                        var input = document.getElementById('chat-input').value;
-                        var pattern = /([<>])+|(--+)|(%[0-9a-fA-F]{2})/;
-                        if (pattern.test(input)) {
-                            alert("Votre saisie contient des caractères interdits. Veuillez saisir un texte valide.");
-                            return false;
-                        }
-                        else{
-                            return true;
-                        }
-                    }
-                </script>
-                <?php
-            if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
-                $message = $_POST['contenuMess'];
-                $message = htmlspecialchars($message);
-
-
-
-                //$requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $message . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
-                $stmt = $pdo->prepare("INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES (?, ?, ?, ?)");
-                $stmt->execute(array(date('Y-m-d H:i:s'), $message, $_SESSION['idServer'], $idSession));
-                //$resultMess = $GLOBALS["pdo"]->query($requeteMess);
+            function verifierContenuMess() {
+                var input = document.getElementById('chat-input').value;
+                var pattern = /([<>])+|(--+)|(%[0-9a-fA-F]{2})/;
+                if (pattern.test(input)) {
+                    alert("Votre saisie contient des caractères interdits. Veuillez saisir un texte valide.");
+                    return false;
+                } else {
+                    return true;
+                }
             }
+        </script>
+        <?php
+        if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
+            $message = $_POST['contenuMess'];
+            $message = htmlspecialchars($message);
+
+
+
+            //$requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $message . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
+            $stmt = $pdo->prepare("INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES (?, ?, ?, ?)");
+            $stmt->execute(array(date('Y-m-d H:i:s'), $message, $_SESSION['idServer'], $idSession));
+            //$resultMess = $GLOBALS["pdo"]->query($requeteMess);
+        }
 
         if (isset($_POST['submitGUILD'])) {
 
@@ -159,11 +158,11 @@ if (array_key_exists($ip, $blacklist)) {
             if ($_POST['FAQ'] == NULL) {
                 $_POST['FAQ'] = 'NULL';
             }
-            
+
             $requeteServ = "UPDATE `user` SET `general`=" . $_POST['General'] . ",`gaming`=" . $_POST['Gaming'] . ",`humour`=" . $_POST['Humour'] . ",`faq`=" . $_POST['FAQ'] . " WHERE id= '" . $_SESSION['id'] . "';";
             $resultServ = $GLOBALS["pdo"]->query($requeteServ);
-            // $stmt = $pdo->prepare("UPDATE `user` SET `general`= ?, `gaming`= ?,`humour`= ?,`faq`= ? WHERE id= ? ");
-            // $stmt->execute(array($_POST['General'], $_POST['Gaming'], $_POST['Humour'], $_POST['FAQ'], $_SESSION['id']));
+            //$stmt2 = $pdo->prepare("UPDATE `user` SET general = ? , gaming = ? ,humour = ? , faq = ? WHERE id = ? ");
+            //$stmt2->execute(array($_POST['General'], $_POST['Gaming'], $_POST['Humour'], $_POST['FAQ'], $_SESSION['id']));
 
             $_SESSION['idServer'] = $_SESSION['saveSession'];
         }
@@ -1049,99 +1048,99 @@ if (array_key_exists($ip, $blacklist)) {
         </div>
 
         <div class="modalprofile-container" id="modalprofile_container">
-                    <div class="modalprofile">
-                        <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
-                            <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
-                        </button>
-                        <div class="profile">
-                                    <div class="banner">
-                                        <div class="change-banner">
-                                        </div>
-                                        <script>
-                                            // Liste des classes CSS correspondant aux différentes images de fond possibles
-                                            var backgrounds = ['background-1', 'background-2', 'background-3'];
+            <div class="modalprofile">
+                <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
+                    <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+                <div class="profile">
+                    <div class="banner">
+                        <div class="change-banner">
+                        </div>
+                        <script>
+                            // Liste des classes CSS correspondant aux différentes images de fond possibles
+                            var backgrounds = ['background-1', 'background-2', 'background-3'];
 
-                                            // Choix aléatoire d'une classe CSS parmi les images de fond possibles
-                                            var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+                            // Choix aléatoire d'une classe CSS parmi les images de fond possibles
+                            var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
-                                            // Ajout de la classe CSS choisie à l'élément HTML correspondant à la bannière
-                                            document.getElementsByClassName('banner')[0].classList.add(randomBackground);
-                                        </script>
-                                    </div>
-                                    <div class="avatar2__wrapper">
-                                        <div class="avatar2">
-                                            <style>
-                                                .avatar2 {
-                                                    pointer-events: all;
-                                                    z-index: 101;
-                                                    border-radius: 50%;
-                                                    width: 100px;
-                                                    height: 100px;
-                                                    background: url('<?php $User1->getAvatar();?>');
-                                                    background-size: cover;
-                                                    border: 6px solid #18191c;
-                                                    cursor: pointer;
-                                                }
-                                            </style>
+                            // Ajout de la classe CSS choisie à l'élément HTML correspondant à la bannière
+                            document.getElementsByClassName('banner')[0].classList.add(randomBackground);
+                        </script>
+                    </div>
+                    <div class="avatar2__wrapper">
+                        <div class="avatar2">
+                            <style>
+                                .avatar2 {
+                                    pointer-events: all;
+                                    z-index: 101;
+                                    border-radius: 50%;
+                                    width: 100px;
+                                    height: 100px;
+                                    background: url('<?php $User1->getAvatar(); ?>');
+                                    background-size: cover;
+                                    border: 6px solid #18191c;
+                                    cursor: pointer;
+                                }
+                            </style>
 
-                                            <div class="change-avatar2">
-                                                <div class="status-icon"></div>
-                                            </div>
+                            <div class="change-avatar2">
+                                <div class="status-icon"></div>
+                            </div>
 
-                                        </div>
-                                    </div>
-                                    <?php //$User1->setPseudoNomPrenomMail($_SESSION['id']); 
-                                    ?>
-                                    <div class="headerTop" >
-                                        <div class="badges">
-                                        <span style="padding-right: 20px;" ><?php //$User1->getClasse($id); 
-                                                                            ?></span>
-                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php //$User1->getIcon1(); 
-                                                            ?>" alt=""></img>
-                                            </div>
-                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php //$User1->getIcon2(); 
-                                                            ?>" alt=""></img>
-                                            </div>
-                                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
-                                                <img src="<?php //$User1->getIcon3(); 
-                                                            ?>" alt=""></img>
-                                            </div>
-                                        </div>
-                                        <div class="headerText">
-                                            <p style="text-align: left;">
-                                                <strong>
-                                                    <span style=" color: ;text-align: left;"><b><?php //$User1->getPseudo(); 
-                                                                                                ?></b></span>
-                                                </strong>
-                                                <span style="color: #ffffff;">
-                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php //$User1->getId(); 
-                                                                                                            ?></span></span>
-                                                </span>
+                        </div>
+                    </div>
+                    <?php //$User1->setPseudoNomPrenomMail($_SESSION['id']); 
+                    ?>
+                    <div class="headerTop">
+                        <div class="badges">
+                            <span style="padding-right: 20px;"><?php //$User1->getClasse($id); 
+                                                                ?></span>
+                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                <img src="<?php //$User1->getIcon1(); 
+                                            ?>" alt=""></img>
+                            </div>
+                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
+                                <img src="<?php //$User1->getIcon2(); 
+                                            ?>" alt=""></img>
+                            </div>
+                            <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
+                                <img src="<?php //$User1->getIcon3(); 
+                                            ?>" alt=""></img>
+                            </div>
+                        </div>
+                        <div class="headerText">
+                            <p style="text-align: left;">
+                                <strong>
+                                    <span style=" color: ;text-align: left;"><b><?php //$User1->getPseudo(); 
+                                                                                ?></b></span>
+                                </strong>
+                                <span style="color: #ffffff;">
+                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php //$User1->getId(); 
+                                                                                            ?></span></span>
+                                </span>
 
 
-                                            </p>
-                                            <div class="headerTag">
-                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php //$User1->getRole(); 
-                                                                                                                                ?></span></p>
-                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getNomPrenom(); 
-                                                                                            ?></p><br>
-                                                <p style="color:#ffffff;text-align: left;">Description : </p>
-                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getDescription(); 
-                                                                                            ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </p>
+                            <div class="headerTag">
+                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php //$User1->getRole(); 
+                                                                                                                ?></span></p>
+                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getNomPrenom(); 
+                                                                            ?></p><br>
+                                <p style="color:#ffffff;text-align: left;">Description : </p>
+                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getDescription(); 
+                                                                            ?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
 
-        
+
 
         <script>
             // Récupérer les éléments du DOM nécessaires
