@@ -12,7 +12,7 @@ include("../blacklist/black_list.php");
 include("../blacklist/white_list.php");
 ?>
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return true;">
+<html lang="en" oncontextmenu="return false;">
 
 <head>
     <meta charset="UTF-8">
