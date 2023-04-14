@@ -118,10 +118,32 @@ if (array_key_exists($ip, $blacklist)) {
 
 
         $idSession = $_SESSION['id'];
-        if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
-            $requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $_POST['contenuMess'] . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
-            $resultMess = $GLOBALS["pdo"]->query($requeteMess);
-        }
+?>
+        <script>
+                    function verifierContenuMess() {
+                        var input = document.getElementById('chat-input').value;
+                        var pattern = /([<>])+|(--+)|(%[0-9a-fA-F]{2})/;
+                        if (pattern.test(input)) {
+                            alert("Votre saisie contient des caractères interdits. Veuillez saisir un texte valide.");
+                            return false;
+                        }
+                        else{
+                            return true;
+                        }
+                    }
+                </script>
+                <?php
+            if (isset($_POST['envoiMess']) and strlen($_POST_["contenuMess"] == 0)) {
+                $message = $_POST['contenuMess'];
+                $message = htmlspecialchars($message);
+
+
+
+                //$requeteMess = "INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES ('" . date('Y-m-d H:i:s') . "', '" . $message . "', '" . $_SESSION['idServer'] . "', '" . $idSession . "')";
+                $stmt = $pdo->prepare("INSERT INTO `message` (`date`, `contenu`, `idServer`, `idUser`) VALUES (?, ?, ?, ?)");
+                $stmt->execute(array(date('Y-m-d H:i:s'), $message, $_SESSION['idServer'], $idSession));
+                //$resultMess = $GLOBALS["pdo"]->query($requeteMess);
+            }
 
         if (isset($_POST['submitGUILD'])) {
 
@@ -184,7 +206,7 @@ if (array_key_exists($ip, $blacklist)) {
         <main class="container">
             <aside class="servers">
                 <div class="servers-collection">
-                <!--<div class="server focusable server-friends unread" role="button" aria-label="Friends unread">-->
+                    <!--<div class="server focusable server-friends unread" role="button" aria-label="Friends unread">-->
                     <div class="server focusable server-friends" role="button" aria-label="Friends unread">
                         <div class="server-icon"><!--<svg>
                             <use xlink:href="#icon-friends" />
@@ -749,17 +771,17 @@ if (array_key_exists($ip, $blacklist)) {
 
             </div>
 
-            
 
-            
+
+
 
 
 
             <aside class="accounts">
                 <?php $User1->affichePseudoServ2($_SESSION['idServer']); ?>
-                
 
-                <div class="member" aria-expanded="false" id="openprofile" class="openprofile" >
+
+                <div class="member" aria-expanded="false" id="openprofile" class="openprofile">
                     <div class="layout">
                         <div class="avatar">
                             <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">
@@ -787,7 +809,7 @@ if (array_key_exists($ip, $blacklist)) {
                     </div>
                 </div>
 
-               
+
 
                 <!-- <aside class="channels" style="flex: 1 1;padding-bottom: 5px;" >
                 <footer class="channels-footer">
@@ -868,12 +890,12 @@ if (array_key_exists($ip, $blacklist)) {
 
                                         </div>
                                     </div>
-                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']); 
+                                    <?php $User1->setPseudoNomPrenomMail($_SESSION['id']);
                                     ?>
-                                    
-                                    <div class="headerTop" >
+
+                                    <div class="headerTop">
                                         <div class="badges">
-                                        <span style="padding-right: 20px;" ><?php $User1->getClasse($id); ?></span>
+                                            <span style="padding-right: 20px;"><?php $User1->getClasse($id); ?></span>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
                                                 <?php $User1->afficheIcon1(); ?>
                                             </div>
@@ -1022,7 +1044,7 @@ if (array_key_exists($ip, $blacklist)) {
             </div>
         </div>
 
-        <!-- <div class="modalprofile-container" id="modalprofile_container">
+        <div class="modalprofile-container" id="modalprofile_container">
                     <div class="modalprofile">
                         <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
                             <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -1054,7 +1076,7 @@ if (array_key_exists($ip, $blacklist)) {
                                                     border-radius: 50%;
                                                     width: 100px;
                                                     height: 100px;
-                                                    background: url('<?php //$User1->getAvatar(); ?>');
+                                                    background: url('<?php $User1->getAvatar();?>');
                                                     background-size: cover;
                                                     border: 6px solid #18191c;
                                                     cursor: pointer;
@@ -1067,42 +1089,54 @@ if (array_key_exists($ip, $blacklist)) {
 
                                         </div>
                                     </div>
-                                    <?php //$User1->setPseudoNomPrenomMail($_SESSION['id']); ?>
+                                    <?php //$User1->setPseudoNomPrenomMail($_SESSION['id']); 
+                                    ?>
                                     <div class="headerTop" >
                                         <div class="badges">
-                                        <span style="padding-right: 20px;" ><?php //$User1->getClasse($id); ?></span>
+                                        <span style="padding-right: 20px;" ><?php //$User1->getClasse($id); 
+                                                                            ?></span>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php //$User1->getIcon1(); ?>" alt=""></img>
+                                                <img src="<?php //$User1->getIcon1(); 
+                                                            ?>" alt=""></img>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;">
-                                                <img src="<?php //$User1->getIcon2(); ?>" alt=""></img>
+                                                <img src="<?php //$User1->getIcon2(); 
+                                                            ?>" alt=""></img>
                                             </div>
                                             <div class="badge" style="cursor: url('cursor/c1.png'), auto;padding-right:5px">
-                                                <img src="<?php //$User1->getIcon3(); ?>" alt=""></img>
+                                                <img src="<?php //$User1->getIcon3(); 
+                                                            ?>" alt=""></img>
                                             </div>
                                         </div>
                                         <div class="headerText">
                                             <p style="text-align: left;">
                                                 <strong>
-                                                    <span style=" color: ;text-align: left;"><b><?php //$User1->getPseudo(); ?></b></span>
+                                                    <span style=" color: ;text-align: left;"><b><?php //$User1->getPseudo(); 
+                                                                                                ?></b></span>
                                                 </strong>
                                                 <span style="color: #ffffff;">
-                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php //$User1->getId(); ?></span></span>
+                                                    <span style="color: #b6b8bb;text-align: left;">#<span><?php //$User1->getId(); 
+                                                                                                            ?></span></span>
                                                 </span>
 
 
                                             </p>
                                             <div class="headerTag">
-                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php //$User1->getRole(); ?></span></p>
-                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getNomPrenom(); ?></p><br>
+                                                <p style="color:#ffffff;text-align: left;">Statut : <span style="color:#b6b8bb"><?php //$User1->getRole(); 
+                                                                                                                                ?></span></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getNomPrenom(); 
+                                                                                            ?></p><br>
                                                 <p style="color:#ffffff;text-align: left;">Description : </p>
-                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getDescription(); ?></p>
+                                                <p style="color:#b6b8bb;text-align: left;"><?php //$User1->getDescription(); 
+                                                                                            ?></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                     </div>
-                </div> -->
+                </div>
+
+
         
 
         <script>
@@ -1166,11 +1200,11 @@ if (array_key_exists($ip, $blacklist)) {
                 modalsettings_container.classList.remove('show');
             });
         </script>
-         <!-- A déplacer dans User.php [!] -->
-         
-            <!-- A déplacer dans User.php [!] -->
+        <!-- A déplacer dans User.php [!] -->
 
-        
+        <!-- A déplacer dans User.php [!] -->
+
+
         <!-- ICONS -->
         <svg id="icon-friends" viewBox="-289 382 32 27.1">
             <style id="style3">

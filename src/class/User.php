@@ -268,7 +268,7 @@ class user
 
 ?>
 
-            <div class="member" aria-expanded="false" id="openprofile" class="openprofile <?php echo $id ?>">
+            <div class="member" aria-expanded="false" id="openprofile-<?php echo $id ;?>" class="openprofile-<?php echo $id ;?>">
                 <div class="layout">
                     <div class="avatar">
                         <div class="wrapper-3Un6-K" style="width: 32px; height: 32px;">
@@ -301,7 +301,65 @@ class user
                 </div>
             </div>
 
-            <div class="modalprofile-container" id="modalprofile_container">
+            
+                                                                                                            
+            
+            <!-- <script>
+                const openprofile = document.getElementById('openprofile-2');
+                const modalprofile_container = document.getElementById('modalprofile_container');
+                const closeprofile = document.getElementById('closeprofile');
+
+                openprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.add('show');
+                });
+                closeprofile.addEventListener('click', () => {
+                    modalprofile_container.classList.remove('show');
+                });
+            </script> -->
+<?php
+        }
+    }
+
+    public function affichePseudoServ2($idServer)
+    {
+        $requetes2 = "SELECT * FROM `user` WHERE classe='" . $idServer . "' or general='" . $idServer . "' or gaming='" . $idServer . "' or humour='" . $idServer . "' or faq='" . $idServer . "';";
+        $resultat2 = $GLOBALS["pdo"]->query($requetes2);
+        $tabMessage = $resultat2->fetchALL();
+
+
+        foreach ($tabMessage as $Message) {
+
+            $test = $Message['id'];
+            $this->affichePseudoServ1($test);
+        }
+    }
+
+    public function afficheIcon1(){
+        if($this->icon_!=NULL){
+            ?>
+            <img src=" <?php echo $this->icon_ ; ?> " alt="" ><?php 
+        }
+
+    }
+
+    public function afficheIcon2(){
+        if($this->icon2_!=NULL){
+            ?>
+            <img src=" <?php echo $this->icon2_ ; ?> " alt="" ><?php 
+        }
+
+    }
+
+    public function afficheIcon3(){
+        if($this->icon3_!=NULL){
+            ?>
+            <img src=" <?php echo $this->icon3_ ; ?> " alt="" ><?php 
+        }
+
+    }
+
+    public function afficheInfos(){
+        ?><div class="modalprofile-container" id="modalprofile_container">
                     <div class="modalprofile">
                         <button id="closeprofile" style="top: 10px; right: 10px; background: none; border: none; outline: none; cursor: pointer;float:right;">
                             <svg viewBox="0 0 24 24" width="40" height="40" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -381,59 +439,6 @@ class user
                                 </div>
                     </div>
                 </div>
-                                                                                                            
-            
-            <script>
-                const openprofile = document.getElementById('openprofile');
-                const modalprofile_container = document.getElementById('modalprofile_container');
-                const closeprofile = document.getElementById('closeprofile');
-
-                openprofile.addEventListener('click', () => {
-                    modalprofile_container.classList.add('show');
-                });
-                closeprofile.addEventListener('click', () => {
-                    modalprofile_container.classList.remove('show');
-                });
-            </script>
-<?php
-        }
-    }
-
-    public function affichePseudoServ2($idServer)
-    {
-        $requetes2 = "SELECT * FROM `user` WHERE classe='" . $idServer . "' or general='" . $idServer . "' or gaming='" . $idServer . "' or humour='" . $idServer . "' or faq='" . $idServer . "';";
-        $resultat2 = $GLOBALS["pdo"]->query($requetes2);
-        $tabMessage = $resultat2->fetchALL();
-
-
-        foreach ($tabMessage as $Message) {
-
-            $test = $Message['id'];
-            $this->affichePseudoServ1($test);
-        }
-    }
-
-    public function afficheIcon1(){
-        if($this->icon_!=NULL){
-            ?>
-            <img src=" <?php echo $this->icon_ ; ?> " alt="" ><?php 
-        }
-
-    }
-
-    public function afficheIcon2(){
-        if($this->icon2_!=NULL){
-            ?>
-            <img src=" <?php echo $this->icon2_ ; ?> " alt="" ><?php 
-        }
-
-    }
-
-    public function afficheIcon3(){
-        if($this->icon3_!=NULL){
-            ?>
-            <img src=" <?php echo $this->icon3_ ; ?> " alt="" ><?php 
-        }
-
+                s<?php
     }
 }
