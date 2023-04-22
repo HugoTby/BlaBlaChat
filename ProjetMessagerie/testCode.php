@@ -40,8 +40,6 @@ session_start();
 
 
 
-
-
     /* if (afficheFormulaire($login, $mdp, $pseudo) == true) {
         //on affiche le site (messagerie)
     } else if (isset($_POST['formInscription'])) {
