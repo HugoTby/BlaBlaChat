@@ -35,7 +35,6 @@ moderator : https://cdn3.emoji.gg/emojis/7596-certified-moderator-animated.gif
 
 
 
-
 <embed>
 <div class="discord-embed">
 
