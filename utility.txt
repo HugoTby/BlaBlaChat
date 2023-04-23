@@ -48,3 +48,15 @@ moderator : https://cdn3.emoji.gg/emojis/7596-certified-moderator-animated.gif
 .discord-embed{display:flex;background-color:#2f3136;border-radius:5px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.6)}.discord-embed-author{display:flex;align-items:center;margin-right:10px}.discord-embed-author-avatar{width:32px;height:32px;border-radius:50%}.discord-embed-author-name{color:#b9bbbe;font-size:14px;font-weight:700;margin-left:10px}.discord-embed-content{display:flex;flex-direction:column}.discord-embed-title{color:#fff;font-size:18px;font-weight:700;margin-bottom:10px}.discord-embed-description{color:#b9bbbe;font-size:14px;margin-bottom:10px}.discord-embed-footer{color:#b9bbbe;font-size:12px;margin-top:auto}
 </style>
 </embed>
+
+
+
+
+
+
+
+<script>
+    console.log("%c Attends ! ", "color:#fff; background-color: rgb(25,25,50); padding:24px;font-weight:bold;font-size:5em; border-radius:5px");
+    console.log("%c Si quelqu'un t'a dit de copier/coller quelque chose ici, il y a à peu près 11 chances sur 10 que ce soit une arnaque. ","color:#fff;font-weight:bold;font-size:1.5em; ");
+    console.log("%c Coller quelque chose ici pourrait donner aux assaillants accès à ton compte BlaBlaChat. ","color:red;font-weight:bold;font-size:1.5em; ");
+</script>
