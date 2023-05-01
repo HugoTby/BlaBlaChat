@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false;">
+
+<head>
+	<meta charset="UTF-8">
+	<title>BlaBlaChat</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"rel="stylesheet'>
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+	<!-- partial:index.partial.html -->
+	<div class="app">
+
+		<div class="cardList">
+			<button class="cardList__btn btn btn--left">
+				<div class="icon">
+					<svg>
+						<use xlink:href="#arrow-left"></use>
+					</svg>
+				</div>
+			</button>
+
+			<div class="cards__wrapper">
+
+				<div class="card current--card">
+					<div class="card__image">
+						<img src="https://lecafedugeek.fr/wp-content/uploads/2021/01/smartphone-messageries-france-scaled.jpg"
+							alt="" />
+					</div>
+				</div>
+
+				<div class="card next--card">
+					<div class="card__image">
+						<img src="https://www.usine-digitale.fr/mediatheque/4/2/3/000949324_896x598_c.jpg" alt="" />
+					</div>
+				</div>
+
+				<div class="card previous--card">
+					<div class="card__image">
+						<img src="https://www.orangecyberdefense.com/fileadmin/_processed_/7/3/csm_16282-jl9oll0xxd-scaled_a4f6247bc3.jpg"
+							alt="" />
+					</div>
+				</div>
+			</div>
+
+			<button class="cardList__btn btn btn--right">
+				<div class="icon">
+					<svg>
+						<use xlink:href="#arrow-right"></use>
+					</svg>
+				</div>
+			</button>
+		</div>
+
+		<div class="infoList">
+			<div class="info__wrapper">
+
+				<div class="info current--info">
+					<h1 class="text name">BlaBlaChat</h1>
+					<h4 class="text location">En savoir plus</h4>
+					<p class="text description">Reconnue meilleure application de<br> messagerie instantanée 2023 !
+					</p>
+				</div>
+
+
+				<div class="info next--info">
+					<h1 class="text name">Windows</h1>
+					<h4 class="text location">Application bureau</h4>
+					<p class="text description">BlaBlaChat c'est aussi une <br>application desktop depuis Avril 2023 !</p>
+				</div>
+
+				<div class="info previous--info">
+					<h1 class="text name">Version web</h1>
+					<h4 class="text location">Application web</h4>
+					<p class="text description">BlaBlaChat est disponible sur<br> tout les navigateurs internet.</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="app__bg">
+			<div class="app__bg__image current--image">
+				<img src="https://lecafedugeek.fr/wp-content/uploads/2021/01/smartphone-messageries-france-scaled.jpg"
+					alt="" />
+			</div>
+			<div class="app__bg__image next--image">
+				<img src="https://www.usine-digitale.fr/mediatheque/4/2/3/000949324_896x598_c.jpg" alt="" />
+			</div>
+			<div class="app__bg__image previous--image">
+				<img src="https://www.orangecyberdefense.com/fileadmin/_processed_/7/3/csm_16282-jl9oll0xxd-scaled_a4f6247bc3.jpg"
+					alt="" />
+			</div>
+		</div>
+	</div>
+
+	<div class="loading__wrapper">
+		<div class="loader--text">Loading...</div>
+		<div class="loader">
+			<span></span>
+		</div>
+	</div>
+
+
+	<svg class="icons" style="display: none;">
+		<symbol id="arrow-left" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+			<polyline points='328 112 184 256 328 400'
+				style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />
+		</symbol>
+		<symbol id="arrow-right" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+			<polyline points='184 112 328 256 184 400'
+				style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />
+		</symbol>
+	</svg>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="support">
+		<a href="https://github.com/HugoTby/BlaBlaChat" target="_blank"><i class="fab fa-github"></i></a>
+		<a href="https://dribbble.com/devloop01" target="_blank"><i class="fab fa-windows"></i></a>
+		<a href="http://192.168.65.120" target="_blank"><i class="fab fa-firefox"></i></a>
+		<a href="http://192.168.65.120" target="_blank"><i class="fab fa-chrome"></i></a>
+	</div>
+	<!-- partial -->
+	<script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js'></script>
+	<script src="./script.js"></script>
+
+</body>
+<script>
+
+    // N'oubliez pas d'inclure le code présent à la ligne 14, dans votre balise html <body>
+
+    document.onkeydown=function(e)
+    {
+        if(event.keyCode == 123)
+        {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))
+        {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0))
+        {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0))
+        {
+            return false;
+        }
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))
+        {
+            return false;
+        }
+
+    }
+</script>
+</html>
