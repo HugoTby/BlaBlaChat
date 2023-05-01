@@ -1,0 +1,51 @@
+<!-- <iframe src="http://192.168.65.25/BlaBlaChat/src/inscription/index.php" width="100%" height="100%"></iframe> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        #image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh; /* occupe toute la hauteur de l'écran */
+        }
+      /* Définir les styles pour l'iframe */
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+
+      <div id="image-container">
+          <img id="logo" style="width: 500px;" src="lapro.png" alt="placeholder image">
+      </div>
+
+      <!-- Insérer l'iframe -->
+      <div id="content" style="display: none;"><iframe src="http://192.168.65.25/BlaBlaChat/src/connexion/index.php"></iframe></div>
+      <!--<div id="content" style="display: none;"><iframe src="http://192.168.64.206/Proviflix/index.html"></iframe></div>-->
+  </body>
+  <script>
+	// Récupérer les éléments de la page
+	const imageContainer = document.getElementById("image-container");
+	const content = document.getElementById("content");
+
+	// Cacher le contenu de la page
+	content.style.display = "none";
+
+	// Attendre 3 secondes avant de montrer le contenu
+	setTimeout(function() {
+	// Afficher le contenu de la page
+	content.style.display = "block";
+
+	// Cacher l'image
+	imageContainer.style.display = "none";
+	}, 3000);
+  </script>
+</html>
