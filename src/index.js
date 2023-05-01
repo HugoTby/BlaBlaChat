@@ -71,3 +71,4 @@ document.querySelectorAll('input').forEach(input => {
 	}
   }
 	//this.style.minwidth = (this.value.length + 1) + "ch";
+
