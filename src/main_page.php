@@ -42,7 +42,7 @@ if (array_key_exists($ip, $blacklist)) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="fr" oncontextmenu="return true;">
+    <html lang="fr" oncontextmenu="return false;">
 
     <head>
         <meta charset="UTF-8">
