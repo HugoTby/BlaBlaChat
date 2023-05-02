@@ -569,6 +569,7 @@ if (array_key_exists($ip, $blacklist)) {
                             <span class="channel-name">faq</span>
                         </li>
 
+
                         <!--<li class="channel focusable channel-text">
                             <span class="channel-name">prochainement ...</span>
                             <button class="button" role="button" aria-label="Invite"><svg>
@@ -1039,7 +1040,20 @@ if (array_key_exists($ip, $blacklist)) {
                                 </form>
                             </div>
                             <div id="option5">
-                                Fonctionnalité en cours de développement ...
+
+                                <?php
+                                $url = 'http://192.168.65.25/BlaBlaChat/api/version.api.php';
+                                $data = file_get_contents($url);
+                                $info = json_decode($data, true);
+                                ?>
+
+                                <div class="container3">
+                                    <div class="account-field" style="text-align: center;" >
+                                        <h1 class="label" style="font-size : 16px"><?php echo $info['version']; ?></h1><br>
+                                        <h1 class="label" style="font-size : 16px"><?php echo $info['release']; ?></h1><br>
+                                        <h1 class="label" style="font-size : 16px"><?php echo $info['devs']; ?></h1>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1298,6 +1312,15 @@ if (array_key_exists($ip, $blacklist)) {
             }
 
         }
+    </script>
+    <script>
+        fetch('http://192.168.65.25/BlaBlaChat/api/version.api.php')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.version);
+                console.log(data.release);
+            })
+            .catch(error => console.error(error));
     </script>
 
     </html>
