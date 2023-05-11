@@ -684,6 +684,7 @@ if (array_key_exists($ip, $blacklist)) {
                 <menu type="toolbar" class="menu">
                     <h2 class="menu-name"><?php $SERV->getServerByID($_SESSION['idServer']) ?></h2>
                 </menu>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
                 <section class="chat" id="messages-container">
                     <!-- <span style="display: flex;justify-content: center;align-items: center;font-weight: 300;">Le
                     chat n'est pas disponible pour le moment car cette fonctionnalité est en développement ...</span> -->
@@ -708,7 +709,13 @@ if (array_key_exists($ip, $blacklist)) {
                     ?>
 
 
+                    <!--<script>
+                        setInterval(load_messages, 1000);
 
+                        function load_messages() {
+                            $('#messages-container').load('messages.php');
+                        }
+                    </script>-->
                     <script>
                         // scrollToBottom();
                         function scrollToBottom() {
@@ -1048,7 +1055,7 @@ if (array_key_exists($ip, $blacklist)) {
                                 ?>
 
                                 <div class="container3">
-                                    <div class="account-field" style="text-align: center;" >
+                                    <div class="account-field" style="text-align: center;">
                                         <h1 class="label" style="font-size : 16px"><?php echo $info['version']; ?></h1><br>
                                         <h1 class="label" style="font-size : 16px"><?php echo $info['release']; ?></h1><br>
                                         <h1 class="label" style="font-size : 16px"><?php echo $info['devs']; ?></h1>
